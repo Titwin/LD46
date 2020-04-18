@@ -134,7 +134,7 @@ public class Person : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(this.rb.position, fearSource);
+        //Gizmos.DrawLine(this.rb.position, fearSource);
 #if UNITY_EDITOR
         UnityEditor.Handles.color = new Color(0, 1, 0, 0.2f);
         UnityEditor.Handles.DrawWireDisc(this.rb.position, Vector3.back, 2);
