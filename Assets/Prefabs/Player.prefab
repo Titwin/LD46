@@ -65,6 +65,11 @@ MonoBehaviour:
   carController: {fileID: 3957931949063042333}
   personController: {fileID: 1509790266}
   camera: {fileID: 0}
+  ennemyMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  carEntryRadius: 3
+  ennemySearchRadius: 3
 --- !u!1001 &3957931948761124881
 PrefabInstance:
   m_ObjectHideFlags: 0

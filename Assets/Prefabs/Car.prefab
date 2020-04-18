@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807833595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.71, z: 0}
+  m_LocalPosition: {x: 0, y: 0.873, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5468883663398654773}
@@ -190,12 +190,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 6031754676791022147}
   cameraPivot: {fileID: 4593851605021147013}
+  readInput: 1
   direction: {x: 0, y: 0}
   rotationSpeed: 450
   speed: 8
   acceleration: 8
   deceleration: 40
-  body: {fileID: 0}
   currentSpeed: 0
 --- !u!1 &1550986646693896206
 GameObject:

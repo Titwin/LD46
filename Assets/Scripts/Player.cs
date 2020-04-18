@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
             if (carController.readInput)
             {
                 carController.readInput = false;
+                personController.direction = carController.transform.right;
                 personController.gameObject.SetActive(true);
                 camera.Follow = personController.transform;
             }
