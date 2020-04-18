@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
         transform.right = lastNonZeroDirection;
 
         body.MovePosition(body.position + deltaPosition);
+        cameraPivot.transform.position = body.position + direction * currentSpeed*0.5f;
     }
 
     private float PersoMoveTowards(float current, float target, float delta)

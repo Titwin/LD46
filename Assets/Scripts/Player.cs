@@ -46,15 +46,16 @@ public class Player : MonoBehaviour
         {
             carController.gameObject.SetActive(!carController.gameObject.activeSelf);
             personController.gameObject.SetActive(!personController.gameObject.activeSelf);
-            if (personController.gameObject.activeSelf)
-            {
-                personController.body.MovePosition(carController.car.door.position);
-                camera.Follow = personController.transform;
-            }
-            else
-            {
-                camera.Follow = carController.cameraPivot.transform;
-            }
+        }
+
+        if (personController.gameObject.activeSelf)
+        {
+            personController.body.MovePosition(carController.car.door.position);
+            camera.Follow = personController.transform;
+        }
+        else
+        {
+            camera.Follow = carController.cameraPivot.transform;
         }
     }
 }

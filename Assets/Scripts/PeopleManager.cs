@@ -13,6 +13,7 @@ public class PeopleManager : MonoBehaviour
         {
             Person p = Instantiate<Person>(personTemplate);
             people.Add(p);
+            p.transform.parent = this.transform;
         }
     }
     // Update is called once per frame
@@ -20,9 +21,12 @@ public class PeopleManager : MonoBehaviour
     {
         foreach(Person p in people)
         {
-            p.Sense();
-            p.Think();
-            p.Act();
+            if (p.alive)
+            {
+                p.Sense();
+                p.Think();
+                p.Act();
+            }
         }
     }
 }
