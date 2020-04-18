@@ -120,6 +120,27 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &369222923 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1171714043691682672, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4991221203023619412}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &369222924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369222923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22e1a622a4fb0046974447cc23ac132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+  directionSpeed: 0.7
+  carSpeed: 1
 --- !u!1 &1091406129
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +217,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091406129}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
