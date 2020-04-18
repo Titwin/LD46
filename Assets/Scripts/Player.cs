@@ -73,7 +73,6 @@ public class Player : MonoBehaviour
                 if(hit.collider != null)
                 {
                     personController.Attack(hit.collider.transform);
-                    Debug.Log("hit : " + hit.collider.gameObject.name);
                 }
                 else if(car2char.sqrMagnitude < carEntryRadius * carEntryRadius)
                 {
