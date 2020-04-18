@@ -28,15 +28,15 @@ public class PlayerController : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void FixedUpdate()
+    { 
         // compute direction
         Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
         if (input != Vector2.zero)
             input.Normalize();
         float angle = Vector2.SignedAngle(direction, input);
-        if(input.sqrMagnitude != 0f)
+        if (input.sqrMagnitude != 0f)
         {
             float da = (angle > 0f ? 1 : -1) * rotationSpeed * Time.deltaTime;
             direction = Rotate(lastNonZeroDirection, Mathf.Abs(da) < Mathf.Abs(angle) ? da : angle);
@@ -52,12 +52,7 @@ public class PlayerController : MonoBehaviour
         if (direction.sqrMagnitude > 0.000001f)
             lastNonZeroDirection = direction;
         transform.right = lastNonZeroDirection;
-    }
 
-    //Vector3 lp;
-    void FixedUpdate()
-    {
-        //transform.position += new Vector3(deltaPosition.x, deltaPosition.y, 0);
         body.MovePosition(body.position + deltaPosition);
     }
 

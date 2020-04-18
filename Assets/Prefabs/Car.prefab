@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1807833595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1807833596}
+  m_Layer: 11
+  m_Name: car door
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1807833596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807833595}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.71, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5468883663398654773}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1171714043691682672
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,7 +61,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.07, y: 1.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1807833596}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -143,6 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a1cbeeff1e2994b8c03c2ee1299c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  door: {fileID: 1807833596}
 --- !u!114 &369222924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,9 +187,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22e1a622a4fb0046974447cc23ac132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  car: {fileID: 6031754676791022147}
   direction: {x: 0, y: 0}
   rotationSpeed: 300
   speed: 10
   acceleration: 8
   deceleration: 40
+  body: {fileID: 0}
   currentSpeed: 0
