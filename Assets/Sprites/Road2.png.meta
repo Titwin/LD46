@@ -80,6 +80,36 @@ TextureImporter:
   - first:
       213: 76857195986724915
     second: Road2_25
+  - first:
+      213: 6118105503060460243
+    second: Road2_26
+  - first:
+      213: -7898205349119130099
+    second: Road2_27
+  - first:
+      213: 3554399371037986622
+    second: Road2_28
+  - first:
+      213: -7667254134631002772
+    second: Road2_29
+  - first:
+      213: 1574946863408323517
+    second: Road2_30
+  - first:
+      213: -4350431622310299918
+    second: Road2_31
+  - first:
+      213: 1566900655658013163
+    second: Road2_32
+  - first:
+      213: -1810485465411886911
+    second: Road2_33
+  - first:
+      213: -6827742781018702269
+    second: Road2_34
+  - first:
+      213: -6464108771205008577
+    second: Road2_35
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -202,7 +232,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05e33396ef7ef3244af0bec3f22f4c3a
+      spriteID: 956223a777c91a94297808d289663ce4
       internalID: -1725544337070245680
       vertices: []
       indices: 
@@ -223,7 +253,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 681676b2fb1d8d044a87db378c5fef12
+      spriteID: 740d9541046bd134a9b1834ac557073d
       internalID: 8656034444681746766
       vertices: []
       indices: 
@@ -244,7 +274,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 595e3769bc694914389b882b4a12b4a7
+      spriteID: fbbe3447499c3e74a96c22262338765f
       internalID: -5051206358652364756
       vertices: []
       indices: 
@@ -265,7 +295,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fe2db93bc10c8545a367bfa504a17e5
+      spriteID: 871a6f2b6475f9b408fb90e9406259fe
       internalID: -2984626446431779922
       vertices: []
       indices: 
@@ -286,7 +316,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 922b38e2ee32ec543ba91d04adf07928
+      spriteID: 96883624530eccb4e86270e1912b41e1
       internalID: -5793072862757579381
       vertices: []
       indices: 
@@ -307,7 +337,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ed5a038f80095448a39a403942182eb
+      spriteID: 5c1cc5f590af07e49a192d5bdc25c459
       internalID: -1410893583153516400
       vertices: []
       indices: 
@@ -328,7 +358,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7577ac18ca67bc04683ae6a737f20b82
+      spriteID: fa05bb8f049196c45982282c1014bdea
       internalID: 3313195836804005109
       vertices: []
       indices: 
@@ -349,7 +379,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76ab2f840ddee3c47b9055d81678cdc8
+      spriteID: 25ab8dcc9c03ef94da7782499cb3c08a
       internalID: 2958637372529059835
       vertices: []
       indices: 
@@ -370,7 +400,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d59b80fbd84b7a4e871e48e44c98fb8
+      spriteID: 6a39e2cfa479307478a012165f4199c5
       internalID: 8161451897587447862
       vertices: []
       indices: 
@@ -391,7 +421,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 304ef752ca1d4114896ed6c15c005a3e
+      spriteID: 4ebe2aae69b4bea48a68a8dd37d7e2a0
       internalID: 8472753932569126388
       vertices: []
       indices: 
@@ -412,7 +442,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d533b84b047323541b80cf9229943994
+      spriteID: 063c695e5b41df74eb8cfbec6e1a2573
       internalID: 7326936499812536460
       vertices: []
       indices: 
@@ -433,7 +463,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccc2b7484b731164eb51d37c915f08a1
+      spriteID: 7221c34b50c35634590f939d6e822fc5
       internalID: 1344294793309590235
       vertices: []
       indices: 
@@ -454,7 +484,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e015d8c87a7423b41a5951706f3a0513
+      spriteID: 86315adaacbd2c245852d7c6b6f0f39d
       internalID: -8633822499514063049
       vertices: []
       indices: 
@@ -475,7 +505,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7424e747d91917940adc6ce34c0a9d8a
+      spriteID: 896311af3290a304eaa93c93ac621677
       internalID: -8022185721544972533
       vertices: []
       indices: 
@@ -496,7 +526,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f836e41b1ce8fd44af5726efdd7947f
+      spriteID: 4064f4cb3f6ea9a4d815178685cb1b93
       internalID: 806345395166122958
       vertices: []
       indices: 
@@ -517,7 +547,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4875c7eafbaecf429c6e5d7af57d7ef
+      spriteID: cbbaa40dd6981f146be1429b6932d058
       internalID: 6759546647344167537
       vertices: []
       indices: 
@@ -538,7 +568,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 905d19a754910094cb19e5b8900e34b1
+      spriteID: 6cf1e110fa1435340846ee4d8b424f78
       internalID: -5262931568772120782
       vertices: []
       indices: 
@@ -559,7 +589,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0101ea5d07226254586132c69f42630e
+      spriteID: 44e21e841bfade640ad7c1848658ef10
       internalID: -3437218449531088800
       vertices: []
       indices: 
@@ -580,7 +610,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e612544305bd814484d123cf05a21a7
+      spriteID: 0523779da4ef7504483fe5119fec7a8b
       internalID: 5078444809240919631
       vertices: []
       indices: 
@@ -601,7 +631,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fa4d531b9ae2e546a8193440743e824
+      spriteID: 26474166a197a2946bc7050192b49770
       internalID: 8715564623684539462
       vertices: []
       indices: 
@@ -622,7 +652,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77f092f5e666c264ea8f7dfebfe4bb21
+      spriteID: 6a1c92c513034eb408f4482b24f70877
       internalID: -5033624897174499585
       vertices: []
       indices: 
@@ -643,7 +673,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc9c80d7c29491f4e9d16f587fab1e7d
+      spriteID: 966d6a9d2d556074ca2ce4e9f99cc228
       internalID: 7584411594908044645
       vertices: []
       indices: 
@@ -664,7 +694,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 023ec1e30c0530c4a8a13ae385601601
+      spriteID: a48da5c54b8f98844834db70d286041a
       internalID: -5860439798788702176
       vertices: []
       indices: 
@@ -685,7 +715,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3444be0c8aee4ed48b9f0a1a23e8cc90
+      spriteID: 8ab542f5c6eb8a94d81bd0f742e3d9b6
       internalID: 7781100310303822509
       vertices: []
       indices: 
@@ -706,7 +736,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f9e2e128579ab04b89f0f905238ddfe
+      spriteID: e3f3b0dc6a1e26044ae23699e67a7fa4
       internalID: -4580636571667958791
       vertices: []
       indices: 
@@ -727,8 +757,218 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: add70bc5cf5a06140990463aa177a25f
+      spriteID: 4bc804968cd04ae46800718a81b1c6cd
       internalID: 76857195986724915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Road2_26
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 816eeb6552a34b74faf82acb61868814
+      internalID: 6118105503060460243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Road2_27
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a988d40c9a8e154fa0bc784287ce44c
+      internalID: -7898205349119130099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Road2_28
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94422a62fc543a5419fb8e845e388ff9
+      internalID: 3554399371037986622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Road2_29
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3442f5918a1506143922e417410dde64
+      internalID: -7667254134631002772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Road2_30
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab73cb1ca990e364290a63f3a5033f41
+      internalID: 1574946863408323517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Road2_31
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4f4cad99a0d7fd439101d7755235037
+      internalID: -4350431622310299918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Road2_32
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6567da91766df64a92a4e1d7bb1ca1d
+      internalID: 1566900655658013163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Road2_33
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3e8ba09492ba9a449ac323ab62c445d
+      internalID: -1810485465411886911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Road2_34
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e96e9c1d8f22e9347b58c469983e14e0
+      internalID: -6827742781018702269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Road2_35
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34c47c45636edef49b3979b6036a772c
+      internalID: -6464108771205008577
       vertices: []
       indices: 
       edges: []
