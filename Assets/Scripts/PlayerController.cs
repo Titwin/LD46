@@ -38,8 +38,9 @@ public class PlayerController : MonoBehaviour
         fixedUpdateDirection = direction;
 
         body.MovePosition(body.position + fixedUpdateDirection * speed * Time.fixedDeltaTime);
-        Debug.Log(fixedUpdateDirection * speed * Time.fixedDeltaTime);
+        //Debug.Log(fixedUpdateDirection * speed * Time.fixedDeltaTime);
     }
+
     private Vector2 PersoMoveToward(Vector2 current, Vector2 target, float delta)
     {
         Vector2 v = target - current;
@@ -48,5 +49,11 @@ public class PlayerController : MonoBehaviour
             return target;
         else
             return current + delta * v.normalized;
+    }
+
+    public void Attack(Transform target)
+    {
+        transform.up = target.position - transform.position;
+        transform.position = target.position;
     }
 }

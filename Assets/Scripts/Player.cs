@@ -70,9 +70,10 @@ public class Player : MonoBehaviour
             {
                 Vector3 car2char = carController.transform.position - personController.transform.position;
                 RaycastHit2D hit = Physics2D.BoxCast(personController.transform.position, Vector2.one, ennemySearchRadius, personController.transform.up, 3f, ennemyMask);
-                if(hit)
+                if(hit.collider != null)
                 {
-
+                    personController.Attack(hit.collider.transform);
+                    Debug.Log("hit : " + hit.collider.gameObject.name);
                 }
                 else if(car2char.sqrMagnitude < carEntryRadius * carEntryRadius)
                 {
@@ -82,7 +83,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    //car is too far, as victims too !
+                    //car is too far and victims too !
                 }
             }
         }
@@ -91,7 +92,10 @@ public class Player : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;
-
         UnityEditor.Handles.DrawWireDisc(personController.transform.position, Vector3.forward, carEntryRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(personController.transform.position, Vector2.one);
+        Gizmos.DrawLine(personController.transform.position, personController.transform.position + ennemySearchRadius * personController.transform.up);
     }
 }
