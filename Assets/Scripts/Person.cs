@@ -62,6 +62,7 @@ public class Person : MonoBehaviour
         if (alive)
         {
             --hp;
+            FXManager.instance.EmitBlood(rb.position, -rb.velocity, 1);
             if (hp <= 0)
             {
                 Die();
