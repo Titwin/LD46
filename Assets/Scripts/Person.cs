@@ -27,6 +27,10 @@ public class Person : MonoBehaviour
     }
     Status status;
 
+    [Header("Audio")]
+    public AudioClip killedAudioClip;
+    public AudioSource audioSource;
+
     private void OnValidate()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -126,6 +130,8 @@ public class Person : MonoBehaviour
     {
         rb.simulated = false;
         renderer.color = Color.red;
+        audioSource.pitch = 1f + Random.Range(-0.3f, 0.3f);
+        audioSource.PlayOneShot(killedAudioClip);
         alive = false;
         manager.OnDied(this);
     }
