@@ -73,7 +73,7 @@ public class Map : MonoBehaviour
         result[7] = main.tilemap.GetTile<MapTile>(main.tilemap.layoutGrid.WorldToCell(position) + Directions[7]);
         return result;
     }
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if (!Player.main)
         {

@@ -138,12 +138,10 @@ public class Person : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         //Gizmos.DrawLine(this.rb.position, fearSource);
 #if UNITY_EDITOR
-        UnityEditor.Handles.color = new Color(0, 1, 0, 0.2f);
-        UnityEditor.Handles.DrawWireDisc(this.rb.position, Vector3.back, fearRange);
         UnityEditor.Handles.color = new Color(1, 0, 0, 0.2f);
         UnityEditor.Handles.DrawWireDisc(this.rb.position, Vector3.back, calmRange);
 #endif
