@@ -57,12 +57,12 @@ public class Person : MonoBehaviour
         this.rb.MovePosition(this.rb.position + Direction * Time.deltaTime);
     }
 
-    public void Hurt()
+    public void Hurt(GameObject source)
     {
         if (alive)
         {
             --hp;
-            FXManager.instance.EmitBlood(rb.position, -rb.velocity, 1);
+            FXManager.instance.EmitBlood(rb.position, this.transform.position-source.transform.position, 1);
             if (hp <= 0)
             {
                 Die();
@@ -72,7 +72,7 @@ public class Person : MonoBehaviour
 
     void Die()
     {
-        //rb.simulated = false;
+        rb.simulated = false;
         renderer.color = Color.red;
         alive = false;
     }
@@ -81,7 +81,7 @@ public class Person : MonoBehaviour
     {
         if(collision.gameObject.layer == Constants.LayerCar)
         {
-            Hurt();
+            Hurt(collision.gameObject);
         }
     }
 }

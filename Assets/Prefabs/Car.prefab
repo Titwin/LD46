@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7820908303283420032}
   - component: {fileID: 6240939242101275953}
   - component: {fileID: 1803362339715775653}
+  - component: {fileID: 6031754676791022147}
   - component: {fileID: 369222924}
   m_Layer: 11
   m_Name: Car
@@ -69,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1113476565
-  m_SortingLayer: 4
+  m_SortingLayerID: -2099388397
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 783deeb3d6cd35c4baf61f0c9bbfb0ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -130,6 +131,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &6031754676791022147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171714043691682672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a1cbeeff1e2994b8c03c2ee1299c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &369222924
 MonoBehaviour:
   m_ObjectHideFlags: 0
