@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Car car;
+    public Transform cameraPivot;
+    
     [Header("Controls settings")]
     public Vector2 direction;
     public float rotationSpeed = 0.7f;

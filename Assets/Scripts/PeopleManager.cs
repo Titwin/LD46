@@ -5,7 +5,16 @@ using UnityEngine;
 public class PeopleManager : MonoBehaviour
 {
     public List<Person> people;
+    public Person personTemplate;
 
+    private void Start()
+    {
+        for (int i = 0; i < 100; ++i)
+        {
+            Person p = Instantiate<Person>(personTemplate);
+            people.Add(p);
+        }
+    }
     // Update is called once per frame
     void Update()
     {

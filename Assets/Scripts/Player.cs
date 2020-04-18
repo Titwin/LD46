@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                camera.Follow = carController.transform;
+                camera.Follow = carController.cameraPivot.transform;
             }
         }
     }
