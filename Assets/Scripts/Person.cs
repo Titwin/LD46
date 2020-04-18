@@ -12,6 +12,15 @@ public class Person : MonoBehaviour
     public Collider2D collider;
     public SpriteRenderer renderer;
     float t = 0;
+
+
+    Vector2 fearSource;
+    public enum Status
+    {
+        Wandering, Scared
+    }
+    Status status;
+
     private void OnValidate()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,32 +28,57 @@ public class Person : MonoBehaviour
         renderer = GetComponent<SpriteRenderer>();
     }
 
+    public void Sense()
+    {
+        fearSource = Player.main.position;
+        var fdirection = this.rb.position - fearSource;
+        if (fdirection.magnitude < 2)
+        {
+            status = Status.Scared;
+        }
+    }
     public void Think()
     {
         if (!alive)
         {
             return;
         }
-        t += Time.deltaTime;
-        if (t > 1)
+        if (status == Status.Scared)
         {
-            t -= 1;
-            float r = Random.value;
-            if (r < 1 / 4f)
+            Direction = this.rb.position - fearSource;
+            if (Direction.magnitude > 5)
             {
-                Direction = new Vector2(-1, 0);
+                status = Status.Wandering;
+                Direction.Normalize();
             }
-            else if (r < 2 / 4f)
+            else
             {
-                Direction = new Vector2(1, 0);
+                Direction.Normalize();
             }
-            else if (r < 3 / 4f)
+        }
+        if (status == Status.Wandering)
+        {
+            t += Time.deltaTime;
+            if (t > 1)
             {
-                Direction = new Vector2(0,-1);
-            }
-            else if (r < 4 / 4f)
-            {
-                Direction = new Vector2(0, 1);
+                t -= 1;
+                float r = Random.value;
+                if (r < 1 / 4f)
+                {
+                    Direction = new Vector2(-1, 0);
+                }
+                else if (r < 2 / 4f)
+                {
+                    Direction = new Vector2(1, 0);
+                }
+                else if (r < 3 / 4f)
+                {
+                    Direction = new Vector2(0, -1);
+                }
+                else if (r < 4 / 4f)
+                {
+                    Direction = new Vector2(0, 1);
+                }
             }
         }
     }
@@ -54,7 +88,7 @@ public class Person : MonoBehaviour
         {
             return;
         }
-        this.rb.MovePosition(this.rb.position + Direction * Time.deltaTime);
+        this.rb.MovePosition(this.rb.position + Direction *(status == Status.Scared?2:1)* Time.deltaTime);
     }
 
     public void Hurt(GameObject source)
@@ -83,5 +117,16 @@ public class Person : MonoBehaviour
         {
             Hurt(collision.gameObject);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(this.rb.position, fearSource);
+#if UNITY_EDITOR
+        UnityEditor.Handles.color = new Color(0, 1, 0, 0.2f);
+        UnityEditor.Handles.DrawWireDisc(this.rb.position, Vector3.back, 2);
+        UnityEditor.Handles.color = new Color(1, 0, 0, 0.2f);
+        UnityEditor.Handles.DrawWireDisc(this.rb.position, Vector3.back, 5);
+#endif
     }
 }

@@ -189,8 +189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 6031754676791022147}
   direction: {x: 0, y: 0}
-  rotationSpeed: 300
-  speed: 10
+  rotationSpeed: 450
+  speed: 8
   acceleration: 8
   deceleration: 40
   body: {fileID: 0}

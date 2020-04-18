@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     new public Cinemachine.CinemachineVirtualCamera camera;
 
+    public static Player main;
     public Vector2 position {
         get {
             if (personController.gameObject.activeSelf)
@@ -30,6 +31,10 @@ public class Player : MonoBehaviour
         GUI.Label(new Rect(10, 10, 100, 20), "blood:"+blood);
     }
 
+    private void Awake()
+    {
+        main = this;
+    }
     private void Start()
     {
         carController.gameObject.SetActive(true);

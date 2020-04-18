@@ -13,6 +13,7 @@ public class Mission : MonoBehaviour
 
     public Vector2 basePosition;
     public Vector2 missionPosition;
+    public float timeOutTimer = 10;
 
     private void OnDrawGizmosSelected()
     {

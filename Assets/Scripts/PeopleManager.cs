@@ -11,6 +11,7 @@ public class PeopleManager : MonoBehaviour
     {
         foreach(Person p in people)
         {
+            p.Sense();
             p.Think();
             p.Act();
         }
