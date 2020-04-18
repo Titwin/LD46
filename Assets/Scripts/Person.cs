@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Person : MonoBehaviour
 {
+    public PeopleManager manager;
+
     public int hp = 1;
     public bool alive = true;
 
@@ -125,6 +127,7 @@ public class Person : MonoBehaviour
         rb.simulated = false;
         renderer.color = Color.red;
         alive = false;
+        manager.OnDied(this);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
