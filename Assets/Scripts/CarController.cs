@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class CarController : MonoBehaviour
 {
+    [Header("Linking")]
     public Car car;
     public Transform cameraPivot;
-    
+
     [Header("Controls settings")]
+    public bool readInput = true;
     public Vector2 direction;
     public float rotationSpeed = 0.7f;
     public float speed = 1f;
     public float acceleration = 1f;
     public float deceleration = 1f;
 
-    public Rigidbody2D body;
+    private Rigidbody2D body;
     private Vector2 lastNonZeroDirection;
     private Vector2 deltaPosition;
 
@@ -31,9 +33,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate()
-    { 
+    {
         // compute direction
-        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Vector2 input = Vector2.zero;
+        if(readInput)
+            input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         if (input != Vector2.zero)
             input.Normalize();
