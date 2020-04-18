@@ -9,6 +9,10 @@ public class MissionManager : MonoBehaviour
     public Mission.Status status;
     public Player player;
 
+
+    public SpriteRenderer locationCursor;
+    public Transform arrowPivot;
+
     public float time = 0;
     public bool full = false;
 
@@ -24,10 +28,12 @@ public class MissionManager : MonoBehaviour
         Vector2 position = player.position;
         Vector2 direction = Vector2.zero;
         time += Time.deltaTime;
+
         switch (status)
         {
             case Mission.Status.Planned:
                 direction = mission.basePosition - position;
+                locationCursor.transform.position = mission.basePosition;
                 break;
             case Mission.Status.Started:
                 //nothing
@@ -35,17 +41,21 @@ public class MissionManager : MonoBehaviour
             case Mission.Status.Going:
                 full = false;
                 direction = mission.missionPosition - position;
+                locationCursor.transform.position = mission.missionPosition;
                 break;
             case Mission.Status.Eating:
                 direction = mission.missionPosition - position;
                 break;
             case Mission.Status.Returning:
                 direction = mission.basePosition - position;
+                locationCursor.transform.position = mission.basePosition;
                 break;
             case Mission.Status.Done:
                 //nothing
                 break;
         }
+        arrowPivot.transform.position = position;
+        arrowPivot.transform.LookAt(locationCursor.transform.position);
         // checkpoint based changes
         if (direction.sqrMagnitude < 1)
         {
