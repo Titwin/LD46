@@ -4,52 +4,75 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Controls settings")]
     public Vector2 direction;
-    public float directionSpeed = 0.7f;
-    public float carSpeed = 1f;
+    public float rotationSpeed = 0.7f;
+    public float speed = 1f;
+    public float acceleration = 1f;
+    public float deceleration = 1f;
 
     private Rigidbody2D body;
-    private Vector2 fixedUpdateDirection;
+    private Vector2 lastNonZeroDirection;
+    private Vector2 deltaPosition;
+
+    [Header("Debug")]
+    [SerializeField] private float currentSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
-        direction = Vector3.right;
+        direction = Vector3.zero;
+        lastNonZeroDirection = Vector3.right;
+        deltaPosition = Vector2.zero;
         body = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*Vector2 d = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        direction = PersoMoveToward(direction, d, directionSpeed * Time.deltaTime);
+        // compute direction
+        Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (input != Vector2.zero)
+            input.Normalize();
+        float angle = Vector2.SignedAngle(direction, input);
+        if(input.sqrMagnitude != 0f)
+        {
+            float da = (angle > 0f ? 1 : -1) * rotationSpeed * Time.deltaTime;
+            direction = Rotate(lastNonZeroDirection, Mathf.Abs(da) < Mathf.Abs(angle) ? da : angle);
+        }
 
-        transform.right = direction;
-        fixedUpdateDirection = direction;*/
-        //transform.position += direction * carSpeed * Time.deltaTime;
-        //body.MovePosition(body.position + direction * carSpeed * Time.deltaTime);
-        //body.AddForce(direction * carSpeed);
+        // compute  speed
+        currentSpeed = Mathf.MoveTowards(currentSpeed, input.magnitude * speed, (currentSpeed < input.magnitude * speed ? acceleration : deceleration) * Time.deltaTime);
+
+        // compute deltaPosition position
+        deltaPosition = direction * currentSpeed * Time.fixedDeltaTime;
+
+        // aiming
+        if (direction.sqrMagnitude > 0.000001f)
+            lastNonZeroDirection = direction;
+        transform.right = lastNonZeroDirection;
     }
 
+    //Vector3 lp;
     void FixedUpdate()
     {
-        Vector2 d = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        direction = PersoMoveToward(direction, d, directionSpeed * Time.deltaTime);
-
-        transform.right = direction;
-        fixedUpdateDirection = direction;
-
-        body.MovePosition(body.position + fixedUpdateDirection * carSpeed * Time.fixedDeltaTime);
-        Debug.Log(fixedUpdateDirection * carSpeed * Time.fixedDeltaTime);
+        //transform.position += new Vector3(deltaPosition.x, deltaPosition.y, 0);
+        body.MovePosition(body.position + deltaPosition);
     }
 
-    private Vector2 PersoMoveToward(Vector2 current, Vector2 target, float delta)
+    private float PersoMoveTowards(float current, float target, float delta)
     {
-        Vector2 v = target - current;
-        float d = v.magnitude;
-        if (delta > d)
+        float v = target - current;
+        if (delta > v)
             return target;
         else
-            return current + delta * v.normalized;
+            return current + delta;
+    }
+    Vector2 Rotate(Vector2 aPoint, float aDegree)
+    {
+        float rad = aDegree * Mathf.Deg2Rad;
+        float s = Mathf.Sin(rad);
+        float c = Mathf.Cos(rad);
+        return new Vector2( aPoint.x * c - aPoint.y * s, aPoint.y * c + aPoint.x * s);
     }
 }

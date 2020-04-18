@@ -143,5 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0}
-  directionSpeed: 2
-  carSpeed: 10
+  rotationSpeed: 300
+  speed: 10
+  acceleration: 8
+  deceleration: 40
+  currentSpeed: 0
