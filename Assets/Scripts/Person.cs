@@ -13,6 +13,7 @@ public class Person : MonoBehaviour
     public SpriteRenderer renderer;
     float t = 0;
 
+    public MapTile tile;
 
     Vector2 fearSource;
     public enum Status
@@ -30,6 +31,7 @@ public class Person : MonoBehaviour
 
     public void Sense()
     {
+        tile = Map.GetTile(rb.position);
         fearSource = Player.main.position;
         var fdirection = this.rb.position - fearSource;
         if (fdirection.magnitude < 2)
@@ -61,8 +63,19 @@ public class Person : MonoBehaviour
             t += Time.deltaTime;
             if (t > 1)
             {
+                var cellNeighbor = Map.GetTileNeighbor(rb.position);
+                for (int i = 0; i < cellNeighbor.Length;++i)
+                {
+                    var cell = cellNeighbor[i];
+                    if (cell.type == MapTile.Type.Walk)
+                    {
+                        Direction = (Vector2Int)Map.Directions[i];
+                        break;
+                    }
+                }
                 t -= 1;
                 float r = Random.value;
+                /*
                 if (r < 1 / 4f)
                 {
                     Direction = new Vector2(-1, 0);
@@ -78,7 +91,7 @@ public class Person : MonoBehaviour
                 else if (r < 4 / 4f)
                 {
                     Direction = new Vector2(0, 1);
-                }
+                }*/
             }
         }
     }

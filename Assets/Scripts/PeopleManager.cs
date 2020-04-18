@@ -9,11 +9,16 @@ public class PeopleManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 100; ++i)
+        foreach (var cell in Map.map.Keys)
         {
-            Person p = Instantiate<Person>(personTemplate);
-            people.Add(p);
-            p.transform.parent = this.transform;
+            if(Map.map[cell].type == MapTile.Type.Walk)
+            {
+                
+                Person p = Instantiate<Person>(personTemplate);
+                p.transform.position = Map.GetWorldPosition(cell);
+                people.Add(p);
+                p.transform.parent = this.transform;
+            }
         }
     }
     // Update is called once per frame
