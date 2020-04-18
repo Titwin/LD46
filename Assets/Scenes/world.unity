@@ -1621,7 +1621,8 @@ MonoBehaviour:
   - {fileID: 1721404880}
   - {fileID: 779810416}
   - {fileID: 334420401}
-  personTemplate: {fileID: 0}
+  personTemplate: {fileID: 5070235049889499690, guid: d8a29f46be625b44a8584f5c38983f7a,
+    type: 3}
 --- !u!114 &1700316652 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5070235049889499690, guid: d8a29f46be625b44a8584f5c38983f7a,
