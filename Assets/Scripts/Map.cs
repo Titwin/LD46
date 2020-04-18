@@ -96,6 +96,7 @@ public class Map : MonoBehaviour
                                 break;
                             case MapTile.Type.Building:
                                 Gizmos.color = Color.red;
+                                continue;
                                 break;
                             case MapTile.Type.Street:
                                 Gizmos.color = Color.green;
