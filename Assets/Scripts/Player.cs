@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     [Header("Linkings")]
     public CarController carController;
-    public PlayerControllerFoot personController;
+    public PlayerController personController;
 
     new public Cinemachine.CinemachineVirtualCamera camera;
 
@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
             if (carController.readInput)
             {
                 carController.readInput = false;
+                personController.direction = carController.transform.right;
                 personController.gameObject.SetActive(true);
                 camera.Follow = personController.transform;
             }

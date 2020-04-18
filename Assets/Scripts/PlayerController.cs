@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControllerFoot : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public Vector2 direction;
     public float directionSpeed = 0.7f;
@@ -10,21 +10,31 @@ public class PlayerControllerFoot : MonoBehaviour
 
     public Rigidbody2D body;
     private Vector2 fixedUpdateDirection;
+    private Vector2 lastNonZeroDirection;
 
     // Start is called before the first frame update
     void Start()
     {
         direction = Vector3.right;
+        lastNonZeroDirection = direction;
         body = GetComponent<Rigidbody2D>();
     }
+
+    private void OnEnable()
+    {
+        lastNonZeroDirection = direction;
+    }
+
     // Update is called once per frame
     void Update()
     {
         Vector2 d = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         direction = PersoMoveToward(direction, d, directionSpeed * Time.deltaTime);
+        if (direction != Vector2.zero)
+            lastNonZeroDirection = direction;
 
-        transform.up = direction;
+        transform.up = lastNonZeroDirection;
         fixedUpdateDirection = direction;
 
         body.MovePosition(body.position + fixedUpdateDirection * speed * Time.fixedDeltaTime);
