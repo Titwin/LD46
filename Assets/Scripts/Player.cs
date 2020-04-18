@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
     [Header("Linkings")]
     public CarController carController;
-    public PlayerControllerFoot personController;
+    public PlayerController personController;
 
     new public Cinemachine.CinemachineVirtualCamera camera;
 

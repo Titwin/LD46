@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControllerFoot : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public Vector2 direction;
     public float directionSpeed = 0.7f;
