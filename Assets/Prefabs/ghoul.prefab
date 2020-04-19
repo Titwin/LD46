@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3556355210785275869}
   - component: {fileID: 7456650398189150213}
   - component: {fileID: 3054174038593194624}
-  m_Layer: 15
+  m_Layer: 11
   m_Name: ghoul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.1
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -269,9 +269,10 @@ MonoBehaviour:
     looping: 0
   - type: 4
     time: 0
-    frames: []
+    frames:
+    - {fileID: -5813861129396217237, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
     sound: []
-    looping: 1
+    looping: 0
   - type: 7
     time: 0.06666667
     frames: []
@@ -297,6 +298,16 @@ MonoBehaviour:
     - {fileID: 3621254562518164338, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
     sound: []
     looping: 1
+  - type: 9
+    time: 0.06666667
+    frames:
+    - {fileID: -5813861129396217237, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 3096432091992019189, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 7937418465033239005, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 8588607445414238659, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 2568424330362760635, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    sound: []
+    looping: 1
   slaves: []
 --- !u!114 &3054174038593194624
 MonoBehaviour:
@@ -317,23 +328,26 @@ MonoBehaviour:
   directionSpeed: 0.7
   speed: 1
   alive: 1
-  body: {fileID: 0}
-  ennemyMask:
+  body: {fileID: 6663288361956846464}
+  sightMask:
     serializedVersion: 2
     m_Bits: 20480
+  ennemyMask:
+    serializedVersion: 2
+    m_Bits: 4096
   sightRadius: 3
-  ennemySearchRadius: 3
+  ennemySearchRadius: 0.5
   attackBox: {fileID: 1086770492124846124}
   attackFilter:
     useTriggers: 0
-    useLayerMask: 0
+    useLayerMask: 1
     useDepth: 0
     useOutsideDepth: 0
     useNormalAngle: 0
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 20480
+      m_Bits: 16384
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -350,7 +364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3620827572309412695}
   - component: {fileID: 1086770492124846124}
-  m_Layer: 15
+  m_Layer: 11
   m_Name: attackbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

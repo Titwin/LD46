@@ -46,12 +46,25 @@ public class PeopleManager : MonoBehaviour
     }
     IPerson AddPerson(Vector2 position)
     {
-        //Ghoul p = Instantiate<Ghoul>(ghoulTemplate[Random.Range(0, ghoulTemplate.Length)]);
-        Person p = Instantiate<Person>(personTemplate[Random.Range(0,personTemplate.Length)]);
-        p.transform.position = position;
+        IPerson p;
+        if (Random.value < 0.1f)
+        {
+            Ghoul pg = Instantiate<Ghoul>(ghoulTemplate[Random.Range(0, ghoulTemplate.Length)]);
+            pg.transform.position = position;
+            pg.transform.parent = this.transform;
+            pg.manager = this;
+            p = pg;
+        }
+        else
+        {
+            Person pp = Instantiate<Person>(personTemplate[Random.Range(0,personTemplate.Length)]);
+            pp.transform.position = position;
+            pp.transform.parent = this.transform;
+            pp.manager = this;
+            p = pp;
+        }
+        
         people.Add(p);
-        p.transform.parent = this.transform;
-        p.manager = this;
         return p;
     }
     // Update is called once per frame
@@ -68,8 +81,9 @@ public class PeopleManager : MonoBehaviour
                 toSpawn.RemoveAt(pos);
             }
         }
-        foreach (IPerson p in people)
+        for (int i = people.Count-1;i >=0;--i)
         {
+            IPerson p = people[i];
             float d = Vector2.Distance(playerPosition, p.Position);
             {
                 if (p.Active && d > maxUpdateDistance * 1.1f)
@@ -90,9 +104,9 @@ public class PeopleManager : MonoBehaviour
         }
 
     }
-    public void OnDied(Person p)
+    public void OnDied(IPerson p)
     {
         people.Remove(p);
-        toSpawn.Add(p.transform.position);
+        toSpawn.Add(p.Position);
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 434332791504732853}
   - component: {fileID: 6878887655564855326}
-  m_Layer: 15
+  m_Layer: 14
   m_Name: attackbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 6117007587755324936}
   - component: {fileID: 7158726441824352201}
   - component: {fileID: 8810672553600533367}
-  m_Layer: 15
+  m_Layer: 14
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4826,7 +4826,7 @@ GameObject:
   - component: {fileID: 707819821138384321}
   - component: {fileID: 4160898564691390722}
   - component: {fileID: 8761975899109976494}
-  m_Layer: 15
+  m_Layer: 14
   m_Name: Vampire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4913,7 +4913,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.1
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -5333,7 +5333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7525257104558275892}
   - component: {fileID: 2116795328983585114}
-  m_Layer: 15
+  m_Layer: 14
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

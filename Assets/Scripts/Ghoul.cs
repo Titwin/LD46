@@ -17,9 +17,11 @@ public class Ghoul : MonoBehaviour,IPerson
     private Vector2 lastNonZeroDirection;
 
     [Header("Controls settings")]
+    public LayerMask sightMask;
     public LayerMask ennemyMask;
     public float sightRadius = 3;
     public float ennemySearchRadius = 3;
+    public float dashRange = 0.5f;
     public Collider2D attackBox;
     public ContactFilter2D attackFilter;
     bool firstFrame = true;
@@ -37,6 +39,21 @@ public class Ghoul : MonoBehaviour,IPerson
         body = GetComponent<Rigidbody2D>();
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == Constants.LayerCar)
+        {
+            Car car = collision.gameObject.GetComponent<Car>();
+            if (car)
+            {
+                if (car.currentSpeed > 1)
+                {
+                    GetHurt(collision.gameObject);
+                }
+            }
+        }
+    }
 
     private void OnEnable()
     {
@@ -175,6 +192,7 @@ public class Ghoul : MonoBehaviour,IPerson
             alive = false;
             body.simulated = false;
             collider.enabled = false;
+            GetComponent<Renderer>().sortingOrder = -1;
             FXManager.instance.EmitBloodStain(body.position);
             animation.LaunchAnimation(AnimationController.AnimationType.DYING);
         }
@@ -188,7 +206,7 @@ public class Ghoul : MonoBehaviour,IPerson
     int attackableCount;
     int sightCount;
     RaycastHit2D dashable;
-
+    Transform target;
     public bool Active { 
         get { 
             return this.gameObject.activeSelf; 
@@ -205,8 +223,8 @@ public class Ghoul : MonoBehaviour,IPerson
     public void Sense()
     {
         attackableCount = Physics2D.OverlapCollider(attackBox, attackFilter, attackable);
-        dashable = Physics2D.BoxCast(transform.position, Vector2.one, ennemySearchRadius, transform.up, 3f, ennemyMask);
-        sightCount = Physics2D.OverlapCircleNonAlloc(this.transform.position, sightRadius, sight);
+        dashable = Physics2D.BoxCast(transform.position, Vector2.one, ennemySearchRadius, transform.up, dashRange, ennemyMask);
+        sightCount = Physics2D.OverlapCircleNonAlloc(this.transform.position, sightRadius, sight,sightMask);
     }
 
     public void Think()
@@ -219,28 +237,44 @@ public class Ghoul : MonoBehaviour,IPerson
         }else if (dashable.collider != null)
         {
             bEat = true;
-        }else if (sightCount >0)
+        } 
+        else if(sightCount >0)
         {
-            Transform target= null;
+            target= null;
             float d = float.MaxValue;
             for(int s = 0; s < sightCount; ++s)
             {
+                
                 var candidate = sight[s].transform;
-                float d2 = Vector2.Distance(this.transform.position, candidate.position);
-                if (d2 < d)
+                if (candidate != this.transform)
                 {
-                    d = d2;
-                    target = candidate.transform;
+                    float d2 = Vector2.Distance(this.transform.position, candidate.position);
+                    if (d2 < d)
+                    {
+                        d = d2;
+                        target = candidate.transform;
+                    }
                 }
             }
             if (target!=null) {
 
-                inputDirection = (this.transform.position- target.position).normalized;
+                inputDirection = (target.position-this.transform.position).normalized;
             }
         }
         
     }
 
+    private void OnDrawGizmos()
+    {
+        for (int s = 0; s < sightCount; ++s)
+        {
+            Gizmos.DrawLine(this.transform.position, sight[s].transform.position);
+        }
+            if (target)
+        {
+            Gizmos.DrawLine(this.transform.position, target.position);
+        }
+    }
     public void Act()
     {
         if (!alive)

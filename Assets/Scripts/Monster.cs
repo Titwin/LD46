@@ -233,6 +233,7 @@ public class Monster : MonoBehaviour
         {
             body.simulated = false;
             collider.enabled = false;
+            GetComponent<Renderer>().sortingOrder = -1;
             alive = false; 
             FXManager.instance.EmitBloodStain(body.position);
             animation.LaunchAnimation(AnimationController.AnimationType.DYING);
