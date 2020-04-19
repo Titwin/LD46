@@ -59,7 +59,7 @@ public class PeopleManager : MonoBehaviour
                     p.gameObject.SetActive(true);
                 }
             }
-            if (p.alive)
+            if (p.gameObject.activeSelf && p.alive)
             {
                 p.Sense();
                 p.Think();
