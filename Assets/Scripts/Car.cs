@@ -16,14 +16,14 @@ public class Car : MonoBehaviour
     public float acceleration = 1f;
     public float deceleration = 1f;
 
-    public Rigidbody2D body;
+    private Rigidbody2D body;
     private Vector2 lastNonZeroDirection;
     private Vector2 deltaPosition;
-
-    private Vector2 input;
-
+    
     [Header("Debug")]
     [SerializeField] public float currentSpeed;
+    [SerializeField] private Vector2 input;
+
     void Start()
     {
         direction = Vector3.zero;
@@ -60,11 +60,12 @@ public class Car : MonoBehaviour
         transform.right = lastNonZeroDirection;
 
         body.MovePosition(body.position + deltaPosition);
-        cameraPivot.transform.position = body.position + direction * currentSpeed * 0.5f;
+        if(cameraPivot)
+            cameraPivot.transform.position = body.position + direction * currentSpeed * 0.5f;
     }
     private void LateUpdate()
     {
-        input = Vector2.zero;
+        //input = Vector2.zero;
     }
     private float PersoMoveTowards(float current, float target, float delta)
     {
