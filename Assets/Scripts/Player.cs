@@ -62,12 +62,14 @@ public class Player : MonoBehaviour
         personController.direction = carController.transform.right;
         personController.gameObject.SetActive(true);
         camera.Follow = personController.transform;
+        carController.StopEngine();
     }
     public void EnterCar()
     {
         carController.readInput = true;
         personController.gameObject.SetActive(false);
         camera.Follow = carController.car.cameraPivot.transform;
+        carController.StartEngine();
     }
     
 }
