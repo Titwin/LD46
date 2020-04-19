@@ -4,6 +4,19 @@ using UnityEngine;
 
 public interface IPerson
 {
+    bool Active
+    {
+        get;
+        set;
+    }
+    bool Alive
+    {
+        get;
+    }
+    Vector2 Position
+    {
+        get;
+    }
     void Sense();
     void Think();
    
@@ -13,6 +26,7 @@ public class PeopleManager : MonoBehaviour
 {
     public List<IPerson> people = new List<IPerson>();
     public Person[] personTemplate;
+    public Ghoul[] ghoulTemplate;
     public List<Vector3> toSpawn;
 
     public float maxUpdateDistance = 25;
@@ -30,8 +44,9 @@ public class PeopleManager : MonoBehaviour
             }
         }
     }
-    Person AddPerson(Vector2 position)
+    IPerson AddPerson(Vector2 position)
     {
+        //Ghoul p = Instantiate<Ghoul>(ghoulTemplate[Random.Range(0, ghoulTemplate.Length)]);
         Person p = Instantiate<Person>(personTemplate[Random.Range(0,personTemplate.Length)]);
         p.transform.position = position;
         people.Add(p);
@@ -49,24 +64,24 @@ public class PeopleManager : MonoBehaviour
             if (d > maxUpdateDistance * 1.1f)
             {
                 var person = AddPerson(toSpawn[pos]);
-                person.gameObject.SetActive(false);
+                person.Active = false;
                 toSpawn.RemoveAt(pos);
             }
         }
-        foreach (Person p in people)
+        foreach (IPerson p in people)
         {
-            float d = Vector2.Distance(playerPosition, p.rb.position);
+            float d = Vector2.Distance(playerPosition, p.Position);
             {
-                if (p.gameObject.activeSelf && d > maxUpdateDistance * 1.1f)
+                if (p.Active && d > maxUpdateDistance * 1.1f)
                 {
-                    p.gameObject.SetActive(false);
+                    p.Active = false;
                 }
-                else if (!p.gameObject.activeSelf && d < maxUpdateDistance)
+                else if (!p.Active && d < maxUpdateDistance)
                 {
-                    p.gameObject.SetActive(true);
+                    p.Active = true;
                 }
             }
-            if (p.gameObject.activeSelf && p.alive)
+            if (p.Active && p.Alive)
             {
                 p.Sense();
                 p.Think();

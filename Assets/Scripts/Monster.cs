@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class Monster : MonoBehaviour
 {
     public Player player;
-    public AnimationController animation;
-    public Collider2D collider;
+    new public AnimationController animation;
+    new public Collider2D collider;
     public Vector2 direction;
     public float directionSpeed = 0.7f;
     public float speed = 1f;
@@ -128,17 +128,25 @@ public class PlayerController : MonoBehaviour
         attackleft = !attackleft;
         var attackFilter = new ContactFilter2D();
         attackFilter.layerMask = ennemyMask;
-        var results = new Collider2D[8];
-        int count = Physics2D.OverlapCollider(attackBox, attackFilter, results);
+        var attackable = new Collider2D[8];
+        int count = Physics2D.OverlapCollider(attackBox, attackFilter, attackable);
         for (int c = 0; c < count; ++c)
         {
             // RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one, ennemyAttackRadius, transform.up, ennemyAttackRadius, ennemyMask);
             //if (hit.collider != null)
             {
-                Person person = results[c].gameObject.GetComponent<Person>();
+                Person person = attackable[c].gameObject.GetComponent<Person>();
                 if (person)
                 {
                     Attack(person);
+                }
+                else
+                {
+                    Ghoul monster = attackable[c].gameObject.GetComponent<Ghoul>();
+                    if (monster)
+                    {
+                        Attack(monster);
+                    }
                 }
             }
         }
@@ -150,8 +158,13 @@ public class PlayerController : MonoBehaviour
     }
     public void Attack(Person target)
     {
-        target.Hurt(this.gameObject);
+        target.GetHurt(this.gameObject);
     }
+    public void Attack(Ghoul target)
+    {
+        target.GetHurt(this.gameObject);
+    }
+
     IEnumerator DoDash(Person target)
     {
         animating = true;
@@ -202,11 +215,26 @@ public class PlayerController : MonoBehaviour
         animating = false;
     }
 
+    public void GetHurt(GameObject source)
+    {
+        if (alive)
+        {
+            --player.blood;
+            FXManager.instance.EmitBlood(body.position, this.transform.position - source.transform.position, 10);
+            if (player.blood <= 0)
+            {
+                Die();
+            }
+        }
+    }
     public void Die()
     {
         if (alive)
         {
-            alive = false;
+            body.simulated = false;
+            collider.enabled = false;
+            alive = false; 
+            FXManager.instance.EmitBloodStain(body.position);
             animation.LaunchAnimation(AnimationController.AnimationType.DYING);
         }
     }
@@ -220,12 +248,5 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, Vector2.one);
         Gizmos.DrawLine(transform.position, transform.position + ennemySearchRadius * transform.up);
-
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one, ennemySearchRadius, transform.up, 3f, ennemyMask);
-        if (hit.collider != null)
-        {
-            Person person = hit.collider.gameObject.GetComponent<Person>();
-            Gizmos.DrawLine(this.transform.position, person.transform.position);
-        }
     }
 }

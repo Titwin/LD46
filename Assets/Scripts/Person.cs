@@ -32,6 +32,23 @@ public class Person : MonoBehaviour, IPerson
     public AudioClip killedAudioClip;
     public AudioSource audioSource;
 
+
+    public bool Active
+    {
+        get
+        {
+            return this.gameObject.activeSelf;
+        }
+        set
+        {
+            this.gameObject.SetActive(value);
+        }
+    }
+
+    public bool Alive => alive;
+
+    public Vector2 Position => rb.position;
+
     private void OnValidate()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -138,7 +155,7 @@ public class Person : MonoBehaviour, IPerson
         FXManager.instance.EmitBloodStain(rb.position);
         Die();
     }
-    public void Hurt(GameObject source)
+    public void GetHurt(GameObject source)
     {
         if (alive)
         {
@@ -173,7 +190,7 @@ public class Person : MonoBehaviour, IPerson
             {
                 if (car.currentSpeed > 1)
                 {
-                    Hurt(collision.gameObject);
+                    GetHurt(collision.gameObject);
                 }
             }
         }

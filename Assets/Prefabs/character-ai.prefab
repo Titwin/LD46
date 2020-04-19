@@ -99,7 +99,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -128,6 +128,7 @@ MonoBehaviour:
   rb: {fileID: 941173733323684891}
   collider: {fileID: 6930423863741655110}
   renderer: {fileID: 4694656606556000012}
+  blood: 1
   tile: {fileID: 0}
   killedAudioClip: {fileID: 8300000, guid: ea44d3f29fbc544b197c6a9311f3e065, type: 3}
   audioSource: {fileID: 4252410439631533271}
