@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
+    [Header("Links")]
     public Transform door;
     public Transform cameraPivot;
     // Start is called before the first frame update

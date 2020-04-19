@@ -9,5 +9,7 @@ public class MapTile : RuleTile
     {
         Street, Walk, Building
     }
+
+    [Header("General Settings")]
     public Type type;
 }
