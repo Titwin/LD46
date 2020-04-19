@@ -15,7 +15,7 @@ public class Person : MonoBehaviour, IPerson
     public Collider2D collider;
     public SpriteRenderer renderer;
     float t = 0;
-
+    public float blood = 1;
     public MapTile tile;
 
     Vector2 fearSource;
@@ -123,10 +123,13 @@ public class Person : MonoBehaviour, IPerson
         }
     }
 
-    public void GetKissed()
+    public float GetKissed()
     {
         stunned = true;
         StartCoroutine(DoGetKissed());
+        float tblood = this.blood;
+        this.blood = 0;
+        return tblood;
     }
     IEnumerator DoGetKissed()
     {

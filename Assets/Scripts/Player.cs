@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float blood = 0;
+    public float blood = 100;
     public AudioSource music;
     [Header("Linkings")]
     public CarController carController;
@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     new public Cinemachine.CinemachineVirtualCamera camera;
 
     public static Player main;
+    public GameObject uiBloodFrame;
+
     public Vector2 position {
         get {
             if (personController.gameObject.activeSelf)
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        uiBloodFrame.SetActive(false);
         main = this;
     }
     private void Start()
@@ -54,8 +57,14 @@ public class Player : MonoBehaviour
         // action
         music.pitch = carController.readInput ? 1 : 0.5f;
         camera.m_Lens.FieldOfView = Mathf.MoveTowards(camera.m_Lens.FieldOfView, carController.readInput ? (Mathf.Lerp(48,64,carController.car.currentSpeed/10)) : 32,30*Time.deltaTime);
+
+        blood -= Time.deltaTime;
     }
 
+    public void Feed(float amount)
+    {
+        blood += amount;
+    }
     public void ExitCar()
     {
         carController.readInput = false;
@@ -71,5 +80,4 @@ public class Player : MonoBehaviour
         camera.Follow = carController.car.cameraPivot.transform;
         carController.StartEngine();
     }
-    
 }

@@ -61,23 +61,23 @@ public class AnimationController : MonoBehaviour
         }*/
     }
 
-    public void LaunchAnimation(AnimationType animType)
+    public void LaunchAnimation(AnimationType animType, bool flip = false)
     {
         animating = true;
         CancelAnimation();
-        StartCoroutine(DoAnimationBlocking(animType));
+        StartCoroutine(DoAnimationBlocking(animType,flip));
     }
     public void CancelAnimation()
     {
         StopAllCoroutines();
     }
-    IEnumerator DoAnimationBlocking(AnimationType animType)
+    IEnumerator DoAnimationBlocking(AnimationType animType, bool flip = false)
     {
-        bool over = false;
+        bool over = playAnimation(animType, flip,true);
         while (!over)
         {
-            over = playAnimation(animType);
             yield return new WaitForEndOfFrame();
+            over = playAnimation(animType, flip);
         }
         animating = false;
     }
@@ -95,7 +95,7 @@ public class AnimationController : MonoBehaviour
         }
         return animation;
     }
-    public bool playAnimation(AnimationType animType, bool flipped = false)
+    public bool playAnimation(AnimationType animType, bool flipped = false, bool restart = false)
     {
         if (!sr) return true;
 
@@ -109,7 +109,7 @@ public class AnimationController : MonoBehaviour
         if (animation.frames.Length == 0)
             return true;
 
-        if (animType != lastAnimation)
+        if (restart || animType != lastAnimation)
         {
             lastAnimation = animType;
             animationTime = 0.0f;
