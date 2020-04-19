@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class AnimationController : MonoBehaviour
     [HideInInspector]
     public SpriteRenderer sr;
 
+    public bool animating = false;
     public int animationIndex;
     private float animationTime;
     public AnimationType lastAnimation;
@@ -43,6 +45,10 @@ public class AnimationController : MonoBehaviour
     public Sprite[] animationAttack;
 
     [Space(10)]
+    public float timeHurt;
+    public Sprite[] animationHurt;
+
+    [Space(10)]
     public float timeDying;
     public Sprite[] animationDying;
 
@@ -57,6 +63,7 @@ public class AnimationController : MonoBehaviour
         JUMPING,
         FALLING,
         ATTACK,
+        HURT,
         DYING
     }
 
@@ -78,10 +85,27 @@ public class AnimationController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    public void playAnimation(AnimationType animType, bool flipped = false)
+    public void LaunchAnimation(AnimationType animType)
     {
-        if (!sr) return;
+        animating = true;
+
+        StartCoroutine(DoAnimationBlocking(animType));
+    }
+
+    IEnumerator DoAnimationBlocking(AnimationType animType)
+    {
+        bool over = false;
+        while (!over)
+        {
+            over = playAnimation(animType);
+            yield return new WaitForEndOfFrame();
+        }
+        animating = false;
+    }
+   
+    public bool playAnimation(AnimationType animType, bool flipped = false)
+    {
+        if (!sr) return true;
 
         foreach (AnimationController ac in slaves)
             ac.playAnimation(animType, flipped);
@@ -115,6 +139,10 @@ public class AnimationController : MonoBehaviour
                 animation = animationFalling;
                 t = timeFalling;
                 break;
+            case AnimationType.HURT:
+                animation = animationHurt;
+                t = timeHurt;
+                break;
             case AnimationType.DYING:
                 animation = animationDying;
                 t = timeDying;
@@ -128,7 +156,7 @@ public class AnimationController : MonoBehaviour
 
 
         if (animation.Length == 0)
-            return;
+            return true;
 
         if (animType != lastAnimation)
         {
@@ -143,6 +171,7 @@ public class AnimationController : MonoBehaviour
 
         if (animationTime >= t)
         {
+            bool loop = (animationIndex + 1) >= animation.Length;
             animationTime -= t;
             if (lastAnimation != AnimationType.DYING)
                 animationIndex = (animationIndex + 1) % animation.Length;
@@ -150,7 +179,9 @@ public class AnimationController : MonoBehaviour
                 animationIndex = Mathf.Min(animationIndex + 1, animation.Length -1);
             sr.sprite = animation[animationIndex];
             sr.flipX = flipped;
+            return loop;
         }
         animationTime += Time.deltaTime;
+        return false;
     }
 }

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 9150348697117208727}
   - component: {fileID: 4694656606556000012}
   - component: {fileID: 941173733323684891}
-  - component: {fileID: 941173733323684888}
   - component: {fileID: 5070235049889499690}
   - component: {fileID: 4252410439631533271}
+  - component: {fileID: 6930423863741655110}
+  - component: {fileID: 3894525124700272542}
   m_Layer: 12
   m_Name: character-ai
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -1113476565
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7152930139536384079, guid: 741bff7865a7a3248acb16890acfdb3a,
+  m_Sprite: {fileID: 6709387665201249386, guid: 0da6d809b79838049ba58d782a2678b4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,22 +107,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &941173733323684888
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6644657200563563389}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.26
 --- !u!114 &5070235049889499690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,11 +119,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3bb04a43b0a4a4db58936e8244e4cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  animation: {fileID: 3894525124700272542}
   hp: 1
   alive: 1
   Direction: {x: 0, y: 0}
   rb: {fileID: 941173733323684891}
-  collider: {fileID: 941173733323684888}
+  collider: {fileID: 6930423863741655110}
   renderer: {fileID: 4694656606556000012}
   tile: {fileID: 0}
   killedAudioClip: {fileID: 8300000, guid: ea44d3f29fbc544b197c6a9311f3e065, type: 3}
@@ -239,3 +226,87 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!70 &6930423863741655110
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6644657200563563389}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 0.3}
+  m_Direction: 1
+--- !u!114 &3894525124700272542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6644657200563563389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2939f4766d3f9534da4c933ae895cfc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sr: {fileID: 0}
+  animationIndex: 0
+  lastAnimation: 0
+  timeIdle: 0
+  animationIdle:
+  - {fileID: 6709387665201249386, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  timeWalking: 0.06666665
+  animationWalking:
+  - {fileID: -5910101810768183146, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -6242686333148816379, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -3653167716271993179, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 8199610943380819265, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -1460990891624163191, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 5686612611082152154, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 6657266022752432424, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 1437520642850480979, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -9086329227886199258, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 3452213303332593961, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -2612645443394963771, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 8117278331315078780, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -3699096594107152272, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -5560445381597575262, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 3043666123643867898, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  timeJumping: 0
+  animationJumping: []
+  timeFalling: 0
+  animationFalling: []
+  timeAttack: 0
+  animationAttack: []
+  timeHurt: 0.06666667
+  animationHurt:
+  - {fileID: -6688341770100935039, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 7642805366754217782, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -4756379772638002423, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 7083410491160476679, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -2795316129537992029, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 5180893155149485985, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 3246276067061943843, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -2269463139882563218, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 5304415030499926334, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -8802171447192863660, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -5506317310254145062, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -4223110810288741656, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 4291388896350911343, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -2269463139882563218, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -2269463139882563218, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -2269463139882563218, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  timeDying: 0.033333335
+  animationDying:
+  - {fileID: 7070780286483898236, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 8912794810584093085, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -3690482902978468182, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -27269023496119629, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: -1172617326033968959, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  - {fileID: 1870992665824114979, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+  slaves: []

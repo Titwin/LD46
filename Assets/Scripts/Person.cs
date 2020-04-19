@@ -5,7 +5,7 @@ using UnityEngine;
 public class Person : MonoBehaviour
 {
     public PeopleManager manager;
-
+    public AnimationController animation;
     public int hp = 1;
     public bool alive = true;
 
@@ -110,7 +110,12 @@ public class Person : MonoBehaviour
         {
             return;
         }
-        this.rb.MovePosition(this.rb.position + Direction *(status == Status.Scared?2:1)* Time.deltaTime);
+        if (Direction.sqrMagnitude > 0)
+        {
+            this.rb.MovePosition(this.rb.position + Direction * (status == Status.Scared ? 2 : 1) * Time.deltaTime);
+            animation.playAnimation(AnimationController.AnimationType.WALKING);
+            transform.up = Direction;
+        }
     }
 
     public void Hurt(GameObject source)
@@ -133,6 +138,7 @@ public class Person : MonoBehaviour
         audioSource.pitch = 1f + Random.Range(-0.3f, 0.3f);
         audioSource.PlayOneShot(killedAudioClip);
         alive = false;
+        animation.LaunchAnimation(AnimationController.AnimationType.DYING);
         manager.OnDied(this);
     }
 

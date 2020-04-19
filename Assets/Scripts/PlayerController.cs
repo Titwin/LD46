@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public AnimationController animation;
     public Vector2 direction;
     public float directionSpeed = 0.7f;
     public float speed = 1f;
@@ -32,7 +33,10 @@ public class PlayerController : MonoBehaviour
 
         direction = PersoMoveToward(direction, d, directionSpeed * Time.deltaTime);
         if (direction != Vector2.zero)
+        {
             lastNonZeroDirection = direction;
+            animation.playAnimation(AnimationController.AnimationType.WALKING);
+        }
 
         transform.up = lastNonZeroDirection;
         fixedUpdateDirection = direction;
