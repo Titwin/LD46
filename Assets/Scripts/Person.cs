@@ -134,6 +134,7 @@ public class Person : MonoBehaviour
     void Die()
     {
         rb.simulated = false;
+        renderer.color = Color.gray;
         audioSource.pitch = 1f + Random.Range(-0.3f, 0.3f);
         audioSource.PlayOneShot(killedAudioClip);
         alive = false;
