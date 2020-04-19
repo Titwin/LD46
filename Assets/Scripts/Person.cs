@@ -132,6 +132,7 @@ public class Person : MonoBehaviour, IPerson
     {
         animation.LaunchAnimation(AnimationController.AnimationType.KISSED);
         yield return new WaitForSeconds(1);
+        FXManager.instance.EmitBloodStain(rb.position);
         Die();
     }
     public void Hurt(GameObject source)
@@ -140,6 +141,7 @@ public class Person : MonoBehaviour, IPerson
         {
             --hp;
             FXManager.instance.EmitBlood(rb.position, this.transform.position-source.transform.position, 10);
+            FXManager.instance.EmitBloodStain(rb.position);
             if (hp <= 0)
             {
                 Die();

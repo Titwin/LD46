@@ -16,7 +16,6 @@ public class FXManager : MonoBehaviour
 
     public void EmitBlood(Vector2 position, Vector2 velocity,int amount)
     {
-        Instantiate<SpriteRenderer>(bloodDecal[Random.Range(0, bloodDecal.Length)], position, Quaternion.Euler(0, 0, Random.Range(0, 4)*90), this.transform);
         var emitParams = new ParticleSystem.EmitParams();
         emitParams.velocity = velocity;
         emitParams.ResetStartSize();
@@ -28,5 +27,9 @@ public class FXManager : MonoBehaviour
            emitParams.velocity = baseVelocity;
            blood.Emit(emitParams, amount);
         }
+    }
+    public void EmitBloodStain(Vector2 position)
+    {
+        Instantiate<SpriteRenderer>(bloodDecal[Random.Range(0, bloodDecal.Length)], position, Quaternion.Euler(0, 0, Random.Range(0, 4) * 90), this.transform);
     }
 }

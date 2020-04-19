@@ -138,6 +138,7 @@ public class PlayerController : MonoBehaviour
             Teleport(Vector3.Lerp(from, to, t));
             yield return new WaitForEndOfFrame();
         }
+        Teleport(to);
 
         animation.LaunchAnimation(AnimationController.AnimationType.BITING);
         audioSource.pitch = 1f + Random.Range(-0.2f, 0.2f);
