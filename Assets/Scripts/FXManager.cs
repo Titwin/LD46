@@ -5,6 +5,7 @@ using UnityEngine;
 public class FXManager : MonoBehaviour
 {
     public ParticleSystem blood;
+    public SpriteRenderer[] bloodDecal;
     // Start is called before the first frame update
 
     public static FXManager instance;
@@ -15,6 +16,7 @@ public class FXManager : MonoBehaviour
 
     public void EmitBlood(Vector2 position, Vector2 velocity,int amount)
     {
+        Instantiate<SpriteRenderer>(bloodDecal[Random.Range(0, bloodDecal.Length)], position, Quaternion.Euler(0, 0, Random.Range(0, 4)*90), this.transform);
         var emitParams = new ParticleSystem.EmitParams();
         emitParams.velocity = velocity;
         emitParams.ResetStartSize();

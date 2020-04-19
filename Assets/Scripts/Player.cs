@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
                     Person person = hit.collider.gameObject.GetComponent<Person>();
                     if (person)
                     {
-                        personController.Attack(person);
+                        personController.Dash(person);
                     }
                 }
                 else if(car2char.sqrMagnitude < carEntryRadius * carEntryRadius)

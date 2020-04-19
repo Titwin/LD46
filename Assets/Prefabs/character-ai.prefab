@@ -297,7 +297,13 @@ MonoBehaviour:
     looping: 1
   - type: 8
     time: 0.033333335
-    frames: []
+    frames:
+    - {fileID: 7070780286483898236, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 8912794810584093085, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -3690482902978468182, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -27269023496119629, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -1172617326033968959, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 1870992665824114979, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
     sound: []
     looping: 0
   - type: 0

@@ -65,7 +65,7 @@ public class Car : MonoBehaviour
     }
     private void LateUpdate()
     {
-        //input = Vector2.zero;
+        input = Vector2.zero;
     }
     private float PersoMoveTowards(float current, float target, float delta)
     {
