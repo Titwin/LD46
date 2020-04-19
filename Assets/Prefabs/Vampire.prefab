@@ -4956,6 +4956,8 @@ MonoBehaviour:
   directionSpeed: 5
   speed: 3
   body: {fileID: 80128742}
+  audioSource: {fileID: 4160898564691390722}
+  attackAudioClip: {fileID: 8300000, guid: ff6e5036af8474398af9d8c243e3bfec, type: 3}
 --- !u!82 &4160898564691390722
 AudioSource:
   m_ObjectHideFlags: 0
