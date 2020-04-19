@@ -4767,6 +4767,7 @@ GameObject:
   - component: {fileID: 8980866706156096928}
   - component: {fileID: 8745855392415932268}
   - component: {fileID: 707819821138384321}
+  - component: {fileID: 4160898564691390722}
   m_Layer: 0
   m_Name: Vampire
   m_TagString: Untagged
@@ -4890,37 +4891,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sr: {fileID: 0}
+  audioSource: {fileID: 4160898564691390722}
   animating: 0
   animationIndex: 0
   lastAnimation: 0
-  timeIdle: 0
-  animationIdle: []
-  timeWalking: 0.06666668
-  animationWalking:
-  - {fileID: -7712811346773349999, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  - {fileID: -3064344001794218167, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  - {fileID: 6568146207723661946, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  - {fileID: -5553217935574973332, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  - {fileID: 6930699258015423604, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  - {fileID: 7722627678416588595, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  - {fileID: 5884297905677936779, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  - {fileID: -4774920433751500662, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  - {fileID: -4143345004076681201, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  - {fileID: 4549441096714467750, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  - {fileID: -255417695078271210, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  - {fileID: -8576576908563192391, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  - {fileID: -4393713008627927227, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  - {fileID: -8777023710563030766, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
-  timeJumping: 0
-  animationJumping: []
-  timeFalling: 0
-  animationFalling: []
-  timeAttack: 0
-  animationAttack: []
-  timeHurt: 0
-  animationHurt: []
-  timeDying: 0
-  animationDying: []
+  animations:
+  - type: 0
+    time: 0
+    frames:
+    - {fileID: -8004438476933978608, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    sound: []
+    looping: 1
+  - type: 1
+    time: 0.06666668
+    frames:
+    - {fileID: -7712811346773349999, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -3064344001794218167, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 6568146207723661946, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -5553217935574973332, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 6930699258015423604, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 7722627678416588595, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 5884297905677936779, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -4774920433751500662, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -4143345004076681201, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 4549441096714467750, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -255417695078271210, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -8576576908563192391, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -4393713008627927227, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -8777023710563030766, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -3851374262213053612, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    sound:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: ea44d3f29fbc544b197c6a9311f3e065, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: ea44d3f29fbc544b197c6a9311f3e065, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    looping: 1
   slaves: []
 --- !u!114 &707819821138384321
 MonoBehaviour:
@@ -4939,6 +4956,102 @@ MonoBehaviour:
   directionSpeed: 5
   speed: 3
   body: {fileID: 80128742}
+--- !u!82 &4160898564691390722
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852753183150718336}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7535827201908943502
 GameObject:
   m_ObjectHideFlags: 0
