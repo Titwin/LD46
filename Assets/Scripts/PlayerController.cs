@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 fixedUpdateDirection;
     private Vector2 lastNonZeroDirection;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip attackAudioClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +64,9 @@ public class PlayerController : MonoBehaviour
         target.Hurt(this.gameObject);
         transform.up = target.transform.position - transform.position;
         transform.position = target.transform.position;
-       
+
+        audioSource.pitch = 1f + Random.Range(-0.2f, 0.2f);
+        audioSource.Stop();
+        audioSource.PlayOneShot(attackAudioClip);        
     }
 }

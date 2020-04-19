@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    
     private void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 100, 20), "blood:"+blood);
@@ -46,6 +45,7 @@ public class Player : MonoBehaviour
         carController.readInput = true;
         personController.gameObject.SetActive(false);
         camera.Follow = carController.car.cameraPivot.transform;
+        carController.StartEngine();
     }
     private void Update()
     {
@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
                 personController.direction = carController.transform.right;
                 personController.gameObject.SetActive(true);
                 camera.Follow = personController.transform;
+                carController.StopEngine();
             }
             else
             {
@@ -83,6 +84,7 @@ public class Player : MonoBehaviour
                     carController.readInput = true;
                     personController.gameObject.SetActive(false);
                     camera.Follow = carController.car.cameraPivot.transform;
+                    carController.StartEngine();
                 }
                 else
                 {

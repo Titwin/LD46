@@ -4768,6 +4768,7 @@ GameObject:
   - component: {fileID: 8745855392415932268}
   - component: {fileID: 707819821138384321}
   - component: {fileID: 4160898564691390722}
+  - component: {fileID: 8761975899109976494}
   m_Layer: 0
   m_Name: Vampire
   m_TagString: Untagged
@@ -4925,7 +4926,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 8300000, guid: ea44d3f29fbc544b197c6a9311f3e065, type: 3}
+    - {fileID: 8300000, guid: 38d55d9450c8c4d9e803443bf7fde5f1, type: 3}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -4933,7 +4934,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 8300000, guid: ea44d3f29fbc544b197c6a9311f3e065, type: 3}
+    - {fileID: 8300000, guid: 38d55d9450c8c4d9e803443bf7fde5f1, type: 3}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -4956,6 +4957,8 @@ MonoBehaviour:
   directionSpeed: 5
   speed: 3
   body: {fileID: 80128742}
+  audioSource: {fileID: 4160898564691390722}
+  attackAudioClip: {fileID: 8300000, guid: ff6e5036af8474398af9d8c243e3bfec, type: 3}
 --- !u!82 &4160898564691390722
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5052,6 +5055,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &8761975899109976494
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852753183150718336}
+  m_Enabled: 1
 --- !u!1 &7535827201908943502
 GameObject:
   m_ObjectHideFlags: 0
