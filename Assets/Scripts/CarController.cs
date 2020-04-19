@@ -28,6 +28,10 @@ public class CarController : MonoBehaviour
             else
             {
                 car.SetInput(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+
+                float x = Input.GetKey(KeyCode.D) ? 1f : (Input.GetKey(KeyCode.Q) ? -1f : 0f);
+                float y = Input.GetKey(KeyCode.Z) ? 1f : (Input.GetKey(KeyCode.S) ? -1f : 0f);
+                car.SetInput(new Vector2(x, y));
             }
         }
         else
