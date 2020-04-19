@@ -177,8 +177,8 @@ GameObject:
   - component: {fileID: 5468883663398654773}
   - component: {fileID: 6240939242101275953}
   - component: {fileID: 1803362339715775653}
-  - component: {fileID: 6031754676791022147}
   - component: {fileID: 369222924}
+  - component: {fileID: 6031754676791022147}
   m_Layer: 11
   m_Name: Car
   m_TagString: Untagged
@@ -252,19 +252,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &6031754676791022147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171714043691682672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52a1cbeeff1e2994b8c03c2ee1299c65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 1807833596}
 --- !u!114 &369222924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,11 +265,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 6031754676791022147}
-  cameraPivot: {fileID: 4593851605021147013}
   readInput: 1
+--- !u!114 &6031754676791022147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171714043691682672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a1cbeeff1e2994b8c03c2ee1299c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 1807833596}
+  cameraPivot: {fileID: 4593851605021147013}
   direction: {x: 0, y: 0}
-  rotationSpeed: 450
-  speed: 8
+  rotationSpeed: 300
+  speed: 10
   acceleration: 8
   deceleration: 40
   currentSpeed: 0

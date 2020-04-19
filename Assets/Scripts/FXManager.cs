@@ -15,6 +15,16 @@ public class FXManager : MonoBehaviour
 
     public void EmitBlood(Vector2 position, Vector2 velocity,int amount)
     {
-        blood.Emit(position, velocity,1,1,Color.red);
+        var emitParams = new ParticleSystem.EmitParams();
+        emitParams.velocity = velocity;
+        emitParams.ResetStartSize();
+        emitParams.position = position;
+        Vector3 baseVelocity = velocity!=Vector2.zero?velocity.normalized: Vector2.zero;
+        for (int i = 0; i < amount; ++i)
+        {
+           baseVelocity = baseVelocity + new Vector3(Random.Range(-0.5f, 0.5f) * velocity.x, Random.Range(-0.5f, 0.5f) * velocity.y);
+           emitParams.velocity = baseVelocity;
+           blood.Emit(emitParams, amount);
+        }
     }
 }

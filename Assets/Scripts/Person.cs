@@ -123,7 +123,7 @@ public class Person : MonoBehaviour
         if (alive)
         {
             --hp;
-            FXManager.instance.EmitBlood(rb.position, this.transform.position-source.transform.position, 1);
+            FXManager.instance.EmitBlood(rb.position, this.transform.position-source.transform.position, 10);
             if (hp <= 0)
             {
                 Die();
@@ -134,7 +134,6 @@ public class Person : MonoBehaviour
     void Die()
     {
         rb.simulated = false;
-        renderer.color = Color.red;
         audioSource.pitch = 1f + Random.Range(-0.3f, 0.3f);
         audioSource.PlayOneShot(killedAudioClip);
         alive = false;

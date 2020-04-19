@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     {
         carController.readInput = true;
         personController.gameObject.SetActive(false);
-        camera.Follow = carController.cameraPivot.transform;
+        camera.Follow = carController.car.cameraPivot.transform;
     }
     private void Update()
     {
@@ -72,13 +72,17 @@ public class Player : MonoBehaviour
                 RaycastHit2D hit = Physics2D.BoxCast(personController.transform.position, Vector2.one, ennemySearchRadius, personController.transform.up, 3f, ennemyMask);
                 if(hit.collider != null)
                 {
-                    personController.Attack(hit.collider.transform);
+                    Person person = hit.collider.gameObject.GetComponent<Person>();
+                    if (person)
+                    {
+                        personController.Attack(person);
+                    }
                 }
                 else if(car2char.sqrMagnitude < carEntryRadius * carEntryRadius)
                 {
                     carController.readInput = true;
                     personController.gameObject.SetActive(false);
-                    camera.Follow = carController.cameraPivot.transform;
+                    camera.Follow = carController.car.cameraPivot.transform;
                 }
                 else
                 {

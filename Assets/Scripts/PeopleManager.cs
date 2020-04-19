@@ -5,7 +5,7 @@ using UnityEngine;
 public class PeopleManager : MonoBehaviour
 {
     public List<Person> people;
-    public Person personTemplate;
+    public Person[] personTemplate;
     public List<Vector3> toSpawn;
 
     public float maxUpdateDistance = 25;
@@ -22,7 +22,7 @@ public class PeopleManager : MonoBehaviour
     }
     Person AddPerson(Vector2 position)
     {
-        Person p = Instantiate<Person>(personTemplate);
+        Person p = Instantiate<Person>(personTemplate[Random.Range(0,personTemplate.Length)]);
         p.transform.position = position;
         people.Add(p);
         p.transform.parent = this.transform;

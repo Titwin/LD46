@@ -55,9 +55,11 @@ public class PlayerController : MonoBehaviour
             return current + delta * v.normalized;
     }
 
-    public void Attack(Transform target)
+    public void Attack(Person target)
     {
-        transform.up = target.position - transform.position;
-        transform.position = target.position;
+        target.Hurt(this.gameObject);
+        transform.up = target.transform.position - transform.position;
+        transform.position = target.transform.position;
+       
     }
 }
