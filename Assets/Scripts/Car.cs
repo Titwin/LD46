@@ -19,7 +19,14 @@ public class Car : MonoBehaviour
     private Rigidbody2D body;
     private Vector2 lastNonZeroDirection;
     private Vector2 deltaPosition;
-    
+
+    [Header("Audio")]
+    public AudioSource motorAudioSource;
+    public AudioSource doorsAudioSource;
+    public AudioClip idleMotorAudioClip;
+    public AudioClip openingCarAudioClip;
+    public AudioClip closingCarAudioClip;
+
     [Header("Debug")]
     [SerializeField] public float currentSpeed;
     [SerializeField] private Vector2 input;
@@ -36,6 +43,20 @@ public class Car : MonoBehaviour
     {
         this.input = input;
     }
+
+    public void StartEngine() 
+    {
+        doorsAudioSource.PlayOneShot(openingCarAudioClip);
+        motorAudioSource.clip = idleMotorAudioClip;
+        motorAudioSource.Play();
+    }
+
+    public void StopEngine()
+    {
+        doorsAudioSource.PlayOneShot(closingCarAudioClip);
+        motorAudioSource.Stop();
+    }
+
     void FixedUpdate()
     {
         // compute direction
@@ -50,7 +71,7 @@ public class Car : MonoBehaviour
 
         // compute  speed
         currentSpeed = Mathf.MoveTowards(currentSpeed, input.magnitude * speed, (currentSpeed < input.magnitude * speed ? acceleration : deceleration) * Time.deltaTime);
-
+        
         // compute deltaPosition position
         deltaPosition = direction * currentSpeed * Time.fixedDeltaTime;
 
@@ -62,6 +83,9 @@ public class Car : MonoBehaviour
         body.MovePosition(body.position + deltaPosition);
         if (cameraPivot)
             cameraPivot.transform.position = body.position + direction * currentSpeed * 0.5f;
+
+        // Engine sound
+        motorAudioSource.pitch = 0.75f + currentSpeed / 6f;
     }
     private float PersoMoveTowards(float current, float target, float delta)
     {

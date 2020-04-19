@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     public float ennemySearchRadius = 3;
     bool firstFrame = true;
     bool animating = false;
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip attackAudioClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -136,6 +140,9 @@ public class PlayerController : MonoBehaviour
         }
 
         animation.LaunchAnimation(AnimationController.AnimationType.BITING);
+        audioSource.pitch = 1f + Random.Range(-0.2f, 0.2f);
+        audioSource.Stop();
+        audioSource.PlayOneShot(attackAudioClip);
         target.transform.up = -direction;
         target.GetKissed();
 

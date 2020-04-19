@@ -77,12 +77,16 @@ public class Person : MonoBehaviour, IPerson
                 for (int i = 0; i < cellNeighbor.Length;++i)
                 {
                     var cell = cellNeighbor[i];
-                    if (cell.type == MapTile.Type.Walk)
+                    if (cell)
                     {
-                        Direction = (Vector2Int)Map.Directions[i];
-                        break;
+                        if (cell.type == MapTile.Type.Walk)
+                        {
+                            Direction = (Vector2Int)Map.Directions[i];
+                            break;
+                        }
                     }
                 }
+
                 t -= 1;
                 float r = Random.value;
                 /*
@@ -146,7 +150,7 @@ public class Person : MonoBehaviour, IPerson
     void Die()
     {
         rb.simulated = false;
-        renderer.color = Color.gray;
+       // renderer.color = Color.gray;
         renderer.sortingOrder = -1;
         audioSource.pitch = 1f + Random.Range(-0.3f, 0.3f);
         audioSource.PlayOneShot(killedAudioClip);
