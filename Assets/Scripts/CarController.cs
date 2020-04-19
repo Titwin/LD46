@@ -15,5 +15,9 @@ public class CarController : MonoBehaviour
         {
             car.SetInput(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
         }
+        else
+        {
+            car.SetInput(Vector2.zero);
+        }
     }
 }

@@ -91,6 +91,7 @@ public class Player : MonoBehaviour
             }
         }
         music.pitch = carController.readInput ? 1 : 0.5f;
+        camera.m_Lens.FieldOfView = Mathf.MoveTowards(camera.m_Lens.FieldOfView, carController.readInput ? (Mathf.Lerp(48,64,carController.car.currentSpeed/10)) : 32,30*Time.deltaTime);
     }
 
     private void OnDrawGizmosSelected()

@@ -60,12 +60,8 @@ public class Car : MonoBehaviour
         transform.right = lastNonZeroDirection;
 
         body.MovePosition(body.position + deltaPosition);
-        if(cameraPivot)
+        if (cameraPivot)
             cameraPivot.transform.position = body.position + direction * currentSpeed * 0.5f;
-    }
-    private void LateUpdate()
-    {
-        input = Vector2.zero;
     }
     private float PersoMoveTowards(float current, float target, float delta)
     {
