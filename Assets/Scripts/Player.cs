@@ -59,6 +59,10 @@ public class Player : MonoBehaviour
         camera.m_Lens.FieldOfView = Mathf.MoveTowards(camera.m_Lens.FieldOfView, carController.readInput ? (Mathf.Lerp(48,64,carController.car.currentSpeed/10)) : 32,30*Time.deltaTime);
 
         blood -= Time.deltaTime;
+        if (blood <= 0)
+        {
+            personController.Die();
+        }
     }
 
     public void Feed(float amount)
