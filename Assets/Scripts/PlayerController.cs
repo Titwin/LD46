@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 direction;
     public float directionSpeed = 0.7f;
     public float speed = 1f;
+    public bool alive = true;
 
     public Rigidbody2D body;
     private Vector2 fixedUpdateDirection;
@@ -46,7 +47,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (!alive)
+        {
+            return;
+        }
         if (!animating)
         {
             Vector2 d = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -198,6 +202,14 @@ public class PlayerController : MonoBehaviour
         animating = false;
     }
 
+    public void Die()
+    {
+        if (alive)
+        {
+            alive = false;
+            animation.LaunchAnimation(AnimationController.AnimationType.DYING);
+        }
+    }
     private void OnDrawGizmos()
     {
 

@@ -5127,6 +5127,55 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     looping: 0
+  - type: 8
+    time: 0.0666667
+    frames:
+    - {fileID: -4967030779765222806, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 5060034581591445280, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -419012026491686752, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 5386619282778513531, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -480120586624090904, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -8404352832969450490, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -5064344918847746579, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 5712182148353290059, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 8857491887856053040, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 4886326379741490015, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 2556518954059428174, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 1126629492954117748, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -8992765055507182639, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -4982748162168044596, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 258344206688319446, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -6082586919367533059, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 6609099292365876372, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 6895285924459919443, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -6689400115837878962, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 5155301744876050895, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 6276187651921922159, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 4243528225769600433, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 6365798446786650425, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 5586707856029831893, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 2258052298180796044, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 2529308110239064606, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -5443934944228635064, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 6161662628629867490, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    sound:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: ea44d3f29fbc544b197c6a9311f3e065, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: ea44d3f29fbc544b197c6a9311f3e065, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    looping: 0
   slaves: []
 --- !u!114 &707819821138384321
 MonoBehaviour:
@@ -5146,6 +5195,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   directionSpeed: 5
   speed: 3
+  alive: 1
   body: {fileID: 80128742}
   ennemyMask:
     serializedVersion: 2
