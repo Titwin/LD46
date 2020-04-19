@@ -42,7 +42,7 @@ public class CarAI : MonoBehaviour
 
         // direction and command
         Vector3 d = target.transform.position - transform.position;
-        if(d.magnitude < 0.5f)
+        if(d.magnitude < 0.8f)
         {
             timer = 0f;
 
