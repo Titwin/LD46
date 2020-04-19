@@ -135,6 +135,7 @@ public class Person : MonoBehaviour
     {
         rb.simulated = false;
         renderer.color = Color.gray;
+        renderer.sortingOrder = -1;
         audioSource.pitch = 1f + Random.Range(-0.3f, 0.3f);
         audioSource.PlayOneShot(killedAudioClip);
         alive = false;
@@ -146,7 +147,14 @@ public class Person : MonoBehaviour
     {
         if(collision.gameObject.layer == Constants.LayerCar)
         {
-            Hurt(collision.gameObject);
+            Car car = collision.gameObject.GetComponent<Car>();
+            if (car)
+            {
+                if (car.currentSpeed > 1)
+                {
+                    Hurt(collision.gameObject);
+                }
+            }
         }
     }
 

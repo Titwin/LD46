@@ -15,14 +15,14 @@ public class Car : MonoBehaviour
     public float acceleration = 1f;
     public float deceleration = 1f;
 
-    private Rigidbody2D body;
+    public Rigidbody2D body;
     private Vector2 lastNonZeroDirection;
     private Vector2 deltaPosition;
 
     private Vector2 input;
 
     [Header("Debug")]
-    [SerializeField] private float currentSpeed;
+    [SerializeField] public float currentSpeed;
     void Start()
     {
         direction = Vector3.zero;

@@ -9,14 +9,17 @@ public class PeopleManager : MonoBehaviour
     public List<Vector3> toSpawn;
 
     public float maxUpdateDistance = 25;
+    [Range(0,1)]public float density;
     private void Start()
     {
         foreach (var cell in Map.map.Keys)
         {
             if(Map.map[cell].type == MapTile.Type.Walk)
             {
-
-                AddPerson(Map.GetWorldPosition(cell));
+                if (Random.value < density)
+                {
+                    AddPerson(Map.GetWorldPosition(cell));
+                }
             }
         }
     }
