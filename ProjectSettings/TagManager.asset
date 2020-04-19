@@ -19,8 +19,8 @@ TagManager:
   - Car
   - Person
   - Interactable
-  - 
-  - 
+  - Player
+  - Monster
   - 
   - 
   - 

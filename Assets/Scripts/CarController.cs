@@ -8,16 +8,16 @@ public class CarController : MonoBehaviour
     public Car car;
     public Player player;
     public bool readInput = true;
-    //private AudioListener audioListener;
+    private AudioListener audioListener;
 
     void Start()
     {
-       // audioListener = GetComponent<AudioListener>();
+        audioListener = GetComponent<AudioListener>();
     }
 
     private void FixedUpdate()
     {
-        
+
 
         if (readInput)
         {
@@ -39,27 +39,27 @@ public class CarController : MonoBehaviour
             car.SetInput(Vector2.zero);
         }
     }
-    
+
     public void StartEngine()
     {
         car.StartEngine();
-        /*}
+
         if (audioListener)
         {
             Destroy(audioListener);
             audioListener = null;
         }
-        audioListener = gameObject.AddComponent<AudioListener>() as AudioListener;*/
+        audioListener = gameObject.AddComponent<AudioListener>() as AudioListener;
     }
 
     public void StopEngine()
     {
         car.StopEngine();
-    /*
+
         if (audioListener)
         {
             Destroy(audioListener);
             audioListener = null;
-        }   */         
+        }
     }
 }

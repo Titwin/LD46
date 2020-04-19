@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public AudioSource music;
     [Header("Linkings")]
     public CarController carController;
-    public PlayerController personController;
+    public Monster personController;
 
     new public Cinemachine.CinemachineVirtualCamera camera;
 
