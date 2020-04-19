@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float blood = 0;
-
+    public AudioSource music;
     [Header("Linkings")]
     public CarController carController;
     public PlayerController personController;
@@ -86,6 +86,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
+        music.pitch = carController.readInput ? 1 : 0.5f;
     }
 
     private void OnDrawGizmosSelected()
