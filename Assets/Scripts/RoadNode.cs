@@ -13,7 +13,7 @@ public class RoadNode : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         float f = 0.3f;
         Gizmos.color = Color.yellow;
