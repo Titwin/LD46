@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IPerson
+{
+    void Sense();
+    void Think();
+   
+    void Act();
+}
 public class PeopleManager : MonoBehaviour
 {
-    public List<Person> people;
+    public List<IPerson> people = new List<IPerson>();
     public Person[] personTemplate;
     public List<Vector3> toSpawn;
 

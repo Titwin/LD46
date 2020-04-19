@@ -38,7 +38,9 @@ public class AnimationController : MonoBehaviour
         FALLING,
         ATTACK,
         HURT,
-        DYING
+        DYING,
+        BITING,
+        KISSED
     }
 
     // Use this for initialization
@@ -62,10 +64,13 @@ public class AnimationController : MonoBehaviour
     public void LaunchAnimation(AnimationType animType)
     {
         animating = true;
-
+        CancelAnimation();
         StartCoroutine(DoAnimationBlocking(animType));
     }
-
+    public void CancelAnimation()
+    {
+        StopAllCoroutines();
+    }
     IEnumerator DoAnimationBlocking(AnimationType animType)
     {
         bool over = false;
@@ -76,6 +81,7 @@ public class AnimationController : MonoBehaviour
         }
         animating = false;
     }
+
     Animation FindAnimation(AnimationType animType)
     {
         Animation animation = null;

@@ -1,5 +1,44 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1541174109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959603396054382940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 0
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &8334200411843612561
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,14 +85,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blood: 0
+  music: {fileID: 0}
   carController: {fileID: 3957931949063042333}
-  personController: {fileID: 0}
+  personController: {fileID: 7863169045715506989}
   camera: {fileID: 0}
-  ennemyMask:
-    serializedVersion: 2
-    m_Bits: 4096
-  carEntryRadius: 3
-  ennemySearchRadius: 3
 --- !u!1001 &3957931948761124881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61,6 +96,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8334200411843612563}
     m_Modifications:
+    - target: {fileID: 369222924, guid: 78bf8e44999bd6146ac7bd49e29a8a2a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8334200411843612560}
     - target: {fileID: 1171714043691682672, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
         type: 3}
       propertyPath: m_Name
@@ -141,6 +180,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22e1a622a4fb0046974447cc23ac132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1959603396054382940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3304673229807544653, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3957931948761124881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7263524405804221164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,10 +193,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8334200411843612563}
     m_Modifications:
+    - target: {fileID: 707819821138384321, guid: 7f718a209f1895148b734a604b9949ec,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8334200411843612560}
+    - target: {fileID: 5708624830456052931, guid: 7f718a209f1895148b734a604b9949ec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5852753183150718336, guid: 7f718a209f1895148b734a604b9949ec,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535827201908943502, guid: 7f718a209f1895148b734a604b9949ec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8355067014817523306, guid: 7f718a209f1895148b734a604b9949ec,
         type: 3}
@@ -216,3 +276,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7263524405804221164}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7863169045715506989 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 707819821138384321, guid: 7f718a209f1895148b734a604b9949ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7263524405804221164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f30780efba4f64aaef21a3aa58367d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

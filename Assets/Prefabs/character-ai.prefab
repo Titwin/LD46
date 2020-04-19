@@ -123,6 +123,7 @@ MonoBehaviour:
   animation: {fileID: 3894525124700272542}
   hp: 1
   alive: 1
+  stunned: 0
   Direction: {x: 0, y: 0}
   rb: {fileID: 941173733323684891}
   collider: {fileID: 6930423863741655110}
@@ -309,6 +310,27 @@ MonoBehaviour:
   - type: 0
     time: 0
     frames: []
+    sound: []
+    looping: 1
+  - type: 10
+    time: 0.13333334
+    frames:
+    - {fileID: 3043666123643867898, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -6688341770100935039, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 7642805366754217782, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -4756379772638002423, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 7083410491160476679, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -2795316129537992029, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 5180893155149485985, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 3246276067061943843, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -2269463139882563218, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 5304415030499926334, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -8802171447192863660, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -5506317310254145062, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: -4223110810288741656, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 4291388896350911343, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 7070780286483898236, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
+    - {fileID: 8912794810584093085, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
     sound: []
     looping: 1
   slaves: []

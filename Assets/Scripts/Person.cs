@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Person : MonoBehaviour
+public class Person : MonoBehaviour, IPerson
 {
     public PeopleManager manager;
     public AnimationController animation;
     public int hp = 1;
     public bool alive = true;
+    public bool stunned = false;
 
     public Vector2 Direction = Vector2.left;
     public Rigidbody2D rb;
@@ -106,7 +107,7 @@ public class Person : MonoBehaviour
     }
     public void Act()
     {
-        if (!alive)
+        if (!alive || stunned)
         {
             return;
         }
@@ -118,6 +119,17 @@ public class Person : MonoBehaviour
         }
     }
 
+    public void GetKissed()
+    {
+        stunned = true;
+        StartCoroutine(DoGetKissed());
+    }
+    IEnumerator DoGetKissed()
+    {
+        animation.LaunchAnimation(AnimationController.AnimationType.KISSED);
+        yield return new WaitForSeconds(1);
+        Die();
+    }
     public void Hurt(GameObject source)
     {
         if (alive)

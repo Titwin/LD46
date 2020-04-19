@@ -24,7 +24,7 @@ public class FXManager : MonoBehaviour
         Vector3 baseVelocity = velocity!=Vector2.zero?velocity.normalized: Vector2.zero;
         for (int i = 0; i < amount; ++i)
         {
-           baseVelocity = baseVelocity + new Vector3(Random.Range(-0.5f, 0.5f) * velocity.x, Random.Range(-0.5f, 0.5f) * velocity.y);
+           baseVelocity = baseVelocity + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f))*velocity.magnitude*0.25f;
            emitParams.velocity = baseVelocity;
            blood.Emit(emitParams, amount);
         }
