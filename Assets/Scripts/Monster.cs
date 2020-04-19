@@ -244,8 +244,10 @@ public class Monster : MonoBehaviour
 
         Gizmos.color = Color.white;
         Gizmos.DrawLine(transform.position, player.carController.transform.position);
-        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, carEntryRadius);
 
+#if UNITY_EDITOR
+        UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.forward, carEntryRadius);
+#endif
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, Vector2.one);
         Gizmos.DrawLine(transform.position, transform.position + ennemySearchRadius * transform.up);

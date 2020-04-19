@@ -17,8 +17,6 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-
         if (readInput)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -27,11 +25,18 @@ public class CarController : MonoBehaviour
             }
             else
             {
-                car.SetInput(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+                Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                car.SetInput(input);
 
-                float x = Input.GetKey(KeyCode.D) ? 1f : (Input.GetKey(KeyCode.Q) ? -1f : 0f);
-                float y = Input.GetKey(KeyCode.Z) ? 1f : (Input.GetKey(KeyCode.S) ? -1f : 0f);
-                car.SetInput(new Vector2(x, y));
+                /*Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+                car.SetInput(input);
+
+                if(input == Vector2.zero)
+                {
+                    float x = Input.GetKey(KeyCode.D) ? 1f : (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.A) ? -1f : 0f);
+                    float y = Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.W) ? 1f : (Input.GetKey(KeyCode.S) ? -1f : 0f);
+                    car.SetInput(new Vector2(x, y));
+                }*/
             }
         }
         else
