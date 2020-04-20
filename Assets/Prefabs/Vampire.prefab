@@ -5299,9 +5299,11 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  animating: 0
   audioSource: {fileID: 4160898564691390722}
   attackAudioClip: {fileID: 8300000, guid: 19fc5268f2131497eb00b5abbd9d1528, type: 3}
   bittingAudioClip: {fileID: 8300000, guid: 916285d73d7194efcaf8b70c1e0b2eb9, type: 3}
+  dyingAudioClip: {fileID: 8300000, guid: f6d8e65b2dcaa40ea955ba3495151a77, type: 3}
   eatingAudioClips:
   - {fileID: 8300000, guid: 0e670eb3d8aac4ce3afce47815e5bd20, type: 3}
   - {fileID: 8300000, guid: 143de81309ea64f96994a6e88b0a1d00, type: 3}

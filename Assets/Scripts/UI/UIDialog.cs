@@ -19,11 +19,11 @@ public class UIDialog : MonoBehaviour
         
     }
 
-    public void ShowText(string value)
+    public void ShowText(string value, bool playSound = true)
     {
         this.gameObject.SetActive(true);
         text.text = value;
-        if (value.Length > 0)
+        if (value.Length > 0 && playSound)
         {
             audioSource.PlayOneShot(talkingAudioClip);
         }
