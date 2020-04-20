@@ -12,6 +12,7 @@ public class CarAI : MonoBehaviour
     public float maxSpeed = 4f;
     private Car car;
     public AnimationCurve speedAdjust;
+    public Vector2 courtesy = new Vector2(2, 6);
 
     [Header("Debug")]
     [SerializeField] private Vector2 cmd;
@@ -72,13 +73,13 @@ public class CarAI : MonoBehaviour
             }
             else
             {
-                courtesyTimer = Random.Range(2f, 6f);
+                courtesyTimer = Random.Range(courtesy.x, courtesy.y);
             }
         }
         else
         {
             car.speed = maxSpeed;
-            courtesyTimer = Random.Range(2f, 6f);
+            courtesyTimer = Random.Range(courtesy.x, courtesy.y);
         }
     }
 }
