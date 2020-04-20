@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8860c919ffea79545bf9c4da3aa3fdc9, type: 3}
+  m_Name: Fence2
+  m_EditorClassIdentifier: 
+  m_DefaultSprite: {fileID: 8988301040743427735, guid: a933efeec7daf9b44b8f85198db648db,
+    type: 3}
+  m_DefaultGameObject: {fileID: 5479742079170521949, guid: 9f5bccbf0730f9446ad00b1cbcb34944,
+    type: 3}
+  m_DefaultColliderType: 2
+  m_TilingRules: []
+  type: 2
