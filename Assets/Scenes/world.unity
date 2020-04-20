@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1545,11 +1545,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7064079909023874969, guid: 05bf15399edc4b841bd6a0a3ec9e7b46,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -81.46119
+      objectReference: {fileID: 0}
+    - target: {fileID: 7064079909023874969, guid: 05bf15399edc4b841bd6a0a3ec9e7b46,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.425698
+      objectReference: {fileID: 0}
     - target: {fileID: 7064079909653185809, guid: 05bf15399edc4b841bd6a0a3ec9e7b46,
         type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 370803396}
+    - target: {fileID: 7064079909653185814, guid: 05bf15399edc4b841bd6a0a3ec9e7b46,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -81.46119
+      objectReference: {fileID: 0}
+    - target: {fileID: 7064079909653185814, guid: 05bf15399edc4b841bd6a0a3ec9e7b46,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.425698
+      objectReference: {fileID: 0}
     - target: {fileID: 7064079910092564836, guid: 05bf15399edc4b841bd6a0a3ec9e7b46,
         type: 3}
       propertyPath: m_Name
@@ -1796,12 +1816,12 @@ PrefabInstance:
     - target: {fileID: 8334200411843612563, guid: 02284684b883e37438472da316ed5736,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -85.29
       objectReference: {fileID: 0}
     - target: {fileID: 8334200411843612563, guid: 02284684b883e37438472da316ed5736,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -11.18
       objectReference: {fileID: 0}
     - target: {fileID: 8334200411843612563, guid: 02284684b883e37438472da316ed5736,
         type: 3}

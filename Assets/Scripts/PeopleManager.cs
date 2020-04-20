@@ -23,7 +23,7 @@ public interface IPerson
     }
     void Sense();
     void Think();
-   
+
     void Act();
 
     void Destroy();
@@ -36,12 +36,12 @@ public class PeopleManager : MonoBehaviour
     public List<Vector3> toSpawn;
 
     public float maxUpdateDistance = 25;
-    [Range(0,1)]public float density;
+    [Range(0, 1)] public float density;
     private void Start()
     {
         foreach (var cell in Map.map.Keys)
         {
-            if(Map.map[cell].type == MapTile.Type.Walk)
+            if (Map.map[cell].type == MapTile.Type.Walk)
             {
                 if (Random.value < density)
                 {
@@ -50,31 +50,31 @@ public class PeopleManager : MonoBehaviour
             }
         }
     }
-    IPerson AddPerson(Vector2 position)
+    public IPerson AddGhoul(Vector2 position)
     {
         position.y += Random.Range(-0.1f, 0.1f);
         position.x += Random.Range(-0.1f, 0.1f);
 
-        IPerson p;
-        if (Random.value < 0.1f)
-        {
-            Ghoul pg = Instantiate<Ghoul>(ghoulTemplate[Random.Range(0, ghoulTemplate.Length)]);
-            pg.transform.position = position;
-            pg.transform.parent = this.transform;
-            pg.manager = this;
-            p = pg;
-        }
-        else
-        {
-            Person pp = Instantiate<Person>(personTemplate[Random.Range(0,personTemplate.Length)]);
-            pp.transform.position = position;
-            pp.transform.parent = this.transform;
-            pp.manager = this;
-            p = pp;
-        }
-        
-        people.Add(p);
-        return p;
+        Ghoul pg = Instantiate<Ghoul>(ghoulTemplate[Random.Range(0, ghoulTemplate.Length)]);
+        pg.transform.position = position;
+        pg.transform.parent = this.transform;
+        pg.manager = this;
+
+        people.Add(pg);
+        return pg;
+    }
+    public IPerson AddPerson(Vector2 position)
+    {
+        position.y += Random.Range(-0.1f, 0.1f);
+        position.x += Random.Range(-0.1f, 0.1f);
+
+        Person pp = Instantiate<Person>(personTemplate[Random.Range(0, personTemplate.Length)]);
+        pp.transform.position = position;
+        pp.transform.parent = this.transform;
+        pp.manager = this;
+
+        people.Add(pp);
+        return pp;
     }
     // Update is called once per frame
     void Update()
@@ -90,8 +90,8 @@ public class PeopleManager : MonoBehaviour
                 toSpawn.RemoveAt(pos);
             }
         }
-        
-        for (int i = people.Count-1;i >=0;--i)
+
+        for (int i = people.Count - 1; i >= 0; --i)
         {
             IPerson p = people[i];
             float d = Vector2.Distance(playerPosition, p.Position);

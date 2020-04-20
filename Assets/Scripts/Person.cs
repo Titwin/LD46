@@ -105,47 +105,40 @@ public class Person : MonoBehaviour, IPerson
         }
         if (status == Status.Wandering)
         {
-            if (t<0 || t > 1)
+            if (t<0)
             {
                 var cellNeighbor = Map.GetTileNeighbor4(rb.position);
+                List<int> options = new List<int>();
                 for (int i = 0; i < cellNeighbor.Length;++i)
                 {
                     var cell = cellNeighbor[i];
+                    
                     if (cell)
                     {
-                        if (cell.type == MapTile.Type.Walk || cell.type == MapTile.Type.StreetWalk)
+                        if (cell.type == MapTile.Type.Walk || cell.type == MapTile.Type.StreetWalk || cell.type == MapTile.Type.Vegetation)
                         {
-                            Direction = (Vector2Int)Map.Directions[i];
-                            Direction.y += Random.Range(-0.1f, 0.1f);
-                            Direction.x += Random.Range(-0.1f, 0.1f);
-                            break;
+                            options.Add(i);
                         }
                     }
                 }
-
-                t -= 1;
-                float r = Random.value;
-                /*
-                if (r < 1 / 4f)
+                if (options.Count > 0)
                 {
-                    Direction = new Vector2(-1, 0);
+                    int i = Random.Range(0, options.Count);
+                    Direction = (Vector2Int)Map.Directions[options[i]];
                 }
-                else if (r < 2 / 4f)
+                else
                 {
-                    Direction = new Vector2(1, 0);
+                    int i = Random.Range(0, cellNeighbor.Length);
+                    Direction = (Vector2Int)Map.Directions[i];
                 }
-                else if (r < 3 / 4f)
-                {
-                    Direction = new Vector2(0, -1);
-                }
-                else if (r < 4 / 4f)
-                {
-                    Direction = new Vector2(0, 1);
-                }*/
+                Direction.y += Random.Range(-0.25f, 0.25f);
+                Direction.x += Random.Range(-0.25f, 0.25f);
+                t = Random.Range(1,3);
             }
-            t += Time.deltaTime;
+            t -= Time.deltaTime;
         }
     }
+    Vector2 currentDirection;
     public void Act()
     {
         if (!alive || stunned)
@@ -154,9 +147,10 @@ public class Person : MonoBehaviour, IPerson
         }
         if (Direction.sqrMagnitude > 0)
         {
-            this.rb.MovePosition(this.rb.position + Direction * (status == Status.Scared ? 2 : 1) * Time.deltaTime);
+            currentDirection = Vector2.MoveTowards(currentDirection, Direction, Time.deltaTime*3);
+            this.rb.MovePosition(this.rb.position + currentDirection * (status == Status.Scared ? 2 : 1) * Time.deltaTime);
             animation.playAnimation(AnimationController.AnimationType.WALKING);
-            transform.up = Direction;
+            transform.up = currentDirection;
         }
     }
     public void Destroy()
@@ -184,7 +178,7 @@ public class Person : MonoBehaviour, IPerson
         animation.LaunchAnimation(AnimationController.AnimationType.KISSED);
         yield return new WaitForSeconds(1);
         FXManager.instance.EmitBloodStain(rb.position);
-        Die();
+        Die(true);
     }
     public void GetHurt(GameObject source, int amount = 1)
     {
@@ -200,7 +194,7 @@ public class Person : MonoBehaviour, IPerson
         }
     }
 
-    void Die()
+    void Die(bool respawnAsGhoul = false)
     {
         rb.simulated = false;
         renderer.color = Color.gray;
@@ -211,6 +205,21 @@ public class Person : MonoBehaviour, IPerson
         if(Active)
             animation.LaunchAnimation(AnimationController.AnimationType.DYING);
         manager.OnDied(this);
+        /*
+        if (respawnAsGhoul)
+        {
+            StartCoroutine(DoRespawnAsGhoul());
+        }
+        else
+        {
+            manager.AddGhoul(this.Position);
+        }*/
+    }
+
+    IEnumerator DoRespawnAsGhoul()
+    {
+        yield return new WaitForSeconds(1);
+        manager.AddGhoul(this.Position);        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
