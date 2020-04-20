@@ -94,6 +94,9 @@ public class Ghoul : MonoBehaviour,IPerson
         attackleft = !attackleft;
         var attackFilter = new ContactFilter2D();
         attackFilter.layerMask = ennemyMask;
+
+        audioSource.PlayOneShot(attackAudioClip);
+
         for (int c = 0; c < attackableCount; ++c)
         {
             // RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one, ennemyAttackRadius, transform.up, ennemyAttackRadius, ennemyMask);
