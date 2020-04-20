@@ -74,6 +74,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &108526175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 108526176}
+  m_Layer: 0
+  m_Name: arrow pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &108526176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108526175}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1325954100}
+  m_Father: {fileID: 1674795732141302918}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &527711786
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,6 +598,86 @@ MonoBehaviour:
   m_Text: 'this is something the vampire is saying
 
     arrrg Guillermo! Bring the car'
+--- !u!1 &1325954099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1325954100}
+  - component: {fileID: 1325954101}
+  m_Layer: 0
+  m_Name: arrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1325954100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325954099}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 108526176}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
+--- !u!212 &1325954101
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325954099}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -776638835
+  m_SortingLayer: 7
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: fd387892a6779af44b4ba3b642172ea5, type: 3}
+  m_Color: {r: 0.65882355, g: 0, b: 0.12941177, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.64, y: 0.64}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1346153254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,6 +1251,7 @@ MonoBehaviour:
   walking: 1
   camera: {fileID: 0}
   uiBloodFrame: {fileID: 1147395617}
+  carArrow: {fileID: 108526176}
 --- !u!82 &109628188403724070
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1247,6 +1359,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 8334200411843612560}
+    - target: {fileID: 369222924, guid: 78bf8e44999bd6146ac7bd49e29a8a2a, type: 3}
+      propertyPath: readInput
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1171714043691682672, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
         type: 3}
       propertyPath: m_Name
@@ -1255,12 +1371,12 @@ PrefabInstance:
     - target: {fileID: 5468883663398654773, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.07
+      value: 1.61
       objectReference: {fileID: 0}
     - target: {fileID: 5468883663398654773, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.46
+      value: 1.58
       objectReference: {fileID: 0}
     - target: {fileID: 5468883663398654773, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
         type: 3}
@@ -1270,22 +1386,22 @@ PrefabInstance:
     - target: {fileID: 5468883663398654773, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5468883663398654773, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5468883663398654773, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5468883663398654773, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 5468883663398654773, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
         type: 3}
@@ -1305,7 +1421,12 @@ PrefabInstance:
     - target: {fileID: 5468883663398654773, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6031754676791022147, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
+        type: 3}
+      propertyPath: direction.y
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78bf8e44999bd6146ac7bd49e29a8a2a, type: 3}

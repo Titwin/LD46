@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -1113476565
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5712182148353290059, guid: 0da6d809b79838049ba58d782a2678b4,
+  m_Sprite: {fileID: 3963787867055842710, guid: 0da6d809b79838049ba58d782a2678b4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -283,7 +283,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.229
+  m_Volume: 0.05725
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 2439810463757109780}
   - component: {fileID: 94409719660081877}
   m_Layer: 15
-  m_Name: New Sprite
+  m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,7 +529,7 @@ SpriteRenderer:
   m_SortingLayerID: 1560568199
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 4549441096714467750, guid: 0da6d809b79838049ba58d782a2678b4,
+  m_Sprite: {fileID: 1436384685885175767, guid: 0da6d809b79838049ba58d782a2678b4,
     type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.5019608}
   m_FlipX: 0
