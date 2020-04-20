@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public UIDialog dialog;
     public float blood = 100;
     public AudioSource music;
     public UIBlood uiBlood;
@@ -83,20 +84,37 @@ public class Player : MonoBehaviour
         // action
         music.pitch = Mathf.MoveTowards(music.pitch, carController.readInput ? 1 : 0.5f, Time.deltaTime * 2);
         camera.m_Lens.FieldOfView = Mathf.MoveTowards(camera.m_Lens.FieldOfView, carController.readInput ? (Mathf.Lerp(48,64,carController.car.currentSpeed/10)) : 32,30*Time.deltaTime);
-
-        blood -= Time.deltaTime;
-        if (blood <= 0)
+        if (personController.alive)
         {
-            personController.Die();
-        }
-        uiBlood.SetValue(Mathf.Clamp01(blood / 100f));
+            blood -= Time.deltaTime;
+            if (blood <= 0)
+            {
+                if (!walking)
+                {
+                    ExitCar();
+                }
 
+                personController.Die();
+                dialog.ShowText("Arrrrgg !!!");
+                StartCoroutine(DieAndWait());
+            }
+            uiBlood.SetValue(Mathf.Clamp01(blood / 100f));
+        }
         if (walking)
         {
             carArrow.transform.LookAt(carController.transform.position);
         }
     }
-
+    IEnumerator DieAndWait()
+    {
+        yield return new WaitForSeconds(3);
+        dialog.ShowText("Press any key to restart");
+        while (!Input.anyKey)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        Game.instance.Reset();
+    }
     public void Feed(float amount)
     {
         blood = Mathf.Clamp(blood+amount,0,100);

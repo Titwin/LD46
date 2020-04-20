@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    public MissionManager workflow;
     public GameObject cover;
-    public Player player;
+   
+    public Level levelTemplate;
+    public Level currentLevel;
+
+    bool paused = false;
+    public static Game instance;
     // Start is called before the first frame update
     void Start()
     {
         cover.SetActive(true);
-        player.gameObject.SetActive(false);
+        instance = this;
     }
 
     // Update is called once per frame
@@ -21,10 +25,34 @@ public class Game : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
-                player.gameObject.SetActive(true);
                 cover.SetActive(false);
-                workflow.visible = true;
+
+                currentLevel = Instantiate<Level>(levelTemplate);
+                currentLevel.gameObject.SetActive(true);
+                currentLevel.player.gameObject.SetActive(true);
+                currentLevel.workflow.visible = true;
             }
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (!paused)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
+            paused = !paused;
+        }
+    }
+    public void Reset()
+    {
+        Destroy(currentLevel.gameObject);
+
+        currentLevel = Instantiate<Level>(levelTemplate);
+        currentLevel.gameObject.SetActive(true);
+        currentLevel.player.gameObject.SetActive(true);
+        currentLevel.workflow.visible = true;
     }
 }
