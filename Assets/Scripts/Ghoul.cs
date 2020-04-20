@@ -176,6 +176,7 @@ public class Ghoul : MonoBehaviour,IPerson
         animation.LaunchAnimation(AnimationController.AnimationType.BITING);
         //player.uiBloodFrame.SetActive(true);
         audioSource.pitch = 1f + Random.Range(-0.2f, 0.2f);
+        audioSource.pitch = 1f + Random.Range(-0.2f, 0.2f);
         audioSource.Stop();
         audioSource.PlayOneShot(attackAudioClip);
         target.transform.up = -direction;
@@ -194,7 +195,7 @@ public class Ghoul : MonoBehaviour,IPerson
     }
 
 
-    public void GetHurt(GameObject source, int amount = 1)
+    public bool GetHurt(GameObject source, int amount = 1)
     {
         if (alive)
         {
@@ -203,8 +204,10 @@ public class Ghoul : MonoBehaviour,IPerson
             if (hp <= 0)
             {
                 Die();
+                return true;
             }
         }
+        return false;
     }
     public void Die()
     {

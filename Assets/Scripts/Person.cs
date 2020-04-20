@@ -188,7 +188,7 @@ public class Person : MonoBehaviour, IPerson
         FXManager.instance.EmitBloodStain(rb.position);
         Die(contagious);
     }
-    public void GetHurt(GameObject source, int amount = 1)
+    public bool GetHurt(GameObject source, int amount = 1)
     {
         if (alive)
         {
@@ -198,8 +198,10 @@ public class Person : MonoBehaviour, IPerson
             if (hp <= 0)
             {
                 Die();
+                return true;
             }
         }
+        return false;
     }
 
     void Die(bool respawnAsGhoul = false)

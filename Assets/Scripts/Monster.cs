@@ -163,11 +163,19 @@ public class Monster : MonoBehaviour
     }
     public void Attack(Person target)
     {
-        target.GetHurt(this.gameObject,3);
+        bool kill = target.GetHurt(this.gameObject,3);
+        if (kill)
+        {
+            player.OnKillPerson(false);
+        }
     }
     public void Attack(Ghoul target)
     {
-        target.GetHurt(this.gameObject,3);
+        bool kill = target.GetHurt(this.gameObject, 3);
+        if (kill)
+        {
+            player.OnKillPerson(false);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

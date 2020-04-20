@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    int score;
+    public int Score
+    {
+        get
+        {
+            return score;
+        }
+        set
+        {
+            uiscore.AddScore(value - score);
+            score = value;
+        }
+    }
+    public UIScore uiscore;
     public UIDialog dialog;
     public float blood = 100;
     public AudioSource music;
@@ -31,6 +45,19 @@ public class Player : MonoBehaviour
                 return carController.transform.position;
             }
         }
+    }
+
+    public void OnKillPerson(bool car)
+    {
+        Score += 10;
+    }
+    public void OnKillGhoul(bool car)
+    {
+        Score += 100;
+    }
+    public void OnEatPerson()
+    {
+        Score += 100;
     }
     public bool Active
     {
