@@ -211,6 +211,9 @@ MonoBehaviour:
   renderer: {fileID: 4694656606556000012}
   blood: 5
   tile: {fileID: 0}
+  fearMask:
+    serializedVersion: 2
+    m_Bits: 51200
   fearRange: 1
   calmRange: 10
   killedAudioClip: {fileID: 8300000, guid: ea44d3f29fbc544b197c6a9311f3e065, type: 3}

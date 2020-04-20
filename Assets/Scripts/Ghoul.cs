@@ -277,7 +277,6 @@ public class Ghoul : MonoBehaviour,IPerson
                 inputDirection = (target.position-this.transform.position).normalized;
             }
         }
-        
     }
 
     private void OnDrawGizmos()

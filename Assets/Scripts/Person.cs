@@ -18,8 +18,9 @@ public class Person : MonoBehaviour, IPerson
     public float blood = 1;
     public MapTile tile;
     bool animating = false;
+    Collider2D[] fearSources = new Collider2D[8];
     Vector2 fearSource;
-
+    public LayerMask fearMask;
     public float fearRange = 6;
     public float calmRange = 10;
     public enum Status
@@ -64,14 +65,23 @@ public class Person : MonoBehaviour, IPerson
     {
         tile = Map.GetTile(rb.position);
 
-        if (Player.main.walking)
+        //if (status == Status.Wandering)
         {
-            fearSource = Player.main.position;
-            var fdirection = this.rb.position - fearSource;
-            if (fdirection.magnitude < fearRange)
+            int fearCount = Physics2D.OverlapCircleNonAlloc(this.transform.position, fearRange, fearSources, fearMask);
+            var fearSource = Vector2.zero;
+            if (fearCount > 0)
             {
+                for (int f = 0; f < fearCount; ++f) {
+                    fearSource += (Vector2)(this.transform.position - fearSources[f].transform.position);
+                }
                 status = Status.Scared;
+                fearSource /= fearCount;
             }
+            else
+            {
+                status = Status.Wandering;
+            }
+           
         }
     }
     public void Think()
@@ -155,10 +165,18 @@ public class Person : MonoBehaviour, IPerson
     }
     public float GetKissed()
     {
-        stunned = true;
-        StartCoroutine(DoGetKissed());
+        stunned = true; 
         float tblood = this.blood;
         this.blood = 0;
+        if (Active)
+        {
+            StartCoroutine(DoGetKissed());
+        }
+        else
+        {
+            Die();
+        }
+       
         return tblood;
     }
     IEnumerator DoGetKissed()
@@ -190,7 +208,8 @@ public class Person : MonoBehaviour, IPerson
         audioSource.pitch = 1f + Random.Range(-0.3f, 0.3f);
         audioSource.PlayOneShot(killedAudioClip);
         alive = false;
-        animation.LaunchAnimation(AnimationController.AnimationType.DYING);
+        if(Active)
+            animation.LaunchAnimation(AnimationController.AnimationType.DYING);
         manager.OnDied(this);
     }
 
