@@ -28,6 +28,8 @@ public class Monster : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip attackAudioClip;
+    public AudioClip bittingAudioClip;
+    public AudioClip[] eatingAudioClips;
 
     // Start is called before the first frame update
     void Start()
@@ -202,6 +204,9 @@ public class Monster : MonoBehaviour
 
         Vector3 from = this.transform.position;
         Vector3 to = target.transform.position - direction.normalized * 7 * Constants.pixelToMeters;
+        audioSource.pitch = 1f;
+        audioSource.Stop();
+        audioSource.PlayOneShot(attackAudioClip);
         for (float t = 0; t < 1f; t += Time.deltaTime * 3)
         {
 
@@ -212,10 +217,10 @@ public class Monster : MonoBehaviour
        
 
         animation.LaunchAnimation(AnimationController.AnimationType.BITING);
+        audioSource.pitch = 0.8f + Random.Range(-0.1f, 0.1f);
+        audioSource.PlayOneShot(bittingAudioClip);
+
         player.uiBloodFrame.SetActive(true);
-        audioSource.pitch = 1f + Random.Range(-0.2f, 0.2f);
-        audioSource.Stop();
-        audioSource.PlayOneShot(attackAudioClip);
         target.transform.up = -direction;
         float blood = target.GetKissed();
         player.Feed(blood);
@@ -224,6 +229,9 @@ public class Monster : MonoBehaviour
             FXManager.instance.EmitBlood(target.transform.position, direction, 15);
             yield return new WaitForEndOfFrame();
         }
+        int eatingAudioIndex = Random.Range(0, eatingAudioClips.Length - 1);
+        audioSource.pitch = 1;
+        audioSource.PlayOneShot(eatingAudioClips[eatingAudioIndex]);
         player.uiBloodFrame.SetActive(false);
         //restore physics
        // this.body.isKinematic = false;
