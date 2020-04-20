@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: b07e38b59c1497a468caf99c3d368636
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1441401919770802158
+    second: Mannor_0
+  - first:
+      213: 188025049758672163
+    second: Mannor_1
+  - first:
+      213: 1186308238398573570
+    second: Mannor_2
+  - first:
+      213: 6486566276180253083
+    second: Mannor_3
+  - first:
+      213: -4317789744758170261
+    second: Mannor_4
+  - first:
+      213: -2517010553367475137
+    second: Mannor_5
+  - first:
+      213: 5465803206211057189
+    second: Mannor_6
+  - first:
+      213: -8151637585317328161
+    second: Mannor_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -47,7 +71,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -108,7 +132,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Mannor_0
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 64
+        width: 384
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 932138224dbd53b4ba90722a02dba4ed
+      internalID: -1441401919770802158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mannor_1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 64
+        width: 256
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e16acf07adf9a44ebfb0a3cb482946e
+      internalID: 188025049758672163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mannor_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 256
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc1efa2f7aece9741a3a75dc12dd8057
+      internalID: 1186308238398573570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mannor_4
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 384
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5331b2192af8c7a4789ff28200ac3552
+      internalID: -4317789744758170261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mannor_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 384
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a46cda8285b5bb24880f9285884d6d14
+      internalID: -2517010553367475137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mannor_6
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 64
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce95eb8a2c844d34aae0a7ba5e294a52
+      internalID: 5465803206211057189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mannor_7
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1b93aa6fd27e0a41b34179c24ebbef2
+      internalID: -8151637585317328161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
