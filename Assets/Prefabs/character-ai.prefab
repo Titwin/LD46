@@ -373,17 +373,17 @@ MonoBehaviour:
     time: 0
     frames: []
     sound: []
-    looping: 1
+    looping: 0
   - type: 4
     time: 0
     frames: []
     sound: []
-    looping: 1
+    looping: 0
   - type: 7
     time: 0.06666667
     frames: []
     sound: []
-    looping: 1
+    looping: 0
   - type: 8
     time: 0.033333335
     frames:
@@ -399,7 +399,7 @@ MonoBehaviour:
     time: 0
     frames: []
     sound: []
-    looping: 1
+    looping: 0
   - type: 10
     time: 0.13333334
     frames:
@@ -420,5 +420,5 @@ MonoBehaviour:
     - {fileID: 7070780286483898236, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
     - {fileID: 8912794810584093085, guid: 0da6d809b79838049ba58d782a2678b4, type: 3}
     sound: []
-    looping: 1
+    looping: 0
   slaves: []

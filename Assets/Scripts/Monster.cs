@@ -180,6 +180,7 @@ public class Monster : MonoBehaviour
     }
     IEnumerator DoDash(Person target)
     {
+
         animating = true;
         //disable physics
         this.collider.enabled = false;

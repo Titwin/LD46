@@ -38,12 +38,16 @@ public class Person : MonoBehaviour, IPerson
     {
         get
         {
-            StopAllCoroutines();
-            animating = false;
+            
             return this.gameObject.activeSelf;
         }
         set
         {
+            if (!value)
+            {
+                StopAllCoroutines();
+                animating = false;
+            }
             this.gameObject.SetActive(value);
         }
     }
@@ -63,6 +67,10 @@ public class Person : MonoBehaviour, IPerson
 
     public void Sense()
     {
+        if (!alive || stunned)
+        {
+            return;
+        }
         tile = Map.GetTile(rb.position);
 
         //if (status == Status.Wandering)
@@ -86,7 +94,7 @@ public class Person : MonoBehaviour, IPerson
     }
     public void Think()
     {
-        if (!alive)
+        if (!alive || stunned)
         {
             return;
         }
@@ -147,7 +155,7 @@ public class Person : MonoBehaviour, IPerson
         }
         if (Direction.sqrMagnitude > 0)
         {
-            currentDirection = Vector2.MoveTowards(currentDirection, Direction, Time.deltaTime*3);
+            currentDirection = Vector2.MoveTowards(currentDirection, Direction, Time.deltaTime);
             this.rb.MovePosition(this.rb.position + currentDirection * (status == Status.Scared ? 2 : 1) * Time.deltaTime);
             animation.playAnimation(AnimationController.AnimationType.WALKING);
             transform.up = currentDirection;
@@ -205,7 +213,8 @@ public class Person : MonoBehaviour, IPerson
         if(Active)
             animation.LaunchAnimation(AnimationController.AnimationType.DYING);
         manager.OnDied(this);
-        /*
+        animating = false;
+        
         if (respawnAsGhoul)
         {
             StartCoroutine(DoRespawnAsGhoul());
@@ -213,13 +222,14 @@ public class Person : MonoBehaviour, IPerson
         else
         {
             manager.AddGhoul(this.Position);
-        }*/
+        }
     }
 
     IEnumerator DoRespawnAsGhoul()
     {
-        yield return new WaitForSeconds(1);
-        manager.AddGhoul(this.Position);        
+        yield return new WaitForSeconds(3);
+        manager.AddGhoul(this.Position);
+        this.Active = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

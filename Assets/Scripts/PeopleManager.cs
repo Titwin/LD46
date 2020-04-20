@@ -45,7 +45,14 @@ public class PeopleManager : MonoBehaviour
             {
                 if (Random.value < density)
                 {
-                    AddPerson(Map.GetWorldPosition(cell));
+                    /*if (Random.value < 0.3)
+                    {
+                        AddGhoul(Map.GetWorldPosition(cell));
+                    }
+                    else*/
+                    {
+                        AddPerson(Map.GetWorldPosition(cell));
+                    }
                 }
             }
         }
@@ -100,14 +107,17 @@ public class PeopleManager : MonoBehaviour
                 {
                     continue;
                 }
-                if (p.Active && d > maxUpdateDistance * 1.1f)
+                if(!p.Active && !p.Active)
                 {
-                    p.Active = false;
                     if (!p.Alive)
                     {
                         p.Destroy();
                         people.RemoveAt(i);
                     }
+                }
+                else if (p.Active && d > maxUpdateDistance * 1.1f)
+                {
+                    p.Active = false;
                 }
                 else if (!p.Active && d < maxUpdateDistance)
                 {
