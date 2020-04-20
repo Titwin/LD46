@@ -46,7 +46,13 @@ MonoBehaviour:
   personTemplate:
   - {fileID: 5070235049889499690, guid: d8a29f46be625b44a8584f5c38983f7a, type: 3}
   - {fileID: 7310558815156296337, guid: 1a7c6c45b6f4053429628847bd28682a, type: 3}
+  - {fileID: 4542708697793092638, guid: 05ec08587ab8ed64b97d846fbe14a188, type: 3}
   - {fileID: 5571419427866222904, guid: e385e27524c559c478257aacfb05a411, type: 3}
+  - {fileID: 118972382129071026, guid: 61d86a54af2ed34469f7abf1f974efd5, type: 3}
+  ghoulTemplate: []
   toSpawn: []
   maxUpdateDistance: 25
+  forbiddenMask:
+    serializedVersion: 2
+    m_Bits: 0
   density: 1
