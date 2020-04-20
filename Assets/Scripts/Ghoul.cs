@@ -52,6 +52,10 @@ public class Ghoul : MonoBehaviour,IPerson
             {
                 if (car.currentSpeed > 2)
                 {
+                    if (Player.main.carController.car == car)
+                    {
+                        Player.main.OnKillGhoul(true);
+                    }
                     GetHurt(collision.gameObject,10);
                 }
             }
