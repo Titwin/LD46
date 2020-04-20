@@ -2348,7 +2348,7 @@ TextureImporter:
       name: Road2_92
       rect:
         serializedVersion: 2
-        x: 768
+        x: 752
         y: 0
         width: 64
         height: 64
@@ -2369,7 +2369,7 @@ TextureImporter:
       name: Road2_93
       rect:
         serializedVersion: 2
-        x: 832
+        x: 800
         y: 0
         width: 64
         height: 64
@@ -2390,7 +2390,7 @@ TextureImporter:
       name: Road2_94
       rect:
         serializedVersion: 2
-        x: 896
+        x: 848
         y: 0
         width: 64
         height: 64

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+   
     public Player player;
     new public AnimationController animation;
     new public Collider2D collider;
@@ -99,6 +100,7 @@ public class Monster : MonoBehaviour
             }
         }
         firstFrame = false;
+        
         //Debug.Log(fixedUpdateDirection * speed * Time.fixedDeltaTime);
     }
     void Teleport(Vector2 position)
@@ -180,6 +182,7 @@ public class Monster : MonoBehaviour
     }
     IEnumerator DoDash(Person target)
     {
+
         animating = true;
         //disable physics
         this.collider.enabled = false;

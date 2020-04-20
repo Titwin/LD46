@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public float blood = 100;
     public AudioSource music;
+    public UIBlood uiBlood;
     [Header("Linkings")]
     public CarController carController;
     public Monster personController;
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour
         {
             personController.Die();
         }
+        uiBlood.SetValue(Mathf.Clamp01(blood / 100f));
     }
 
     public void Feed(float amount)

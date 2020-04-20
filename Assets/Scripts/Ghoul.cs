@@ -29,7 +29,7 @@ public class Ghoul : MonoBehaviour,IPerson
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip attackAudioClip;
-
+    float eatCooldown = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -248,10 +248,11 @@ public class Ghoul : MonoBehaviour,IPerson
     {
         bAttack = false;
         bEat = false;
+        eatCooldown -= Time.deltaTime;
         if (attackableCount > 1)
         {
             bAttack = true;
-        }else if (dashable.collider != null)
+        }else if (eatCooldown<=0 && dashable.collider != null)
         {
             bEat = true;
         } 
@@ -279,17 +280,6 @@ public class Ghoul : MonoBehaviour,IPerson
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        for (int s = 0; s < sightCount; ++s)
-        {
-            Gizmos.DrawLine(this.transform.position, sight[s].transform.position);
-        }
-            if (target)
-        {
-            Gizmos.DrawLine(this.transform.position, target.position);
-        }
-    }
     public void Act()
     {
         if (!alive)
@@ -309,6 +299,7 @@ public class Ghoul : MonoBehaviour,IPerson
                         Person person = dashable.collider.gameObject.GetComponent<Person>();
                         if (person)
                         {
+                            eatCooldown = 2;
                             Dash(person);
                             interacting = true;
                         }
