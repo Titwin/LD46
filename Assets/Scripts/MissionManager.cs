@@ -41,13 +41,6 @@ public class MissionManager : MonoBehaviour
         mission = missions[0];
         Status = Mission.Status.Planned;
     }
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(10, 30, 100, 20), "status:" + Status);
-        GUI.Label(new Rect(10, 50, 100, 20), "time:" + time);
-        GUI.Label(new Rect(10, 70, 100, 20), "full:" + full);
-    }
-
     private void LateUpdate()
     {
         Vector2 position = player.position;
