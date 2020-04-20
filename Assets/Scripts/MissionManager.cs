@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
 public class MissionManager : MonoBehaviour
 {
     public Mission mission;
     public UIDialog dialog;
-
-    private Mission.Status status = Mission.Status.Done;
+    public Image fade;
+    public bool visible = true;
+    [SerializeField] Mission.Status status = Mission.Status.Done;
     public Player player;
 
 
@@ -43,15 +45,16 @@ public class MissionManager : MonoBehaviour
         Vector2 position = player.position;
         Vector2 direction = Vector2.zero;
         time += Time.deltaTime;
-
+        full = player.blood > 99;
         switch (Status)
         {
             case Mission.Status.Planned:
-                direction = mission.basePosition - position;
-                locationCursor.transform.position = mission.basePosition;
+                player.blood = mission.startBlood;
+                Status = Mission.Status.Started;
                 break;
             case Mission.Status.Started:
-                //nothing
+                direction = mission.basePosition - position;
+                locationCursor.transform.position = mission.basePosition;
                 break;
             case Mission.Status.Going:
                 full = false;
@@ -72,12 +75,11 @@ public class MissionManager : MonoBehaviour
         arrowPivot.transform.position = position;
         arrowPivot.transform.LookAt(locationCursor.transform.position);
         // checkpoint based changes
-        if (direction.sqrMagnitude < 1)
+        if (direction.sqrMagnitude < 0.5f)
         {
             switch (Status)
             {
                 case Mission.Status.Planned:
-                    Status = Mission.Status.Started;
                     break;
                 case Mission.Status.Started:
                     Status = Mission.Status.Going;
@@ -116,9 +118,12 @@ public class MissionManager : MonoBehaviour
                 case Mission.Status.Returning:
                     break;
                 case Mission.Status.Done:
+                    visible = false;
                     break;
             }
         }
+        float fadevalue = Mathf.MoveTowards(fade.color.a, visible?0:1, Time.deltaTime);
+        fade.color = new Color(0, 0, 0, fadevalue);
     }
 
     private void OnDrawGizmos()

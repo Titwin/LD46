@@ -210,7 +210,7 @@ MonoBehaviour:
   rb: {fileID: 941173733323684891}
   collider: {fileID: 6930423863741655110}
   renderer: {fileID: 4694656606556000012}
-  blood: 15
+  blood: 10
   tile: {fileID: 0}
   fearMask:
     serializedVersion: 2

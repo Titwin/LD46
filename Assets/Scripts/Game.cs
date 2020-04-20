@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
+    public MissionManager workflow;
     public GameObject cover;
     public Player player;
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class Game : MonoBehaviour
             {
                 player.gameObject.SetActive(true);
                 cover.SetActive(false);
+                workflow.visible = true;
             }
         }
     }

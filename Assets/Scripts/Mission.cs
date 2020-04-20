@@ -14,7 +14,7 @@ public class Mission : MonoBehaviour
     public Vector2 basePosition;
     public Vector2 missionPosition;
     public float timeOutTimer = 10;
-
+    public float startBlood = 100;
     public string[] messages;
 
     private void OnDrawGizmosSelected()
