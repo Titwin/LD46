@@ -30,6 +30,7 @@ public class Monster : MonoBehaviour
     public AudioClip attackAudioClip;
     public AudioClip bittingAudioClip;
     public AudioClip[] eatingAudioClips;
+    private List<AudioClip> unusedEatingAudioClips = new List<AudioClip>();
 
     // Start is called before the first frame update
     void Start()
@@ -229,9 +230,18 @@ public class Monster : MonoBehaviour
             FXManager.instance.EmitBlood(target.transform.position, direction, 15);
             yield return new WaitForEndOfFrame();
         }
-        int eatingAudioIndex = Random.Range(0, eatingAudioClips.Length - 1);
-        audioSource.pitch = 1;
-        audioSource.PlayOneShot(eatingAudioClips[eatingAudioIndex]);
+        if (Random.Range(0,10) < 4)
+        {
+            if (unusedEatingAudioClips.Count == 0) {
+                unusedEatingAudioClips.AddRange(eatingAudioClips);
+            }
+
+            int eatingAudioIndex = Random.Range(0, unusedEatingAudioClips.Count - 1);
+            audioSource.pitch = 1;
+            AudioClip usedAudioClip = unusedEatingAudioClips[eatingAudioIndex];
+            unusedEatingAudioClips.Remove(usedAudioClip);
+            audioSource.PlayOneShot(usedAudioClip);
+        }
         player.uiBloodFrame.SetActive(false);
         //restore physics
        // this.body.isKinematic = false;
