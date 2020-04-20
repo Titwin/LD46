@@ -58,6 +58,18 @@ public class Player : MonoBehaviour
             Score += 10;
         }
     }
+    public Vector2 GetInputAxis()
+    {
+        return new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+    }
+    public bool GetButtonDown1()
+    {
+        return Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z);
+    }
+    public bool GetButtonDown2()
+    {
+        return Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.X);
+    }
     public void OnKillGhoul(bool car)
     {
         if (car)

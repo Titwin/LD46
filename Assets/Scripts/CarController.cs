@@ -19,7 +19,7 @@ public class CarController : MonoBehaviour
     {
         if (readInput && player.Active)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (player.GetButtonDown1())
             {
                 player.ExitCar();
             }

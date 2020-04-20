@@ -59,11 +59,11 @@ public class Monster : MonoBehaviour
         }
         if (!animating)
         {
-            Vector2 d = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            Vector2 d = player.GetInputAxis();
             bool interacting = false;
             if (!firstFrame)
             {
-                if(Input.GetKeyDown(KeyCode.Space))
+                if(player.GetButtonDown1())
                 {
                     RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one, ennemySearchRadius, transform.up, 3f, ennemyMask);
                     if (hit.collider != null)
@@ -81,7 +81,7 @@ public class Monster : MonoBehaviour
                         interacting = true;
                     }
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftControl)){
+                else if (player.GetButtonDown2()){
                     interacting = true;
                     StartCoroutine(DoAttack());
                 }
