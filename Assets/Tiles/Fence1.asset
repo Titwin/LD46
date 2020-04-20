@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8860c919ffea79545bf9c4da3aa3fdc9, type: 3}
   m_Name: Fence1
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 21300000, guid: 436b01c0fca5987459d6523e5064fe0f, type: 3}
+  m_DefaultSprite: {fileID: 8472753932569126388, guid: e0164edf2f146d94793b60fa7dd6203f,
+    type: 3}
   m_DefaultGameObject: {fileID: 1613551342198607211, guid: 889ac029dc9d58649a80179c9c61d997,
     type: 3}
   m_DefaultColliderType: 2
