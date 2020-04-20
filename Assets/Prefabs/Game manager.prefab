@@ -336,7 +336,7 @@ Transform:
   m_GameObject: {fileID: 280223890}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 187714885}
   m_Father: {fileID: 1733059854}
@@ -533,6 +533,9 @@ GameObject:
   - component: {fileID: 1733059854}
   - component: {fileID: 1733059856}
   - component: {fileID: 1733059855}
+  - component: {fileID: 738601137}
+  - component: {fileID: 738601138}
+  - component: {fileID: 738601139}
   m_Layer: 0
   m_Name: Game workflow
   m_TagString: Untagged
@@ -569,9 +572,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2aac43eb97aefa4bad9d5dcd1519c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMission: 0
+  missions:
+  - {fileID: 1733059855}
+  - {fileID: 738601137}
+  - {fileID: 738601139}
+  - {fileID: 738601138}
   mission: {fileID: 1733059855}
   dialog: {fileID: 30267496}
   fade: {fileID: 8611394801654008256}
+  visible: 0
   status: 5
   player: {fileID: 0}
   locationCursor: {fileID: 649815781}
@@ -593,12 +603,88 @@ MonoBehaviour:
   status: 0
   basePosition: {x: -83.8, y: -9.6}
   missionPosition: {x: 14, y: 0}
-  timeOutTimer: 10
-  startBlood: 100
+  endPosition: {x: -85.81, y: -9.6}
+  timeOutTimer: 30
+  startBlood: 80
   messages:
+  - '[[mission planned]]'
   - I could go for a snack. Let's take the car. (SPACE KEY)
-  - ok
   - I like that place in midtown.
+  - Time to eat! (SPACE KEY)
+  - The sun will rise soon. I should get going.
+  - Great! now a good night of sleep.
+--- !u!114 &738601137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733059853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6a4e1392a445140b5c43efe677c26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: 0
+  basePosition: {x: -83.8, y: -9.6}
+  missionPosition: {x: 44.3, y: -34.6}
+  endPosition: {x: -85.81, y: -9.6}
+  timeOutTimer: 30
+  startBlood: 60
+  messages:
+  - '[[mission planned]]'
+  - Oh I am feeling a bit hungry.
+  - I really feel like a picnic under the trees.
+  - Time to eat! (SPACE KEY)
+  - The sun will rise soon. I should get going.
+  - Great! now a good night of sleep.
+--- !u!114 &738601138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733059853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6a4e1392a445140b5c43efe677c26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: 0
+  basePosition: {x: -83.8, y: -9.6}
+  missionPosition: {x: -27.4, y: 23.56}
+  endPosition: {x: -85.81, y: -9.6}
+  timeOutTimer: 30
+  startBlood: 30
+  messages:
+  - '[[mission planned]]'
+  - OH I AM STARVING.
+  - ANYTHING WILL DO.
+  - Time to eat! (SPACE KEY)
+  - The sun will rise soon. I should get going.
+  - Great! now a good night of sleep.
+--- !u!114 &738601139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733059853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6a4e1392a445140b5c43efe677c26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: 0
+  basePosition: {x: -83.8, y: -9.6}
+  missionPosition: {x: 80.1, y: -3.2}
+  endPosition: {x: -85.81, y: -9.6}
+  timeOutTimer: 30
+  startBlood: 80
+  messages:
+  - '[[mission planned]]'
+  - Oh Guillermo told me about a new shopping center.
+  - I should try the food, the drive through sounds good.
   - Time to eat! (SPACE KEY)
   - The sun will rise soon. I should get going.
   - Great! now a good night of sleep.
@@ -828,6 +914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54915adf81458704e9e439a71ee413a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  workflow: {fileID: 1733059856}
   cover: {fileID: 1746793660}
   player: {fileID: 0}
 --- !u!1001 &7918284700286614206

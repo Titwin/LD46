@@ -8,6 +8,11 @@ public class UIDialog : MonoBehaviour
     public Image avatar;
     public Text text;
     public RectTransform container;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip talkingAudioClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +23,7 @@ public class UIDialog : MonoBehaviour
     {
         this.gameObject.SetActive(true);
         text.text = value;
+        audioSource.PlayOneShot(talkingAudioClip);
     }
     // Update is called once per frame
     void Update()

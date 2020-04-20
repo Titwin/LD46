@@ -17,7 +17,7 @@ public class CarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (readInput)
+        if (readInput && player.Active)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
