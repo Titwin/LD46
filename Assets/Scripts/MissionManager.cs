@@ -26,6 +26,7 @@ public class MissionManager : MonoBehaviour
         set { 
             if (status != value)
             {
+                Debug.Log("s:" + status + "->" + value);
                 dialog.ShowText(mission.messages[(int)value]);
                 status = value;
             }
@@ -124,6 +125,7 @@ public class MissionManager : MonoBehaviour
                         player.ExitCar();
                     }
                     Status = Mission.Status.Done;
+                    StartCoroutine(DoNextMission());
                     break;
                 case Mission.Status.Done:
                     //nothing
@@ -149,7 +151,6 @@ public class MissionManager : MonoBehaviour
                 case Mission.Status.Returning:
                     break;
                 case Mission.Status.Done:
-                    StartCoroutine(DoNextMission());
                     break;
             }
         }

@@ -23,12 +23,16 @@ public class UIDialog : MonoBehaviour
     {
         this.gameObject.SetActive(true);
         text.text = value;
-        audioSource.PlayOneShot(talkingAudioClip);
+        if (value.Length > 0)
+        {
+            audioSource.PlayOneShot(talkingAudioClip);
+        }
     }
     // Update is called once per frame
     void Update()
     {
         avatar.rectTransform.rotation = Quaternion.Euler(0, 0, Mathf.Sin(Time.time*360/120)*5);
+        text.rectTransform.rotation = Quaternion.Euler(0, 0, Mathf.Sin(Time.time * 360 / 120));
     }
 
     void Hide()
