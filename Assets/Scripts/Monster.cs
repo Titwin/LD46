@@ -24,7 +24,7 @@ public class Monster : MonoBehaviour
     public Collider2D attackBox;
     public ContactFilter2D attackFilter;
     bool firstFrame = true;
-    bool animating = false;
+    public bool animating = false;
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip attackAudioClip;
@@ -182,6 +182,34 @@ public class Monster : MonoBehaviour
                 }
             }
         }
+    }
+    public Transform ClosestPerson()
+    {
+        var sight = new Collider2D[8];
+
+        int sightCount = 0;
+        float radius = 2;
+        while (sightCount==0 && radius < 32)
+        {
+            sightCount = Physics2D.OverlapCircleNonAlloc(this.transform.position, radius, sight, attackFilter.layerMask);
+            radius *= 2;
+        }
+        Transform result = null;
+        float d = float.MaxValue;
+        for (int s = 0; s < sightCount; ++s)
+        {
+            if (sight[s].attachedRigidbody != this.body)
+            {
+                var candidate = sight[s].transform;
+                float d2 = Vector2.Distance(this.transform.position, candidate.position);
+                if (d2 < d)
+                {
+                    d = d2;
+                    result = candidate.transform;
+                }
+            }
+        }
+        return result;
     }
     IEnumerator DoDash(Person target)
     {

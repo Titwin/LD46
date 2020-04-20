@@ -46,11 +46,12 @@ public class MissionManager : MonoBehaviour
         Vector2 direction = Vector2.zero;
         time += Time.deltaTime;
         full = player.blood > 99;
+        locationCursor.enabled = true;
+
         switch (Status)
         {
             case Mission.Status.Planned:
                 player.blood = mission.startBlood;
-                Status = Mission.Status.Started;
                 break;
             case Mission.Status.Started:
                 direction = mission.basePosition - position;
@@ -62,7 +63,17 @@ public class MissionManager : MonoBehaviour
                 locationCursor.transform.position = mission.missionPosition;
                 break;
             case Mission.Status.Eating:
-                direction = mission.missionPosition - position;
+                direction = Vector2.zero;
+                locationCursor.enabled = false;
+                if (!player.personController.animating)
+                {
+                    Transform closest = player.personController.ClosestPerson();
+                    if (closest)
+                    {
+                        direction = (Vector2)closest.position - position;
+                        locationCursor.transform.position = (Vector2)closest.position;
+                    }
+                }
                 break;
             case Mission.Status.Returning:
                 direction = mission.basePosition - position;
@@ -72,14 +83,23 @@ public class MissionManager : MonoBehaviour
                 //nothing
                 break;
         }
-        arrowPivot.transform.position = position;
-        arrowPivot.transform.LookAt(locationCursor.transform.position);
+        if (direction != Vector2.zero)
+        {
+            arrowPivot.gameObject.SetActive(true);
+            arrowPivot.transform.position = position;
+            arrowPivot.transform.LookAt(locationCursor.transform.position);
+        }
+        else
+        {
+            arrowPivot.gameObject.SetActive(false);
+        }
         // checkpoint based changes
         if (direction.sqrMagnitude < 0.5f)
         {
             switch (Status)
             {
                 case Mission.Status.Planned:
+                    Status = Mission.Status.Started;
                     break;
                 case Mission.Status.Started:
                     Status = Mission.Status.Going;
