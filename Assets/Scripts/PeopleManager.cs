@@ -60,6 +60,14 @@ public class PeopleManager : MonoBehaviour
                     }
                 }
             }
+            else if (Map.map[cell].type == MapTile.Type.Grave)
+            {
+                if (Random.value < density)
+                {
+
+                    AddGhoul(Map.GetWorldPosition(cell));
+                }
+            }
         }
     }
     public IPerson AddGhoul(Vector2 position)
