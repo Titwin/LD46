@@ -29,6 +29,9 @@ public class Ghoul : MonoBehaviour,IPerson
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip attackAudioClip;
+    public AudioClip[] spawningAudioClips;
+    public AudioClip[] dyingAudioClips;
+
     float eatCooldown = 0;
     // Start is called before the first frame update
     void Start()
@@ -59,6 +62,9 @@ public class Ghoul : MonoBehaviour,IPerson
     {
         lastNonZeroDirection = direction;
         firstFrame = true;
+
+        int spawningAudioIndex = Random.Range(0, spawningAudioClips.Length - 1);
+        audioSource.PlayOneShot(spawningAudioClips[spawningAudioIndex]);
     }
 
     void Teleport(Vector2 position)
@@ -208,6 +214,9 @@ public class Ghoul : MonoBehaviour,IPerson
             GetComponent<SpriteRenderer>().sortingOrder = -1;
             FXManager.instance.EmitBloodStain(body.position);
             animation.LaunchAnimation(AnimationController.AnimationType.DYING);
+
+            int dyingSoundIndex = Random.Range(0, dyingAudioClips.Length - 1);
+            audioSource.PlayOneShot(dyingAudioClips[dyingSoundIndex]);
         }
     }
 
