@@ -237,7 +237,7 @@ MonoBehaviour:
   body: {fileID: 6663288361956846464}
   sightMask:
     serializedVersion: 2
-    m_Bits: 53248
+    m_Bits: 20480
   ennemyMask:
     serializedVersion: 2
     m_Bits: 4096
@@ -254,7 +254,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 49152
+      m_Bits: 16384
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0

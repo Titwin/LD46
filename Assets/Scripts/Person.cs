@@ -165,28 +165,28 @@ public class Person : MonoBehaviour, IPerson
     {
         Destroy(this.gameObject);
     }
-    public float GetKissed()
+    public float GetKissed(bool contagious)
     {
         stunned = true; 
         float tblood = this.blood;
         this.blood = 0;
         if (Active)
         {
-            StartCoroutine(DoGetKissed());
+            StartCoroutine(DoGetKissed(contagious));
         }
         else
         {
-            Die();
+            Die(contagious);
         }
        
         return tblood;
     }
-    IEnumerator DoGetKissed()
+    IEnumerator DoGetKissed(bool contagious)
     {
         animation.LaunchAnimation(AnimationController.AnimationType.KISSED);
         yield return new WaitForSeconds(1);
         FXManager.instance.EmitBloodStain(rb.position);
-        Die(true);
+        Die(contagious);
     }
     public void GetHurt(GameObject source, int amount = 1)
     {
