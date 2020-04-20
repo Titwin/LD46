@@ -17,6 +17,15 @@ TextureImporter:
   - first:
       213: 7777102763516868089
     second: Building-3x3x3-B_4
+  - first:
+      213: -6964377856570748739
+    second: Building-3x3x3-B_5
+  - first:
+      213: 5169987186153341086
+    second: Building-3x3x3-B_6
+  - first:
+      213: -6091178698356100868
+    second: Building-3x3x3-B_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -133,7 +142,7 @@ TextureImporter:
         width: 192
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -154,7 +163,7 @@ TextureImporter:
         width: 192
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -175,7 +184,7 @@ TextureImporter:
         width: 192
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -196,7 +205,7 @@ TextureImporter:
         width: 192
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -217,7 +226,7 @@ TextureImporter:
         width: 192
         height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,6 +234,69 @@ TextureImporter:
       bones: []
       spriteID: 22ca1be4d93cf104ea23f54959e1ffc2
       internalID: 7777102763516868089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building-3x3x3-B_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a6fa4ee226377f4392ea7476760ae98
+      internalID: -6964377856570748739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building-3x3x3-B_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a201f050f201ad841ad1db00b4d0befc
+      internalID: 5169987186153341086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building-3x3x3-B_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 123
+        width: 64
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 052694d24849a20439d28f0bdf48d1ac
+      internalID: -6091178698356100868
       vertices: []
       indices: 
       edges: []
