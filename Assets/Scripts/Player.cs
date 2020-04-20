@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject deadText;
     int score;
     public int Score
     {
@@ -156,6 +157,7 @@ public class Player : MonoBehaviour
     }
     IEnumerator DieAndWait()
     {
+        deadText.SetActive(true);
         yield return new WaitForSeconds(3);
         dialog.ShowText("Press any key to restart", false);
         while (!Input.anyKey)
