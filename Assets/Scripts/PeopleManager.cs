@@ -107,13 +107,10 @@ public class PeopleManager : MonoBehaviour
                 {
                     continue;
                 }
-                if(!p.Active && !p.Active)
+                if (!p.Active && !p.Alive)
                 {
-                    if (!p.Alive)
-                    {
-                        p.Destroy();
-                        people.RemoveAt(i);
-                    }
+                    p.Destroy();
+                    people.RemoveAt(i);
                 }
                 else if (p.Active && d > maxUpdateDistance * 1.1f)
                 {
