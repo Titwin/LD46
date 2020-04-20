@@ -799,7 +799,7 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 1
       scalar: 0.5
       minScalar: 5
       maxCurve:
@@ -807,7 +807,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0.25
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -969,7 +969,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 0.025
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5412,8 +5412,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1560568199
-  m_SortingLayer: 2
+  m_SortingLayerID: -2099388397
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
@@ -5485,12 +5485,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blood: {fileID: 2356211564819378400}
   bloodDecal:
-  - {fileID: 1432424478}
-  - {fileID: 1701003507}
   - {fileID: 276958224}
+  - {fileID: 1701003507}
   - {fileID: 1416657122}
   - {fileID: 1416657122}
   - {fileID: 524756595}
   - {fileID: 1722137378}
   - {fileID: 467311264}
   - {fileID: 1032020236}
+  decals: []
