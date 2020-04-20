@@ -302,6 +302,9 @@ TextureImporter:
   - first:
       213: -4549087910461705734
     second: Road2_99
+  - first:
+      213: 2822958909818024754
+    second: bark
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -2505,6 +2508,27 @@ TextureImporter:
       bones: []
       spriteID: f6a2995d3775f224dbfaca5e407e19c6
       internalID: -4549087910461705734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bark
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 25
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62eca6076706e4649b9b7eb009a30221
+      internalID: 2822958909818024754
       vertices: []
       indices: 
       edges: []
