@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
                 }
 
                 personController.Die();
-                dialog.ShowText("Arrrrgg !!!");
+                dialog.ShowText("Arrrrgg !!!", false);
                 StartCoroutine(DieAndWait());
             }
             uiBlood.SetValue(Mathf.Clamp01(blood / 100f));
@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
     IEnumerator DieAndWait()
     {
         yield return new WaitForSeconds(3);
-        dialog.ShowText("Press any key to restart");
+        dialog.ShowText("Press any key to restart", false);
         while (!Input.anyKey)
         {
             yield return new WaitForEndOfFrame();

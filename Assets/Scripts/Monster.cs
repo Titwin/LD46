@@ -29,6 +29,7 @@ public class Monster : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip attackAudioClip;
     public AudioClip bittingAudioClip;
+    public AudioClip dyingAudioClip;
     public AudioClip[] eatingAudioClips;
     private List<AudioClip> unusedEatingAudioClips = new List<AudioClip>();
 
@@ -308,6 +309,7 @@ public class Monster : MonoBehaviour
             alive = false; 
             FXManager.instance.EmitBloodStain(body.position);
             animation.LaunchAnimation(AnimationController.AnimationType.DYING);
+            audioSource.PlayOneShot(dyingAudioClip);
         }
     }
     private void OnDrawGizmos()
