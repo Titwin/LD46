@@ -14,14 +14,14 @@ public class Person : MonoBehaviour, IPerson
     public Rigidbody2D rb;
     public Collider2D collider;
     public SpriteRenderer renderer;
-    float t = 0;
+    float t = -1;
     public float blood = 1;
     public MapTile tile;
-
+    bool animating = false;
     Vector2 fearSource;
 
-    static float fearRange = 6;
-    static float calmRange = 10;
+    public float fearRange = 6;
+    public float calmRange = 10;
     public enum Status
     {
         Wandering, Scared
@@ -37,6 +37,8 @@ public class Person : MonoBehaviour, IPerson
     {
         get
         {
+            StopAllCoroutines();
+            animating = false;
             return this.gameObject.activeSelf;
         }
         set
@@ -49,6 +51,8 @@ public class Person : MonoBehaviour, IPerson
 
     public Vector2 Position => rb.position;
 
+    public bool Animating => animating;
+
     private void OnValidate()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -59,11 +63,15 @@ public class Person : MonoBehaviour, IPerson
     public void Sense()
     {
         tile = Map.GetTile(rb.position);
-        fearSource = Player.main.position;
-        var fdirection = this.rb.position - fearSource;
-        if (fdirection.magnitude < fearRange)
+
+        if (Player.main.walking)
         {
-            status = Status.Scared;
+            fearSource = Player.main.position;
+            var fdirection = this.rb.position - fearSource;
+            if (fdirection.magnitude < fearRange)
+            {
+                status = Status.Scared;
+            }
         }
     }
     public void Think()
@@ -87,18 +95,19 @@ public class Person : MonoBehaviour, IPerson
         }
         if (status == Status.Wandering)
         {
-            t += Time.deltaTime;
-            if (t > 1)
+            if (t<0 || t > 1)
             {
-                var cellNeighbor = Map.GetTileNeighbor(rb.position);
+                var cellNeighbor = Map.GetTileNeighbor4(rb.position);
                 for (int i = 0; i < cellNeighbor.Length;++i)
                 {
                     var cell = cellNeighbor[i];
                     if (cell)
                     {
-                        if (cell.type == MapTile.Type.Walk)
+                        if (cell.type == MapTile.Type.Walk || cell.type == MapTile.Type.StreetWalk)
                         {
                             Direction = (Vector2Int)Map.Directions[i];
+                            Direction.y += Random.Range(-0.1f, 0.1f);
+                            Direction.x += Random.Range(-0.1f, 0.1f);
                             break;
                         }
                     }
@@ -124,6 +133,7 @@ public class Person : MonoBehaviour, IPerson
                     Direction = new Vector2(0, 1);
                 }*/
             }
+            t += Time.deltaTime;
         }
     }
     public void Act()
@@ -139,7 +149,10 @@ public class Person : MonoBehaviour, IPerson
             transform.up = Direction;
         }
     }
-
+    public void Destroy()
+    {
+        Destroy(this.gameObject);
+    }
     public float GetKissed()
     {
         stunned = true;
@@ -155,11 +168,11 @@ public class Person : MonoBehaviour, IPerson
         FXManager.instance.EmitBloodStain(rb.position);
         Die();
     }
-    public void GetHurt(GameObject source)
+    public void GetHurt(GameObject source, int amount = 1)
     {
         if (alive)
         {
-            --hp;
+            hp-= amount;
             FXManager.instance.EmitBlood(rb.position, this.transform.position-source.transform.position, 10);
             FXManager.instance.EmitBloodStain(rb.position);
             if (hp <= 0)
@@ -172,7 +185,7 @@ public class Person : MonoBehaviour, IPerson
     void Die()
     {
         rb.simulated = false;
-       // renderer.color = Color.gray;
+        renderer.color = Color.gray;
         renderer.sortingOrder = -1;
         audioSource.pitch = 1f + Random.Range(-0.3f, 0.3f);
         audioSource.PlayOneShot(killedAudioClip);
@@ -183,14 +196,14 @@ public class Person : MonoBehaviour, IPerson
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == Constants.LayerCar)
+        if (collision.gameObject.layer == Constants.LayerCar)
         {
             Car car = collision.gameObject.GetComponent<Car>();
             if (car)
             {
-                if (car.currentSpeed > 1)
+                if (car.currentSpeed > 2)
                 {
-                    GetHurt(collision.gameObject);
+                    GetHurt(collision.gameObject, 10);
                 }
             }
         }

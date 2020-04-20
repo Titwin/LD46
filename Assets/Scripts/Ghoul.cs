@@ -11,7 +11,7 @@ public class Ghoul : MonoBehaviour,IPerson
     public float directionSpeed = 0.7f;
     public float speed = 1f;
     public bool alive = true;
-    int hp = 1;
+    public int hp = 1;
     public Rigidbody2D body;
     private Vector2 fixedUpdateDirection;
     private Vector2 lastNonZeroDirection;
@@ -47,9 +47,9 @@ public class Ghoul : MonoBehaviour,IPerson
             Car car = collision.gameObject.GetComponent<Car>();
             if (car)
             {
-                if (car.currentSpeed > 1)
+                if (car.currentSpeed > 2)
                 {
-                    GetHurt(collision.gameObject);
+                    GetHurt(collision.gameObject,10);
                 }
             }
         }
@@ -91,7 +91,7 @@ public class Ghoul : MonoBehaviour,IPerson
         for (int c = 0; c < attackableCount; ++c)
         {
             // RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one, ennemyAttackRadius, transform.up, ennemyAttackRadius, ennemyMask);
-            //if (hit.collider != null)
+            if (attackable[c].gameObject != this.gameObject)
             {
                 Person person = attackable[c].gameObject.GetComponent<Person>();
                 if (person)
@@ -105,6 +105,14 @@ public class Ghoul : MonoBehaviour,IPerson
                     {
                         Attack(monster);
                     }
+                    else
+                    {
+                        Ghoul other = attackable[c].gameObject.GetComponent<Ghoul>();
+                        if (other)
+                        {
+                            Attack(other);
+                        }
+                    }
                 }
             }
         }
@@ -115,6 +123,10 @@ public class Ghoul : MonoBehaviour,IPerson
         animating = false;
     }
     public void Attack(Person target)
+    {
+        target.GetHurt(this.gameObject);
+    }
+    public void Attack(Ghoul target)
     {
         target.GetHurt(this.gameObject);
     }
@@ -173,7 +185,7 @@ public class Ghoul : MonoBehaviour,IPerson
     }
 
 
-    public void GetHurt(GameObject source)
+    public void GetHurt(GameObject source, int amount = 1)
     {
         if (alive)
         {
@@ -192,7 +204,8 @@ public class Ghoul : MonoBehaviour,IPerson
             alive = false;
             body.simulated = false;
             collider.enabled = false;
-            GetComponent<Renderer>().sortingOrder = -1;
+            GetComponent<SpriteRenderer>().color = Color.gray;
+            GetComponent<SpriteRenderer>().sortingOrder = -1;
             FXManager.instance.EmitBloodStain(body.position);
             animation.LaunchAnimation(AnimationController.AnimationType.DYING);
         }
@@ -206,9 +219,11 @@ public class Ghoul : MonoBehaviour,IPerson
     int attackableCount;
     int sightCount;
     RaycastHit2D dashable;
-    Transform target;
+    public Transform target;
     public bool Active { 
-        get { 
+        get {
+            StopAllCoroutines();
+            animating = false;
             return this.gameObject.activeSelf; 
         }
         set {
@@ -219,6 +234,8 @@ public class Ghoul : MonoBehaviour,IPerson
     public bool Alive => alive;
 
     public Vector2 Position => body.position;
+
+    public bool Animating => animating;
 
     public void Sense()
     {
@@ -231,7 +248,7 @@ public class Ghoul : MonoBehaviour,IPerson
     {
         bAttack = false;
         bEat = false;
-        if (attackableCount > 0)
+        if (attackableCount > 1)
         {
             bAttack = true;
         }else if (dashable.collider != null)
@@ -244,10 +261,9 @@ public class Ghoul : MonoBehaviour,IPerson
             float d = float.MaxValue;
             for(int s = 0; s < sightCount; ++s)
             {
-                
-                var candidate = sight[s].transform;
-                if (candidate != this.transform)
+                if (sight[s].attachedRigidbody !=this.body)
                 {
+                    var candidate = sight[s].transform;
                     float d2 = Vector2.Distance(this.transform.position, candidate.position);
                     if (d2 < d)
                     {
@@ -329,5 +345,10 @@ public class Ghoul : MonoBehaviour,IPerson
             }
         }
         firstFrame = false;
+    }
+
+    public void Destroy()
+    {
+        Destroy(this.gameObject);
     }
 }

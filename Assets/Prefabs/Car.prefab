@@ -284,9 +284,9 @@ MonoBehaviour:
   door: {fileID: 1807833596}
   cameraPivot: {fileID: 4593851605021147013}
   direction: {x: 0, y: 0}
-  rotationSpeed: 300
+  rotationSpeed: 450
   speed: 10
-  acceleration: 8
+  acceleration: 6
   deceleration: 40
   motorAudioSource: {fileID: 6166947354030470474}
   doorsAudioSource: {fileID: 6044828647987796114}
@@ -400,7 +400,8 @@ AudioSource:
   m_GameObject: {fileID: 1171714043691682672}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6823647743178994595, guid: abae5a0b9d8069046944bf5d944f9897,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.8

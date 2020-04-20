@@ -11,14 +11,15 @@ public class Map : MonoBehaviour
 
     public static Vector3Int[] Directions =
     {
-        new Vector3Int(-1,-1,0),
         new Vector3Int(-1, 0, 0),
-        new Vector3Int(-1, 1, 0),
         new Vector3Int(0, -1, 0),
         new Vector3Int(0, 1, 0),
+        new Vector3Int(1, 0, 0),
         new Vector3Int(1, 1, 0),
-        new Vector3Int(1, 1, 0),
-        new Vector3Int(1, -1, 0)
+        new Vector3Int(1, -1, 0),
+        new Vector3Int(-1, 1, 0),
+        new Vector3Int(-1,-1,0)
+
     };
 
     private void Awake()
@@ -60,7 +61,7 @@ public class Map : MonoBehaviour
     {
         return main.tilemap.GetTile<MapTile>(main.tilemap.layoutGrid.WorldToCell(position));
     }
-    public static MapTile[] GetTileNeighbor(Vector2 position)
+    public static MapTile[] GetTileNeighbor8(Vector2 position)
     {
         MapTile[] result = new MapTile[8];
         result[0] = main.tilemap.GetTile<MapTile>(main.tilemap.layoutGrid.WorldToCell(position) + Directions[0]);
@@ -71,6 +72,15 @@ public class Map : MonoBehaviour
         result[5] = main.tilemap.GetTile<MapTile>(main.tilemap.layoutGrid.WorldToCell(position) + Directions[5]);
         result[6] = main.tilemap.GetTile<MapTile>(main.tilemap.layoutGrid.WorldToCell(position) + Directions[6]);
         result[7] = main.tilemap.GetTile<MapTile>(main.tilemap.layoutGrid.WorldToCell(position) + Directions[7]);
+        return result;
+    }
+    public static MapTile[] GetTileNeighbor4(Vector2 position)
+    {
+        MapTile[] result = new MapTile[8];
+        result[0] = main.tilemap.GetTile<MapTile>(main.tilemap.layoutGrid.WorldToCell(position) + Directions[0]);
+        result[1] = main.tilemap.GetTile<MapTile>(main.tilemap.layoutGrid.WorldToCell(position) + Directions[1]);
+        result[2] = main.tilemap.GetTile<MapTile>(main.tilemap.layoutGrid.WorldToCell(position) + Directions[2]);
+        result[3] = main.tilemap.GetTile<MapTile>(main.tilemap.layoutGrid.WorldToCell(position) + Directions[3]);
         return result;
     }
     private void OnDrawGizmosSelected()

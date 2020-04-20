@@ -7,7 +7,7 @@ public class MapTile : RuleTile
 {
     public enum Type
     {
-        Street, Walk, Building, Vegetation
+        Street, Walk, Building, Vegetation, StreetWalk
     }
 
     [Header("General Settings")]

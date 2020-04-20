@@ -249,7 +249,7 @@ MonoBehaviour:
   sensor: {fileID: 5797690690134196521}
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 6144
   sensorDistance: 3
   maxSpeed: 4
   speedAdjust:
@@ -294,9 +294,9 @@ MonoBehaviour:
   door: {fileID: 5797690690134196521}
   cameraPivot: {fileID: 0}
   direction: {x: 0, y: 0}
-  rotationSpeed: 600
-  speed: 4
-  acceleration: 8
+  rotationSpeed: 1200
+  speed: 3
+  acceleration: 5
   deceleration: 40
   motorAudioSource: {fileID: 6376815566734101372}
   doorsAudioSource: {fileID: 5057724640925011798}
@@ -474,7 +474,8 @@ AudioSource:
   m_GameObject: {fileID: 3660509830765777813}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6823647743178994595, guid: abae5a0b9d8069046944bf5d944f9897,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

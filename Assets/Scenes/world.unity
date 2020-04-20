@@ -1704,6 +1704,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3054174038593194624, guid: 45411877a7bf3e848b8fa2408e252c34,
         type: 3}
+    - target: {fileID: 7785837814099152580, guid: 269498d392e060244b3baa550485490d,
+        type: 3}
+      propertyPath: density
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7785837814099152581, guid: 269498d392e060244b3baa550485490d,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -158,13 +158,26 @@ public class Monster : MonoBehaviour
     }
     public void Attack(Person target)
     {
-        target.GetHurt(this.gameObject);
+        target.GetHurt(this.gameObject,3);
     }
     public void Attack(Ghoul target)
     {
-        target.GetHurt(this.gameObject);
+        target.GetHurt(this.gameObject,3);
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == Constants.LayerCar)
+        {
+            Car car = collision.gameObject.GetComponent<Car>();
+            if (car)
+            {
+                if (car.currentSpeed > 2)
+                {
+                    GetHurt(collision.gameObject);
+                }
+            }
+        }
+    }
     IEnumerator DoDash(Person target)
     {
         animating = true;

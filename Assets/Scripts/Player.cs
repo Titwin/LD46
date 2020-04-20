@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public CarController carController;
     public Monster personController;
 
+    public bool walking = false;
     new public Cinemachine.CinemachineVirtualCamera camera;
 
     public static Player main;
@@ -76,6 +77,7 @@ public class Player : MonoBehaviour
         personController.gameObject.SetActive(true);
         camera.Follow = personController.transform;
         carController.StopEngine();
+        walking = true;
     }
     public void EnterCar()
     {
@@ -83,5 +85,6 @@ public class Player : MonoBehaviour
         personController.gameObject.SetActive(false);
         camera.Follow = carController.car.cameraPivot.transform;
         carController.StartEngine();
+        walking = false;
     }
 }

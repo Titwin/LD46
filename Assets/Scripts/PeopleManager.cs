@@ -13,6 +13,10 @@ public interface IPerson
     {
         get;
     }
+    bool Animating
+    {
+        get;
+    }
     Vector2 Position
     {
         get;
@@ -21,6 +25,8 @@ public interface IPerson
     void Think();
    
     void Act();
+
+    void Destroy();
 }
 public class PeopleManager : MonoBehaviour
 {
@@ -46,6 +52,9 @@ public class PeopleManager : MonoBehaviour
     }
     IPerson AddPerson(Vector2 position)
     {
+        position.y += Random.Range(-0.1f, 0.1f);
+        position.x += Random.Range(-0.1f, 0.1f);
+
         IPerson p;
         if (Random.value < 0.1f)
         {
@@ -81,14 +90,24 @@ public class PeopleManager : MonoBehaviour
                 toSpawn.RemoveAt(pos);
             }
         }
+        
         for (int i = people.Count-1;i >=0;--i)
         {
             IPerson p = people[i];
             float d = Vector2.Distance(playerPosition, p.Position);
             {
+                if (p.Animating)
+                {
+                    continue;
+                }
                 if (p.Active && d > maxUpdateDistance * 1.1f)
                 {
                     p.Active = false;
+                    if (!p.Alive)
+                    {
+                        p.Destroy();
+                        people.RemoveAt(i);
+                    }
                 }
                 else if (!p.Active && d < maxUpdateDistance)
                 {
@@ -106,7 +125,7 @@ public class PeopleManager : MonoBehaviour
     }
     public void OnDied(IPerson p)
     {
-        people.Remove(p);
+        //people.Remove(p);
         toSpawn.Add(p.Position);
     }
 }

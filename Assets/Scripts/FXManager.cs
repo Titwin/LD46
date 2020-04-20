@@ -6,6 +6,7 @@ public class FXManager : MonoBehaviour
 {
     public ParticleSystem blood;
     public SpriteRenderer[] bloodDecal;
+    public List<SpriteRenderer> decals = new List<SpriteRenderer>();
     // Start is called before the first frame update
 
     public static FXManager instance;
@@ -30,6 +31,13 @@ public class FXManager : MonoBehaviour
     }
     public void EmitBloodStain(Vector2 position)
     {
-        Instantiate<SpriteRenderer>(bloodDecal[Random.Range(0, bloodDecal.Length)], position, Quaternion.Euler(0, 0, Random.Range(0, 4) * 90), this.transform);
+        if (decals.Count > 4096)
+        {
+            var d = decals[0];
+            Destroy(d.gameObject);
+            decals.RemoveAt(0);
+        }
+        var stain = Instantiate<SpriteRenderer>(bloodDecal[Random.Range(0, bloodDecal.Length)], position, Quaternion.Euler(0, 0, Random.Range(0, 4) * 90), this.transform);
+        decals.Add(stain);
     }
 }
