@@ -261,6 +261,7 @@ public class Monster : MonoBehaviour
         target.transform.up = -direction;
         float blood = target.GetKissed(true);
         player.Feed(blood);
+        player.OnEatPerson();
         for (float t = 0; t < 1f; t += Time.deltaTime )
         {
             FXManager.instance.EmitBlood(target.transform.position, direction, 15);
