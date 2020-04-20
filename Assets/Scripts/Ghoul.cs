@@ -179,7 +179,7 @@ public class Ghoul : MonoBehaviour,IPerson
         audioSource.Stop();
         audioSource.PlayOneShot(attackAudioClip);
         target.transform.up = -direction;
-        float blood = target.GetKissed();
+        float blood = target.GetKissed(false);
        // player.Feed(blood);
         for (float t = 0; t < 1f; t += Time.deltaTime)
         {

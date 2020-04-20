@@ -21,16 +21,19 @@ public class MissionManager : MonoBehaviour
     public float time = 0;
     public bool full = false;
 
-    public Mission.Status Status {
+    public Mission.Status Status
+    {
         get => status;
-        set { 
+        set
+        {
             if (status != value)
             {
                 Debug.Log("s:" + status + "->" + value);
                 dialog.ShowText(mission.messages[(int)value]);
                 status = value;
             }
-        } }
+        }
+    }
 
     private void Start()
     {
@@ -113,13 +116,15 @@ public class MissionManager : MonoBehaviour
                     break;
                 case Mission.Status.Going:
                     Status = Mission.Status.Eating;
+                    if (!player.walking)
+                        player.ExitCar();
                     time = 0;
                     break;
                 case Mission.Status.Eating:
                     // do nothing
                     break;
                 case Mission.Status.Returning:
-                    
+
                     if (!player.walking)
                     {
                         player.ExitCar();
@@ -154,7 +159,7 @@ public class MissionManager : MonoBehaviour
                     break;
             }
         }
-        float fadevalue = Mathf.MoveTowards(fade.color.a, visible?0:1, Time.deltaTime);
+        float fadevalue = Mathf.MoveTowards(fade.color.a, visible ? 0 : 1, Time.deltaTime);
         fade.color = new Color(0, 0, 0, fadevalue);
     }
 
@@ -163,7 +168,7 @@ public class MissionManager : MonoBehaviour
         player.Active = false;
         visible = false;
         yield return new WaitForSeconds(3);
-        
+
         ++currentMission;
         currentMission %= missions.Length;
         if (currentMission < missions.Length)
@@ -174,7 +179,7 @@ public class MissionManager : MonoBehaviour
             yield return new WaitForSeconds(1);
             player.Active = true;
         }
-       
+
 
     }
     private void OnDrawGizmos()
@@ -187,7 +192,7 @@ public class MissionManager : MonoBehaviour
         switch (Status)
         {
             case Mission.Status.Planned:
-                Gizmos.DrawLine(position,mission.basePosition);
+                Gizmos.DrawLine(position, mission.basePosition);
                 break;
             case Mission.Status.Started:
                 //nothing

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8860c919ffea79545bf9c4da3aa3fdc9, type: 3}
   m_Name: Fence6
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 2316382511601338556, guid: e0164edf2f146d94793b60fa7dd6203f,
+  m_DefaultSprite: {fileID: 8076635767957027722, guid: a933efeec7daf9b44b8f85198db648db,
     type: 3}
   m_DefaultGameObject: {fileID: 3757724780864912115, guid: 797f7134071b8724da7ef6883b43d449,
     type: 3}

@@ -251,7 +251,7 @@ public class Monster : MonoBehaviour
 
         player.uiBloodFrame.SetActive(true);
         target.transform.up = -direction;
-        float blood = target.GetKissed();
+        float blood = target.GetKissed(true);
         player.Feed(blood);
         for (float t = 0; t < 1f; t += Time.deltaTime )
         {
