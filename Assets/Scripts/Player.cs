@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public static Player main;
     public GameObject uiBloodFrame;
 
+    public Transform carArrow;
     public Vector2 position {
         get {
             if (personController.gameObject.activeSelf)
@@ -59,7 +60,7 @@ public class Player : MonoBehaviour
         }
         
     }
-    private void Update()
+    private void LateUpdate()
     {
         // player is inside car
         if(carController.readInput)
@@ -69,7 +70,7 @@ public class Player : MonoBehaviour
         }
 
         // action
-        music.pitch = carController.readInput ? 1 : 0.5f;
+        music.pitch = Mathf.MoveTowards(music.pitch, carController.readInput ? 1 : 0.5f, Time.deltaTime * 2);
         camera.m_Lens.FieldOfView = Mathf.MoveTowards(camera.m_Lens.FieldOfView, carController.readInput ? (Mathf.Lerp(48,64,carController.car.currentSpeed/10)) : 32,30*Time.deltaTime);
 
         blood -= Time.deltaTime;
@@ -78,11 +79,16 @@ public class Player : MonoBehaviour
             personController.Die();
         }
         uiBlood.SetValue(Mathf.Clamp01(blood / 100f));
+
+        if (walking)
+        {
+            carArrow.transform.LookAt(carController.transform.position);
+        }
     }
 
     public void Feed(float amount)
     {
-        blood += amount;
+        blood = Mathf.Clamp(blood+amount,0,100);
     }
     public void ExitCar()
     {

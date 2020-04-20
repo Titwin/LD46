@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3051111815989798844}
   - component: {fileID: 7368121086712485631}
   m_Layer: 15
-  m_Name: New Sprite
+  m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: 1560568199
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 4549441096714467750, guid: 0da6d809b79838049ba58d782a2678b4,
+  m_Sprite: {fileID: 1436384685885175767, guid: 0da6d809b79838049ba58d782a2678b4,
     type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.5019608}
   m_FlipX: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   rb: {fileID: 941173733323684891}
   collider: {fileID: 6930423863741655110}
   renderer: {fileID: 4694656606556000012}
-  blood: 5
+  blood: 15
   tile: {fileID: 0}
   fearMask:
     serializedVersion: 2
