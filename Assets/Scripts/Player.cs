@@ -42,10 +42,22 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
+
         carController.readInput = true;
-        personController.gameObject.SetActive(false);
-        camera.Follow = carController.car.cameraPivot.transform;
-        carController.StartEngine();
+        if (walking)
+        {
+            carController.readInput = false;
+            personController.direction = carController.transform.right;
+            personController.gameObject.SetActive(true);
+            camera.Follow = personController.transform;
+            carController.StopEngine();
+            walking = true;
+        }
+        else
+        {
+            EnterCar();
+        }
+        
     }
     private void Update()
     {
