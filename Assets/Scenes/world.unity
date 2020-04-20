@@ -456,15 +456,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 649815780, guid: 08a89354abfd0ff47ad9908406233097, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 649815780, guid: 08a89354abfd0ff47ad9908406233097, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 649815780, guid: 08a89354abfd0ff47ad9908406233097, type: 3}
       propertyPath: m_LocalScale.z
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 649815781, guid: 08a89354abfd0ff47ad9908406233097, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 649815781, guid: 08a89354abfd0ff47ad9908406233097, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 649815781, guid: 08a89354abfd0ff47ad9908406233097, type: 3}
+      propertyPath: m_Size.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1746793660, guid: 08a89354abfd0ff47ad9908406233097, type: 3}
       propertyPath: m_IsActive
