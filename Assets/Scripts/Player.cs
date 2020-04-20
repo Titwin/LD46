@@ -84,10 +84,6 @@ public class Player : MonoBehaviour
             active = value;
         }
     }
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(10, 10, 100, 20), "blood:"+blood);
-    }
 
     private void Awake()
     {
