@@ -5302,6 +5302,7 @@ MonoBehaviour:
   animating: 0
   audioSource: {fileID: 4160898564691390722}
   attackAudioClip: {fileID: 8300000, guid: 19fc5268f2131497eb00b5abbd9d1528, type: 3}
+  punchAudioClip: {fileID: 8300000, guid: e979204af19774cf2bbe75309c95871d, type: 3}
   bittingAudioClip: {fileID: 8300000, guid: 916285d73d7194efcaf8b70c1e0b2eb9, type: 3}
   dyingAudioClip: {fileID: 8300000, guid: f6d8e65b2dcaa40ea955ba3495151a77, type: 3}
   eatingAudioClips:

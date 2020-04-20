@@ -28,6 +28,7 @@ public class Monster : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip attackAudioClip;
+    public AudioClip punchAudioClip;
     public AudioClip bittingAudioClip;
     public AudioClip dyingAudioClip;
     public AudioClip[] eatingAudioClips;
@@ -136,6 +137,7 @@ public class Monster : MonoBehaviour
         attackFilter.layerMask = ennemyMask;
         var attackable = new Collider2D[8];
         int count = Physics2D.OverlapCollider(attackBox, attackFilter, attackable);
+        audioSource.PlayOneShot(punchAudioClip);
         for (int c = 0; c < count; ++c)
         {
             // RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one, ennemyAttackRadius, transform.up, ennemyAttackRadius, ennemyMask);
