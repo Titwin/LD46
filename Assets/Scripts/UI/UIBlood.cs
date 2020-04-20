@@ -19,6 +19,6 @@ public class UIBlood : MonoBehaviour
     public void SetValue(float value)
     {
         this.value = value;
-        mask.rectTransform.sizeDelta = new Vector2(64, 128 * value);
+        mask.rectTransform.sizeDelta = new Vector2(64, 106 * value);
     }
 }

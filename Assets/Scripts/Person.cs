@@ -216,15 +216,19 @@ public class Person : MonoBehaviour, IPerson
             animation.LaunchAnimation(AnimationController.AnimationType.DYING);
         manager.OnDied(this);
         animating = false;
-        
+
         if (respawnAsGhoul)
         {
-            StartCoroutine(DoRespawnAsGhoul());
+            if (Active)
+            {
+                StartCoroutine(DoRespawnAsGhoul());
+            }
+            else
+            {
+                manager.AddGhoul(this.Position);
+            }
         }
-        else
-        {
-            manager.AddGhoul(this.Position);
-        }
+        
     }
 
     IEnumerator DoRespawnAsGhoul()

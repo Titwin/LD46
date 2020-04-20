@@ -36,6 +36,7 @@ public class PeopleManager : MonoBehaviour
     public List<Vector3> toSpawn;
 
     public float maxUpdateDistance = 25;
+    public LayerMask forbiddenMask;
     [Range(0, 1)] public float density;
     private void Start()
     {
@@ -43,15 +44,19 @@ public class PeopleManager : MonoBehaviour
         {
             if (Map.map[cell].type == MapTile.Type.Walk)
             {
-                if (Random.value < density)
+                var zone = Physics2D.OverlapPoint(Map.GetWorldPosition(cell), forbiddenMask);
+                if (zone == null)
                 {
-                    /*if (Random.value < 0.3)
+                    if (Random.value < density)
                     {
-                        AddGhoul(Map.GetWorldPosition(cell));
-                    }
-                    else*/
-                    {
-                        AddPerson(Map.GetWorldPosition(cell));
+                        /*if (Random.value < 0.3)
+                        {
+                            AddGhoul(Map.GetWorldPosition(cell));
+                        }
+                        else*/
+                        {
+                            AddPerson(Map.GetWorldPosition(cell));
+                        }
                     }
                 }
             }
