@@ -49,15 +49,29 @@ public class Player : MonoBehaviour
 
     public void OnKillPerson(bool car)
     {
-        Score += 10;
+        if (car)
+        {
+            Score += 25;
+        }
+        else
+        {
+            Score += 10;
+        }
     }
     public void OnKillGhoul(bool car)
     {
-        Score += 100;
+        if (car)
+        {
+            Score += 50;
+        }
+        else
+        {
+            Score += 100;
+        }
     }
     public void OnEatPerson()
     {
-        Score += 100;
+        Score += 500;
     }
     public bool Active
     {
