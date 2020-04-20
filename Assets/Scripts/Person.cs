@@ -30,7 +30,7 @@ public class Person : MonoBehaviour, IPerson
     Status status;
 
     [Header("Audio")]
-    public AudioClip killedAudioClip;
+    public AudioClip[] killedAudioClips;
     public AudioSource audioSource;
 
 
@@ -207,8 +207,10 @@ public class Person : MonoBehaviour, IPerson
         rb.simulated = false;
         renderer.color = Color.gray;
         renderer.sortingOrder = -1;
-        audioSource.pitch = 1f + Random.Range(-0.3f, 0.3f);
-        audioSource.PlayOneShot(killedAudioClip);
+
+        int killedAudioIndex = Random.Range(0, killedAudioClips.Length - 1);
+        audioSource.PlayOneShot(killedAudioClips[killedAudioIndex]);
+
         alive = false;
         if(Active)
             animation.LaunchAnimation(AnimationController.AnimationType.DYING);

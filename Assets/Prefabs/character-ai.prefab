@@ -217,7 +217,11 @@ MonoBehaviour:
     m_Bits: 51200
   fearRange: 1
   calmRange: 10
-  killedAudioClip: {fileID: 8300000, guid: ea44d3f29fbc544b197c6a9311f3e065, type: 3}
+  killedAudioClips:
+  - {fileID: 8300000, guid: 27c0e82241f604b0c93fcf0e59da14b5, type: 3}
+  - {fileID: 8300000, guid: a2d96529104514ac0ad1ab10c1ffec4c, type: 3}
+  - {fileID: 8300000, guid: a5aa8a90199504e9c9df6e63aa190722, type: 3}
+  - {fileID: 8300000, guid: 3371179c22bc24e399ef3d526020fda8, type: 3}
   audioSource: {fileID: 4252410439631533271}
 --- !u!82 &4252410439631533271
 AudioSource:
@@ -246,7 +250,7 @@ AudioSource:
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
-  BypassReverbZones: 1
+  BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
