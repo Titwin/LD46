@@ -15,6 +15,8 @@ public class Mission : MonoBehaviour
     public Vector2 missionPosition;
     public float timeOutTimer = 10;
 
+    public string[] messages;
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireCube(basePosition, Vector3.one);

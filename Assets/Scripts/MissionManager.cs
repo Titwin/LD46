@@ -5,8 +5,9 @@ using UnityEngine;
 public class MissionManager : MonoBehaviour
 {
     public Mission mission;
+    public UIDialog dialog;
 
-    public Mission.Status status;
+    private Mission.Status status = Mission.Status.Done;
     public Player player;
 
 
@@ -16,9 +17,23 @@ public class MissionManager : MonoBehaviour
     public float time = 0;
     public bool full = false;
 
+    public Mission.Status Status {
+        get => status;
+        set { 
+            if (status != value)
+            {
+                dialog.ShowText(mission.messages[(int)value]);
+                status = value;
+            }
+        } }
+
+    private void Start()
+    {
+        Status = Mission.Status.Planned;
+    }
     private void OnGUI()
     {
-        GUI.Label(new Rect(10, 30, 100, 20), "status:" + status);
+        GUI.Label(new Rect(10, 30, 100, 20), "status:" + Status);
         GUI.Label(new Rect(10, 50, 100, 20), "time:" + time);
         GUI.Label(new Rect(10, 70, 100, 20), "full:" + full);
     }
@@ -29,7 +44,7 @@ public class MissionManager : MonoBehaviour
         Vector2 direction = Vector2.zero;
         time += Time.deltaTime;
 
-        switch (status)
+        switch (Status)
         {
             case Mission.Status.Planned:
                 direction = mission.basePosition - position;
@@ -59,32 +74,32 @@ public class MissionManager : MonoBehaviour
         // checkpoint based changes
         if (direction.sqrMagnitude < 1)
         {
-            switch (status)
+            switch (Status)
             {
                 case Mission.Status.Planned:
-                    status = Mission.Status.Started;
+                    Status = Mission.Status.Started;
                     break;
                 case Mission.Status.Started:
-                    status = Mission.Status.Going;
+                    Status = Mission.Status.Going;
                     break;
                 case Mission.Status.Going:
-                    status = Mission.Status.Eating;
+                    Status = Mission.Status.Eating;
                     time = 0;
                     break;
                 case Mission.Status.Eating:
                     // do nothing
                     break;
                 case Mission.Status.Returning:
-                    status = Mission.Status.Done;
+                    Status = Mission.Status.Done;
                     break;
                 case Mission.Status.Done:
                     //nothing
                     break;
             }
         } // timer based actions
-        if (direction.sqrMagnitude < 1)
+        //if (direction.sqrMagnitude < 1)
         {
-            switch (status)
+            switch (Status)
             {
                 case Mission.Status.Planned:
                     break;
@@ -95,7 +110,7 @@ public class MissionManager : MonoBehaviour
                 case Mission.Status.Eating:
                     if (full || time > mission.timeOutTimer)
                     {
-                        status = Mission.Status.Returning;
+                        Status = Mission.Status.Returning;
                     }
                     break;
                 case Mission.Status.Returning:
@@ -105,6 +120,7 @@ public class MissionManager : MonoBehaviour
             }
         }
     }
+
     private void OnDrawGizmos()
     {
         Vector2 position = player.position;
@@ -112,7 +128,7 @@ public class MissionManager : MonoBehaviour
         Gizmos.DrawWireCube(mission.missionPosition, Vector3.one);
         Gizmos.DrawLine(mission.basePosition, mission.missionPosition);
 
-        switch (status)
+        switch (Status)
         {
             case Mission.Status.Planned:
                 Gizmos.DrawLine(position,mission.basePosition);
