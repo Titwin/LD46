@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class MissionManager : MonoBehaviour
 {
+    public int currentMission = 0;
+    public Mission[] missions;
     public Mission mission;
     public UIDialog dialog;
     public Image fade;
@@ -31,6 +33,8 @@ public class MissionManager : MonoBehaviour
 
     private void Start()
     {
+        missions = GetComponents<Mission>();
+        mission = missions[0];
         Status = Mission.Status.Planned;
     }
     private void OnGUI()
@@ -52,6 +56,8 @@ public class MissionManager : MonoBehaviour
         {
             case Mission.Status.Planned:
                 player.blood = mission.startBlood;
+                player.personController.transform.position = mission.endPosition;
+                player.carController.transform.position = mission.basePosition;
                 break;
             case Mission.Status.Started:
                 direction = mission.basePosition - position;
@@ -76,8 +82,8 @@ public class MissionManager : MonoBehaviour
                 }
                 break;
             case Mission.Status.Returning:
-                direction = mission.basePosition - position;
-                locationCursor.transform.position = mission.basePosition;
+                direction = mission.endPosition - position;
+                locationCursor.transform.position = mission.endPosition;
                 break;
             case Mission.Status.Done:
                 //nothing
@@ -112,6 +118,11 @@ public class MissionManager : MonoBehaviour
                     // do nothing
                     break;
                 case Mission.Status.Returning:
+                    
+                    if (!player.walking)
+                    {
+                        player.ExitCar();
+                    }
                     Status = Mission.Status.Done;
                     break;
                 case Mission.Status.Done:
@@ -138,7 +149,7 @@ public class MissionManager : MonoBehaviour
                 case Mission.Status.Returning:
                     break;
                 case Mission.Status.Done:
-                    visible = false;
+                    StartCoroutine(DoNextMission());
                     break;
             }
         }
@@ -146,6 +157,25 @@ public class MissionManager : MonoBehaviour
         fade.color = new Color(0, 0, 0, fadevalue);
     }
 
+    IEnumerator DoNextMission()
+    {
+        player.Active = false;
+        visible = false;
+        yield return new WaitForSeconds(3);
+        
+        ++currentMission;
+        currentMission %= missions.Length;
+        if (currentMission < missions.Length)
+        {
+            Status = Mission.Status.Planned;
+            mission = missions[currentMission];
+            visible = true;
+            yield return new WaitForSeconds(1);
+            player.Active = true;
+        }
+       
+
+    }
     private void OnDrawGizmos()
     {
         Vector2 position = player.position;

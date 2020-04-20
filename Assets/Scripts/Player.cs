@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public static Player main;
     public GameObject uiBloodFrame;
 
+    bool active = true;
     public Transform carArrow;
     public Vector2 position {
         get {
@@ -30,7 +31,17 @@ public class Player : MonoBehaviour
             }
         }
     }
-
+    public bool Active
+    {
+        get
+        {
+            return active;
+        }
+        set
+        {
+            active = value;
+        }
+    }
     private void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 100, 20), "blood:"+blood);
