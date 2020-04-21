@@ -23,6 +23,10 @@ public class CarController : MonoBehaviour
             {
                 player.ExitCar();
             }
+            else if (player.GetButton2())
+            {
+                car.SetInput(Vector2.zero);
+            }
             else
             {
                 Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));

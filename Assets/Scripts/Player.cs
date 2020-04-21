@@ -71,6 +71,10 @@ public class Player : MonoBehaviour
     {
         return Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.X);
     }
+    public bool GetButton2()
+    {
+        return Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.X);
+    }
     public void OnKillGhoul(bool car)
     {
         if (car)

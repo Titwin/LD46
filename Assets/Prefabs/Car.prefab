@@ -286,7 +286,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   rotationSpeed: 450
   speed: 10
-  acceleration: 6
+  acceleration: 2
   deceleration: 40
   motorAudioSource: {fileID: 6166947354030470474}
   doorsAudioSource: {fileID: 6044828647987796114}
