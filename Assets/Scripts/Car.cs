@@ -57,7 +57,7 @@ public class Car : MonoBehaviour
         motorAudioSource.Stop();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         // compute direction
         if (input != Vector2.zero)

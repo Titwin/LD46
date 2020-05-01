@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Controller;
 public class Monster : MonoBehaviour
 {
-   
+
     public Player player;
     new public AnimationController animation;
+    public Transform eatAim;
     new public Collider2D collider;
     public Vector2 direction;
     public float directionSpeed = 0.7f;
@@ -53,27 +55,40 @@ public class Monster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        body.velocity = Vector2.zero;
         if (!alive || !player.Active)
         {
             return;
         }
         if (!animating)
         {
-            Vector2 d = player.GetInputAxis();
+            Vector2 d = PadInputController.input.GetInputAxis();
             bool interacting = false;
             if (!firstFrame)
             {
-                if(player.GetButtonDown1())
+                RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one, ennemySearchRadius, transform.up, 3f, ennemyMask);
+                Person person = null;
+                eatAim.gameObject.SetActive(false);
+                eatAim.transform.parent = this.transform;
+                if (hit.collider != null)
                 {
-                    RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one, ennemySearchRadius, transform.up, 3f, ennemyMask);
-                    if (hit.collider != null)
+                    person = hit.collider.gameObject.GetComponent<Person>();
+                    if (person)
                     {
-                        Person person = hit.collider.gameObject.GetComponent<Person>();
-                        if (person)
-                        {
-                            Dash(person);
-                            interacting = true;
-                        }
+                        eatAim.transform.position = hit.collider.transform.position;
+                        eatAim.gameObject.SetActive(true);
+                        eatAim.transform.parent = person.transform;
+                        eatAim.transform.rotation = Quaternion.identity;
+                    }
+                }
+
+                if (PadInputController.input.GetButtonDownA())
+                {
+                    if (person)
+                    {
+                        Dash(person);
+                        interacting = true;
+                        eatAim.gameObject.SetActive(false);
                     }
                     else if (Vector2.Distance(this.transform.position, player.carController.transform.position) < carEntryRadius)
                     {
@@ -81,7 +96,8 @@ public class Monster : MonoBehaviour
                         interacting = true;
                     }
                 }
-                else if (player.GetButtonDown2()){
+                else if (PadInputController.input.GetButtonDownB())
+                {
                     interacting = true;
                     StartCoroutine(DoAttack());
                 }
@@ -89,7 +105,7 @@ public class Monster : MonoBehaviour
 
             if (!interacting)
             {
-               
+
                 direction = PersoMoveToward(direction, d, directionSpeed * Time.deltaTime);
                 if (direction != Vector2.zero)
                 {
@@ -101,11 +117,12 @@ public class Monster : MonoBehaviour
                 transform.up = lastNonZeroDirection;
                 fixedUpdateDirection = direction;
 
-                Teleport(body.position + fixedUpdateDirection * speed * Time.fixedDeltaTime);
+                //Teleport(body.position + fixedUpdateDirection * speed * Time.fixedDeltaTime);
+                body.velocity = fixedUpdateDirection * speed;
             }
         }
         firstFrame = false;
-        
+
         //Debug.Log(fixedUpdateDirection * speed * Time.fixedDeltaTime);
     }
     void Teleport(Vector2 position)
@@ -166,7 +183,7 @@ public class Monster : MonoBehaviour
     }
     public void Attack(Person target)
     {
-        bool kill = target.GetHurt(this.gameObject,3);
+        bool kill = target.GetHurt(this.gameObject, 3);
         if (kill)
         {
             player.OnKillPerson(false);
@@ -200,7 +217,7 @@ public class Monster : MonoBehaviour
 
         int sightCount = 0;
         float radius = 2;
-        while (sightCount==0 && radius < 32)
+        while (sightCount == 0 && radius < 32)
         {
             sightCount = Physics2D.OverlapCircleNonAlloc(this.transform.position, radius, sight, attackFilter.layerMask);
             radius *= 2;
@@ -254,7 +271,7 @@ public class Monster : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         Teleport(to);
-       
+
 
         animation.LaunchAnimation(AnimationController.AnimationType.BITING);
         audioSource.pitch = 0.8f + Random.Range(-0.1f, 0.1f);
@@ -265,14 +282,15 @@ public class Monster : MonoBehaviour
         float blood = target.GetKissed(true);
         player.Feed(blood);
         player.OnEatPerson();
-        for (float t = 0; t < 1f; t += Time.deltaTime )
+        for (float t = 0; t < 1f; t += Time.deltaTime)
         {
             FXManager.instance.EmitBlood(target.transform.position, direction, 15);
             yield return new WaitForEndOfFrame();
         }
-        if (Random.Range(0,10) < 4)
+        if (Random.Range(0, 10) < 4)
         {
-            if (unusedEatingAudioClips.Count == 0) {
+            if (unusedEatingAudioClips.Count == 0)
+            {
                 unusedEatingAudioClips.AddRange(eatingAudioClips);
             }
 
@@ -284,7 +302,7 @@ public class Monster : MonoBehaviour
         }
         player.uiBloodFrame.SetActive(false);
         //restore physics
-       // this.body.isKinematic = false;
+        // this.body.isKinematic = false;
         this.collider.enabled = true;
         animating = false;
     }
@@ -308,7 +326,7 @@ public class Monster : MonoBehaviour
             body.simulated = false;
             collider.enabled = false;
             GetComponent<Renderer>().sortingOrder = -1;
-            alive = false; 
+            alive = false;
             FXManager.instance.EmitBloodStain(body.position);
             animation.LaunchAnimation(AnimationController.AnimationType.DYING);
             audioSource.PlayOneShot(dyingAudioClip);

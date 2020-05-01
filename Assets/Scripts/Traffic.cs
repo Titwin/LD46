@@ -8,8 +8,8 @@ public class Traffic : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
+        //if (Instance == null)
+        Instance = this;
     }
 
     public List<RoadNode> roadNodes = new List<RoadNode>();
@@ -17,7 +17,7 @@ public class Traffic : MonoBehaviour
 
     public int GetIndex(RoadNode node)
     {
-        for(int i=0; i<roadNodes.Count; i++)
+        for (int i = 0; i < roadNodes.Count; i++)
         {
             if (roadNodes[i] == node)
                 return i;

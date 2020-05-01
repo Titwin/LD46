@@ -4,56 +4,60 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    public GameObject cover;
-   
-    public Level levelTemplate;
-    public Level currentLevel;
+    public Menu menu;
+
+    public Level level;
 
     bool paused = false;
     public static Game instance;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        cover.SetActive(true);
         instance = this;
     }
+    // Start is called before the first frame update
+    void Start()
+    { 
+        menu.GoToCover();
+    }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
-        if (cover.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.anyKeyDown)
-            {
-                cover.SetActive(false);
-
-                currentLevel = Instantiate<Level>(levelTemplate);
-                currentLevel.gameObject.SetActive(true);
-                currentLevel.player.gameObject.SetActive(true);
-                currentLevel.workflow.visible = true;
+            if (level.active) {
+                ExitLevel();
+                menu.GoToMainMenu();
             }
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (!paused)
-            {
-                Time.timeScale = 0;
+            else {
+                Exit();
             }
-            else
-            {
-                Time.timeScale = 1;
-            }
-            paused = !paused;
         }
     }
-    public void Reset()
+    public void StartLevel()
     {
-        Destroy(currentLevel.gameObject);
+        level.gameObject.SetActive(true);
+        level.StartLevel();
+    }
+    public void ResetLevel()
+    {
+        level.Restart();
+    }
+    public bool ExitLevel()
+    {
+        if (level.active)
+        {
+            level.Unload();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-        currentLevel = Instantiate<Level>(levelTemplate);
-        currentLevel.gameObject.SetActive(true);
-        currentLevel.player.gameObject.SetActive(true);
-        currentLevel.workflow.visible = true;
+    public void Exit()
+    {
+        Application.Quit();
     }
 }

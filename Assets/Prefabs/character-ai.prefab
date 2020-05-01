@@ -215,8 +215,8 @@ MonoBehaviour:
   fearMask:
     serializedVersion: 2
     m_Bits: 51200
-  fearRange: 1
-  calmRange: 10
+  fearRange: 2
+  calmRange: 3
   killedAudioClips:
   - {fileID: 8300000, guid: 27c0e82241f604b0c93fcf0e59da14b5, type: 3}
   - {fileID: 8300000, guid: a2d96529104514ac0ad1ab10c1ffec4c, type: 3}

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class MissionManager : MonoBehaviour
 {
+    public TimeManager timeManager;
     public int currentMission = 0;
     public Mission[] missions;
     public Mission mission;
@@ -13,7 +14,6 @@ public class MissionManager : MonoBehaviour
     public bool visible = true;
     [SerializeField] Mission.Status status = Mission.Status.Done;
     public Player player;
-
 
     public SpriteRenderer locationCursor;
     public Transform arrowPivot;
@@ -52,6 +52,8 @@ public class MissionManager : MonoBehaviour
         switch (Status)
         {
             case Mission.Status.Planned:
+                timeManager.SetTime(timeManager.day, 22, 0);
+                timeManager.paused = false;
                 player.blood = mission.startBlood;
                 player.personController.transform.position = mission.endPosition;
                 player.carController.transform.position = mission.basePosition;
@@ -123,6 +125,7 @@ public class MissionManager : MonoBehaviour
                         player.ExitCar();
                     }
                     Status = Mission.Status.Done;
+                    timeManager.paused = true;
                     StartCoroutine(DoNextMission());
                     break;
                 case Mission.Status.Done:
@@ -152,8 +155,15 @@ public class MissionManager : MonoBehaviour
                     break;
             }
         }
-        float fadevalue = Mathf.MoveTowards(fade.color.a, visible ? 0 : 1, Time.deltaTime);
-        fade.color = new Color(0, 0, 0, fadevalue);
+        if (timeManager.isNight)
+        {
+            float fadevalue = Mathf.MoveTowards(fade.color.a, visible ? 0 : 1, Time.deltaTime);
+            fade.color = new Color(0, 0, 0, fadevalue);
+        }else 
+        {
+            float fadevalue = Mathf.MoveTowards(fade.color.a, 1, Time.deltaTime);
+            fade.color = new Color(1, 1, 1, fadevalue);
+        }
     }
 
     IEnumerator DoNextMission()

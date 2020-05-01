@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public TimeManager time;
     public GameObject deadText;
     int score;
     public int Score
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
 
     public static Player main;
     public GameObject uiBloodFrame;
-
+    
     bool active = true;
     public Transform carArrow;
     public Vector2 position {
@@ -59,22 +60,7 @@ public class Player : MonoBehaviour
             Score += 10;
         }
     }
-    public Vector2 GetInputAxis()
-    {
-        return new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-    }
-    public bool GetButtonDown1()
-    {
-        return Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z);
-    }
-    public bool GetButtonDown2()
-    {
-        return Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.X);
-    }
-    public bool GetButton2()
-    {
-        return Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.X);
-    }
+    
     public void OnKillGhoul(bool car)
     {
         if (car)
@@ -110,10 +96,10 @@ public class Player : MonoBehaviour
     private void Start()
     {
 
-        carController.readInput = true;
+        
         if (walking)
         {
-            carController.readInput = false;
+            carController.Active = false;
             personController.direction = carController.transform.right;
             personController.gameObject.SetActive(true);
             camera.Follow = personController.transform;
@@ -122,6 +108,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            carController.Active = true;
             EnterCar();
         }
         
@@ -129,19 +116,20 @@ public class Player : MonoBehaviour
     private void LateUpdate()
     {
         // player is inside car
-        if(carController.readInput)
+        if(carController.Active)
         {
             personController.transform.position = carController.car.door.position;
             personController.gameObject.SetActive(false);
         }
 
         // action
-        music.pitch = Mathf.MoveTowards(music.pitch, carController.readInput ? 1 : 0.5f, Time.deltaTime * 2);
-        camera.m_Lens.FieldOfView = Mathf.MoveTowards(camera.m_Lens.FieldOfView, carController.readInput ? (Mathf.Lerp(48,64,carController.car.currentSpeed/10)) : 32,30*Time.deltaTime);
+        music.pitch = Mathf.MoveTowards(music.pitch, carController.Active ? 1 : 0.5f, Time.deltaTime * 2);
+        camera.m_Lens.FieldOfView = Mathf.MoveTowards(camera.m_Lens.FieldOfView, carController.Active ? (Mathf.Lerp(48,64,carController.car.currentSpeed/10)) : 32,30*Time.deltaTime);
         if (personController.alive)
         {
             blood -= Time.deltaTime;
-            if (blood <= 0)
+            bool died = blood <= 0 || !time.isNight; 
+            if (died)
             {
                 if (!walking)
                 {
@@ -164,11 +152,11 @@ public class Player : MonoBehaviour
         deadText.SetActive(true);
         yield return new WaitForSeconds(3);
         dialog.ShowText("Press any key to restart", false);
-        while (!Input.anyKey)
+        while (!Controller.PadInputController.input.AnyButton())
         {
             yield return new WaitForEndOfFrame();
         }
-        Game.instance.Reset();
+        Game.instance.ResetLevel();
     }
     public void Feed(float amount)
     {
@@ -176,7 +164,7 @@ public class Player : MonoBehaviour
     }
     public void ExitCar()
     {
-        carController.readInput = false;
+        carController.Active = false;
         personController.direction = carController.transform.right;
         personController.gameObject.SetActive(true);
         camera.Follow = personController.transform;
@@ -185,7 +173,7 @@ public class Player : MonoBehaviour
     }
     public void EnterCar()
     {
-        carController.readInput = true;
+        carController.Active = true;
         personController.gameObject.SetActive(false);
         camera.Follow = carController.car.cameraPivot.transform;
         carController.StartEngine();

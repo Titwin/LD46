@@ -3,18 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Level : MonoBehaviour
-{
-    public MissionManager workflow;
-    public Player player;
-    // Start is called before the first frame update
-    void Start()
+{   
+    [SerializeField] LevelState volatileContainer;
+    public LevelState state;
+
+    public bool initialized = false;
+    public bool active = false;
+    private void Awake()
     {
-        
+        Initialize();
+    }
+    public void Initialize()
+    {
+        volatileContainer.gameObject.SetActive(false);
+        initialized = true;
+    }
+    public void StartLevel()
+    {
+        if (!initialized)
+        {
+            Initialize();
+        }
+        state = Instantiate<LevelState>(volatileContainer,volatileContainer.transform.parent,true);
+        state.gameObject.SetActive(true);
+        state.workflow.visible = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Restart()
     {
-        
+        Unload();
+        StartLevel();
+    }
+
+    public void Unload()
+    {
+        Destroy(state.gameObject);
+        active = false;
     }
 }
