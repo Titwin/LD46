@@ -1304,6 +1304,7 @@ MonoBehaviour:
   time: 0
   baseTimeScale: 60
   timeScale: 60
+  minuteMultiplier: 5
   day: 0
   night: 0
   hours: 0
@@ -1397,11 +1398,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: SUNRISE AT 06:00
-      objectReference: {fileID: 0}
-    - target: {fileID: 2585385219003679280, guid: 0b06663ada6a97541bcd13ecc602d417,
-        type: 3}
-      propertyPath: m_FontData.m_BestFit
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2585385219003679280, guid: 0b06663ada6a97541bcd13ecc602d417,
         type: 3}

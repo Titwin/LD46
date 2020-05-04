@@ -161,12 +161,6 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 3894525124700272542, guid: d8a29f46be625b44a8584f5c38983f7a,
         type: 3}
-      propertyPath: animations.Array.data[0].frames.Array.data[0]
-      value: 
-      objectReference: {fileID: 4790806766981554088, guid: 0da6d809b79838049ba58d782a2678b4,
-        type: 3}
-    - target: {fileID: 3894525124700272542, guid: d8a29f46be625b44a8584f5c38983f7a,
-        type: 3}
       propertyPath: animations.Array.data[0].frames.Array.data[1]
       value: 
       objectReference: {fileID: -5543845545753128139, guid: 0da6d809b79838049ba58d782a2678b4,
@@ -362,6 +356,12 @@ PrefabInstance:
       propertyPath: animations.Array.data[6].frames.Array.data[12]
       value: 
       objectReference: {fileID: -6653063411675333314, guid: 0da6d809b79838049ba58d782a2678b4,
+        type: 3}
+    - target: {fileID: 3894525124700272542, guid: d8a29f46be625b44a8584f5c38983f7a,
+        type: 3}
+      propertyPath: animations.Array.data[0].frames.Array.data[0]
+      value: 
+      objectReference: {fileID: 4790806766981554088, guid: 0da6d809b79838049ba58d782a2678b4,
         type: 3}
     - target: {fileID: 4694656606556000012, guid: d8a29f46be625b44a8584f5c38983f7a,
         type: 3}

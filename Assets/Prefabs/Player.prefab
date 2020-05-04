@@ -143,7 +143,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 64, y: -16.000061}
+  m_AnchoredPosition: {x: 64, y: -16.000122}
   m_SizeDelta: {x: 64, y: 128}
   m_Pivot: {x: 0.000000107567814, y: 0.0000000949949}
 --- !u!222 &1079570799
@@ -1418,6 +1418,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car
       objectReference: {fileID: 0}
+    - target: {fileID: 1803362339715775653, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5468883663398654773, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1477,6 +1482,11 @@ PrefabInstance:
         type: 3}
       propertyPath: direction.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6031754676791022147, guid: 78bf8e44999bd6146ac7bd49e29a8a2a,
+        type: 3}
+      propertyPath: tankControls
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78bf8e44999bd6146ac7bd49e29a8a2a, type: 3}

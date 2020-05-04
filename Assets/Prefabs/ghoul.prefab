@@ -230,7 +230,7 @@ MonoBehaviour:
   animation: {fileID: 7456650398189150213}
   collider: {fileID: 3556355210785275869}
   direction: {x: 0, y: 0}
-  directionSpeed: 0.7
+  directionSpeed: 1
   speed: 1
   alive: 1
   hp: 3
@@ -246,7 +246,7 @@ MonoBehaviour:
   dashRange: 0.5
   attackBox: {fileID: 1086770492124846124}
   attackFilter:
-    useTriggers: 0
+    useTriggers: 1
     useLayerMask: 1
     useDepth: 0
     useOutsideDepth: 0

@@ -415,6 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2aac43eb97aefa4bad9d5dcd1519c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeManager: {fileID: 0}
   currentMission: 0
   missions:
   - {fileID: 257013204197249366}

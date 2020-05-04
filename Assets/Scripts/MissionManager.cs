@@ -60,12 +60,14 @@ public class MissionManager : MonoBehaviour
                 break;
             case Mission.Status.Started:
                 direction = mission.basePosition - position;
-                locationCursor.transform.position = mission.basePosition;
+                locationCursor.enabled = false;
+                //locationCursor.transform.position = mission.basePosition;
                 break;
             case Mission.Status.Going:
                 full = false;
                 direction = mission.missionPosition - position;
                 locationCursor.transform.position = mission.missionPosition;
+                locationCursor.enabled = true;
                 break;
             case Mission.Status.Eating:
                 direction = Vector2.zero;

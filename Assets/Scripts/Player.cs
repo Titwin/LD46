@@ -4,9 +4,32 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    // Singleton exposure
+    public static Player main;
+
+    [Header("Linkings")]
+    public CarController carController;
+    public Monster personController;
+    public Transform carArrow;
+    public AudioSource music;
     public TimeManager time;
+    new public Cinemachine.CinemachineVirtualCamera camera;
+
+    [Header("UI")]
+    public UIScore uiscore;
+    public UIDialog dialog;
     public GameObject deadText;
-    int score;
+    public GameObject uiBloodFrame;
+    public UIBlood uiBlood;
+
+    [Header("Status/Debug")]
+    [SerializeField] bool debug_immortal = false;
+    [SerializeField] bool active = true;
+    [SerializeField] public float blood = 100;
+    [SerializeField] int score;
+    public bool walking = false;
+    bool alive = true;
+
     public int Score
     {
         get
@@ -19,23 +42,7 @@ public class Player : MonoBehaviour
             score = value;
         }
     }
-    public UIScore uiscore;
-    public UIDialog dialog;
-    public float blood = 100;
-    public AudioSource music;
-    public UIBlood uiBlood;
-    [Header("Linkings")]
-    public CarController carController;
-    public Monster personController;
-
-    public bool walking = false;
-    new public Cinemachine.CinemachineVirtualCamera camera;
-
-    public static Player main;
-    public GameObject uiBloodFrame;
     
-    bool active = true;
-    public Transform carArrow;
     public Vector2 position {
         get {
             if (personController.gameObject.activeSelf)
@@ -76,6 +83,7 @@ public class Player : MonoBehaviour
     {
         Score += 500;
     }
+
     public bool Active
     {
         get
@@ -125,18 +133,18 @@ public class Player : MonoBehaviour
         // action
         music.pitch = Mathf.MoveTowards(music.pitch, carController.Active ? 1 : 0.5f, Time.deltaTime * 2);
         camera.m_Lens.FieldOfView = Mathf.MoveTowards(camera.m_Lens.FieldOfView, carController.Active ? (Mathf.Lerp(48,64,carController.car.currentSpeed/10)) : 32,30*Time.deltaTime);
-        if (personController.alive)
+        if (alive)
         {
             blood -= Time.deltaTime;
-            bool died = blood <= 0 || !time.isNight; 
+            bool died = !debug_immortal && (blood <= 0 || !time.isNight); 
             if (died)
             {
                 if (!walking)
                 {
                     ExitCar();
+                    personController.Die();
                 }
-
-                personController.Die();
+                alive = false;
                 dialog.ShowText("Arrrrgg !!!", false);
                 StartCoroutine(DieAndWait());
             }
