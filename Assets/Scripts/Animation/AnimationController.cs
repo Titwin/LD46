@@ -61,6 +61,20 @@ public class AnimationController : MonoBehaviour
         }*/
     }
 
+    public void AdjustSpeed(float baseSpeed)
+    {
+        if(baseSpeed <= 0f)
+        {
+            Debug.LogWarning(gameObject.name + ", in AnimationController : adjustment speed is not valid (abord adjustment)");
+            return;
+        }
+
+        foreach(Animation anim in animations)
+        {
+            anim.time /= baseSpeed;
+        }
+    }
+
     public void LaunchAnimation(AnimationType animType, bool flip = false)
     {
         animating = true;

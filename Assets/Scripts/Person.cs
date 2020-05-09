@@ -7,6 +7,7 @@ public class Person : MonoBehaviour, IPerson
     public PeopleManager manager;
     public AnimationController animation;
     public int hp = 1;
+    public float baseSpeed = 1f;
     public bool alive = true;
     public bool stunned = false;
 
@@ -63,6 +64,11 @@ public class Person : MonoBehaviour, IPerson
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
         renderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        animation.AdjustSpeed(baseSpeed);
     }
 
     public void Sense()
@@ -155,8 +161,8 @@ public class Person : MonoBehaviour, IPerson
         }
         if (Direction.sqrMagnitude > 0)
         {
-            currentDirection = Vector2.MoveTowards(currentDirection, Direction, Time.deltaTime);
-            this.rb.MovePosition(this.rb.position + currentDirection * (status == Status.Scared ? 2 : 1) * Time.deltaTime);
+            currentDirection = Vector2.MoveTowards(currentDirection, Direction, baseSpeed * Time.deltaTime);
+            this.rb.MovePosition(this.rb.position + currentDirection * (status == Status.Scared ? 2f : baseSpeed) * Time.deltaTime);
             animation.playAnimation(AnimationController.AnimationType.WALKING);
             transform.up = currentDirection;
         }
